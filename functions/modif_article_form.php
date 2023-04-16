@@ -1,0 +1,112 @@
+<?php
+
+session_start();
+
+
+// connexion avec la database
+require_once 'database.php';
+
+
+// si la session n'est pas vide
+if(!empty($_SESSION['id'])){
+   
+    // on recupere la session
+    $my_session = $_SESSION['id'];
+
+    // si le title n'est pas vide
+    if(!empty($_POST['tit']))
+    {
+        // on passe le title en htmlspecialchars
+        $tit = htmlspecialchars($_POST['tit']);
+    
+    // si le content n'est pas vide
+        if(!empty($_POST['cont']))
+        {
+             // on passe le content en htmlspecialchars
+            $cont = htmlspecialchars($_POST['cont']);
+
+
+                // si il y a une image avec son nom 
+                if(!empty($_FILES['image'] ['name']))
+                {
+
+                    // on récupere les infos de l'image
+                    $name_file = $_FILES['image']['name'];
+                    $type_file = $_FILES['image']['type'];
+                    $size_file = $_FILES['image']['size'];
+                    $tmp_file = $_FILES['image']['tmp_name'];
+                    $err_file = $_FILES['image']['error'];
+
+                    // on déclare les extensions autorisées
+                    $authorised_extensions = ['png', 'jpg', 'jpeg', 'gif'];
+                    $type = ['image/png', 'image/jpg', 'image/jpeg', 'image/gif'];
+
+                    // on sépare le nom de l'image a partir du .
+                    $extens = explode('.', $name_file);
+
+                    // on déclare une taille maxi en octets
+                    $max_size = 100000;
+
+                    // on compare dans le tableau si le type file correspond au type
+                    if(in_array($type_file, $type))
+                    {
+                        // on compte le nombre d'extension apres le ., on passe l'extension en minuscule
+                        if(count($extens) <= 2 && in_array(strtolower(end($extens)), $authorised_extensions))
+                        {
+                        
+                            // on compare si l'img est de taille inférieur au max_size déclaré plsu haut, et si elle est en erreur 0 (dans manuel php : téléchargement correct)
+                            if($size_file < $max_size && $err_file == 0)
+                            {
+
+                                // on creer un numéro unique, que l'on recole l'extension précédément explode puis on l'envois vers le fichier stock_avatar une fois renommé en uniqid.
+                                $image = uniqid() . '.' . strtolower(end($extens));
+                                if(move_uploaded_file($tmp_file, '../stock_avatar/' . $image))
+                                {
+
+                                    // on prepare et execute la requete, dans la table articles, on rentre le titre, le content, et l'image de l'article crée
+                                    $insert = $pdo->prepare('UPDATE articles SET (title, content, image) VALUES (:toto, :cont, :img) ');
+                                    $insert->execute(array(
+                                    'toto'=> $tit,
+                                     'cont'=> $cont,
+                                     'img'=> $image,
+                                     ));
+
+                                    //  Si on a rencontré une erreur, on la nomme ci dessous celon a quel endroit elle à eu lieu
+                                     // echo "Article posté !";
+                                    header('Location:../edit_article.php?reg_err=success'); 
+                                    die();
+                                
+                                
+                                    // echo "Erreur, upload non effectué";
+                                }else{header('Location:../edit_article.php?reg_err=error'); }
+                                
+                            
+                                // echo "Image trop lourde ou format incorrect";
+                            }else{header('Location:../edit_article.php?reg_err=type_file'); }
+                            
+                        
+                            // echo "Merci de mettre une image";
+                        }else{header('Location:../edit_article.php?reg_err=image'); }
+                        
+                    
+                        // echo "Type non autorisé. Veuillez choisir une image.png ou .jpg ou .jpeg ou .gif";
+                    }else{header('Location:../edit_article.php?reg_err=type'); }
+
+
+                    // echo "Veuillez selectionner une image";
+                }else{header('Location:../edit_article.php?reg_err=check'); }
+
+                    
+        // echo "Veuillez mettre une description, ou un commentaire à votre article";
+        }else{header('Location:../edit_article.php?reg_err=cont_empty'); }  
+
+
+        // echo "Veuillez remplir le titre de l'article" ;
+    }else{header('Location:../edit_article.php?reg_err=tit_empty'); }   
+
+    
+    // echo "Erreur d'id";
+}else{header('Location:../edit_article.php?reg_err=error_id'); }  
+                  
+
+?>

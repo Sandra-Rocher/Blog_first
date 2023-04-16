@@ -1,0 +1,56 @@
+/* .nav-item a.active-default{
+    color:rgb(218, 38, 182);
+} */
+
+/* 1:bleu dev blog
+2:bootstrap info */
+
+.nav-item a{
+    color:rgb(17, 203, 240);
+}
+
+.nav-item a:hover{
+    color:rgb(19, 129, 144);
+}
+
+/* autre façon de faire la couleur sur les liens navbar actif..  */
+.nav-link.active{
+    color:white!important;
+}
+
+@media screen and (max-width: 1400px){
+    .navbar-toggler{
+        
+    color:white!important;
+    background-color:white!important;
+}
+}
+
+
+/* .nav-item > a:hover {
+    color: aqua!important;
+  } */
+
+  /* .navbar-nav > .active {
+    color: chartreuse!important; 
+  } */
+
+  /* .navbar-nav > .active > a {
+    color: aqua!important;
+    background-color: chartreuse!important; 
+  } */
+
+  /* .nav-bar .nav-link.active {
+    background-color: greenyellow!important;
+    color:aqua!important;
+  } */
+
+  /* .nav-item a:active {
+    color: aqua !important;
+    background-color: greenyellow!important;
+  } */
+
+  /* .active a{
+    color: rgb(32, 234, 230) !important;
+    background-color: greenyellow!important;
+  } */
