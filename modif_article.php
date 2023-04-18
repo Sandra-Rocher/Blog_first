@@ -1,32 +1,20 @@
 <?php
 
 SESSION_start();
-   
 
-// connexion avec la database
-require_once 'functions/database.php';
+// page d'appel des functions
+require_once 'functions/get_posts.php';
 
-// On vérifie que c'est bien la personne qui à écrit l'article qui doit le modifier sinon on lui dit que ce n'est pas possible
-// Donc cette personne est connecté
-// article selectionné = id dans table articlee
-// personne connecté par l'id = ok car 
-// article selectionné = id users dans article comme id user dans user
+// même fonction que full article, car on veut aussi afficher l'article en grand avant de le modifier
+$article = get_full_article();
 
-// Verification que l'id de la personne soit bien celle qui a posté l'article
-if(!isset($_SESSION["id"]) || $_SESSION["user_name"] != 'user_name'){
+// Verification que l'id de la personne soit bien connectée et celle qui à éditée l'article
+if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
 
-  header('Location:full_article.php?rep_err=error_wrongId'); 
+    
+        // redirection sur l'article en full qui été sélectionné par l'id
+  header('Location:full_article.php?id='. $article[0] . 'rep_err=wrong_id_us');
 }
-
-// On sélectionne ici l'article par l'id qui à été sélectionné
-$select = $pdo->prepare("SELECT * FROM articles
-                        JOIN users 
-                        ON articles.id_users=users.id
-                        WHERE id_users=? 
-                        "); 
-$select->execute(array($_SESSION['id']));
-$article = $select->fetch();
-
 
 ?>
 
@@ -143,53 +131,35 @@ $article = $select->fetch();
 
 <?php
 
-
+// var_dump($article);
    
 
     
-    echo     ' <div class="container mt-5 mb-5">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-8 col-lg-4 mx-auto">
+    echo     ' <div class="container mt-5 mb-5 col-sm12 col-md-8 col-lg-10 border border-info shadow-lg bg-info-rounded">
+                    <div class="row text-center border border-info shadow-lg bg-info-rounded">
+                        <h1 class="mt-5">Modifier un article</h1>
 
-                            <div class="card mx-auto border border-info shadow-lg">
-                                <p class="card-text mx-auto mt-3"><small class="text-info">Publié le '. $article["date_articles"] . ' par <span class="fw-bold">'. $article ["user_name"] . ' </span></small></p>
-                                <h5 class="card-title text-center"> ' . $article["title"] . ' </h5>
-                                <img src= stock_avatar/' . $article["image"] . ' class="card-img-top" alt=" '. $article["title"] . '">
-                                <div class="card-body mx-auto">
-                                    <p class="card-text"> ' . $article["content"] . ' </p>
-                                    <a href="#" class="btn btn-info d-flex justify-content-center mb-3" >Voir l\'article en entier</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-
-                        <div class="col-sm-12 col-md-8 col-lg-4 mx-auto border border-info shadow-lg">
-
-
-                                <form class="form-group mt-4" method="POST" action="functions/modif_article_form.php" enctype="multipart/form-data">
-                                    <div class="d-grid gap-2 mx-auto ">
+                                <form class="form-group mt-3" method="POST" action="functions/modif_article_form.php" enctype="multipart/form-data">
+                                    <div class="d-grid gap-2 col-sm-12 col-md-8 col-lg-10 mx-auto mt-3">
 
                                         <label for="title_art" class="fs-4 mx-auto">Modifier votre titre</label>
-                                        <input type="text" class="form-control" name="tit" id="title_art"  placeholder="Titre de votre article..."  required="required">
+                                        <input type="text" class="form-control" name="tit" id="title_art"  placeholder="Titre de votre article..." value="' . $article[1] . '" required="required">
             
                                         <label for="comm_art" class="fs-4 mx-auto">Modifier votre commentaire</label>
-                                        <textarea class="form-control" name="cont" id="comm_art" rows="8" placeholder="Pour mieux voir votre texte vous pouvez agrandir vous pouvez cliquer en bas a droite et déployer vers le bas"  required="required"></textarea>
+                                        <textarea class="form-control" name="cont" id="comm_art" rows="8" required="required" placeholder="' . $article[2] . '" ></textarea>
             
                                         <label for="image_art" class="fs-4 mx-auto">Modifier l\'image</label>
-                                        <input type="file" class="form-control" name="image" id="image_art"  placeholder="" required="required">
+                                        <input type="file" class="form-control" name="image" id="image_art"  placeholder="" value="<?= ' . $article[3] . ' ?>" required="required">
                                     </div>
-                                    <div class="d-grid gap-2 mx-auto mt-4 mb-4">
+                                    <div class="d-grid col-2 gap-2 mx-auto mt-5 mb-4">
                                         <button class="btn btn-info" type="submit">Envoyer les modifications</button>
                                     </div>
-                                </form>        
-                            </div>
-                        </div>
-                        
-
+                                    <div class="d-grid gap-2 mx-auto mt-4 mb-5">
+                                        <div class="fs-bold"><a href="crit_valid.php">Avant de valider votre article, allez voir les critères de validation de celui-ci</a></div>
+                                    </div>
+                                </form>    
+                                    
+                        </div> 
                     </div>
                 </div> ';
                   

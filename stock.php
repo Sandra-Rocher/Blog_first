@@ -1,6 +1,3 @@
-<!-- 
-<h6 class=text-white> Le <......?php date ("d/m/Y à H:i", strtotime($data->date_articles)) ?......> </h6> -->
-
 
 
 <?php

@@ -45,7 +45,7 @@ if(!empty($_SESSION['id'])){
                     $extens = explode('.', $name_file);
 
                     // on déclare une taille maxi en octets
-                    $max_size = 100000;
+                    $max_size = 300000;
 
                     // on compare dans le tableau si le type file correspond au type
                     if(in_array($type_file, $type))
@@ -64,7 +64,15 @@ if(!empty($_SESSION['id'])){
                                 {
 
                                     // on prepare et execute la requete, dans la table articles, on rentre le titre, le content, et l'image de l'article crée
-                                    $insert = $pdo->prepare('UPDATE articles SET (title, content, image) VALUES (:toto, :cont, :img) ');
+                                    $insert = $pdo->prepare('UPDATE articles 
+                                                            SET (title, content, image)
+                                                          
+
+                                                          WHERE id = ? 
+
+
+
+                                                            VALUES (:toto, :cont, :img) ');
                                     $insert->execute(array(
                                     'toto'=> $tit,
                                      'cont'=> $cont,
@@ -72,7 +80,7 @@ if(!empty($_SESSION['id'])){
                                      ));
 
                                     //  Si on a rencontré une erreur, on la nomme ci dessous celon a quel endroit elle à eu lieu
-                                     // echo "Article posté !";
+                                     // echo "Article reçu, il sera vérifié par l'admin et publié ou supprimé !";
                                     header('Location:../edit_article.php?reg_err=success'); 
                                     die();
                                 

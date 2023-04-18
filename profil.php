@@ -5,21 +5,14 @@ session_start();
 
 if(!isset($_SESSION["id"])){
     
-
+    
     header("Location: connexion.php");
 }
 
 
-// connexion avec la database
-require_once 'functions/database.php';
+require_once 'functions/get_posts.php';
 
-
-$select = $pdo->prepare("SELECT id, user_name, email, avatar 
-                        FROM users 
-                        WHERE id=? 
-                        LIMIT 1"); 
-$select->execute(array($_SESSION['id']));
-$data = $select->fetch();
+$data = get_data_profil();
 
 
 ?>

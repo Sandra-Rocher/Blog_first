@@ -26,31 +26,10 @@
 }
 }
 
+/* .card .card-img-top{
+    max-height:350px!important;
+} */
 
-/* .nav-item > a:hover {
-    color: aqua!important;
-  } */
-
-  /* .navbar-nav > .active {
-    color: chartreuse!important; 
-  } */
-
-  /* .navbar-nav > .active > a {
-    color: aqua!important;
-    background-color: chartreuse!important; 
-  } */
-
-  /* .nav-bar .nav-link.active {
-    background-color: greenyellow!important;
-    color:aqua!important;
-  } */
-
-  /* .nav-item a:active {
-    color: aqua !important;
-    background-color: greenyellow!important;
-  } */
-
-  /* .active a{
-    color: rgb(32, 234, 230) !important;
-    background-color: greenyellow!important;
-  } */
+.card p{
+    max-height:350px!important;
+}

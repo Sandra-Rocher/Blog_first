@@ -38,7 +38,7 @@ if(!empty($_SESSION['id'])){
 
                     $extens = explode('.', $name_file);
 
-                    $max_size = 100000;
+                    $max_size = 300000;
 
 
                     if(in_array($type_file, $type))
@@ -62,12 +62,12 @@ if(!empty($_SESSION['id'])){
                                      'idus'=> $my_session,
                                      ));
 
-                                     // echo "Article posté !";
+                                     // echo "Article reçu, l'admin va regarder et valider ou non.. !";
                                     header('Location:../edit_article.php?reg_err=success'); 
                                     die();
                                 
                                 
-                                    // echo "Erreur, upload non effectué";
+                                    // echo "Erreur (upload non effectué)";
                                 }else{header('Location:../edit_article.php?reg_err=error'); }
                                 
                             
@@ -82,15 +82,20 @@ if(!empty($_SESSION['id'])){
                         // echo "Type non autorisé. Veuillez choisir une image.png ou .jpg ou .jpeg ou .gif";
                     }else{header('Location:../edit_article.php?reg_err=type'); }
 
-                
+
+                 // echo "veuillez sélectionner une image";
                 }else{header('Location:../edit_article.php?reg_err=check'); }
                     
 
+            // echo "Veuillez mettre un commentaire à votre article";
         }else{header('Location:../edit_article.php?reg_err=cont_empty'); }  
 
+
+         // echo "Veuillez mettre un titre à votre article";
     }else{header('Location:../edit_article.php?reg_err=tit_empty'); }   
     
     
+    // echo "Erreur d'id";
 }else{header('Location:../edit_article.php?reg_err=error_id'); }  
                   
 

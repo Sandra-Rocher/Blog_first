@@ -2,21 +2,9 @@
 
 SESSION_start();
 
+require_once 'functions/get_posts.php';
 
-// connexion avec la database
-require_once 'functions/database.php';
-
-
-// récupération de tous les articles DE L ADMIN VOYAGE USA
-$sql = 'SELECT * FROM articles 
-                JOIN users
-                ON articles.id_users=users.id
-                WHERE id_role = "1" AND title LIKE "USA%"
-                ORDER BY date_articles DESC';
-
-$requete = $pdo->query($sql);
-$articles = $requete->fetchAll();
-
+$articles = get_posts_voyage();
 
 ?>
 
@@ -51,12 +39,12 @@ $articles = $requete->fetchAll();
                         <div class="col-sm-12 col-md-12 col-lg-5 mx-auto mb-5">
 
                             <div class="card mx-auto border border-info shadow-lg">
-                                <p class="card-text mx-auto mt-3"><small class="text-info">Publié le '. $article["date_articles"] . ' par <span class="fw-bold">'. $article ["user_name"] . ' </span></small></p>
+                                <p class="card-text mx-auto mt-3"><small class="text-info">Publié le ' . date("d/m/Y à H:i", strtotime($article["date_articles"])) . ' par <span class="fw-bold">'. $article ["user_name"] . ' </span></small></p>
                                 <h5 class="card-title text-center"> ' . $article ["title"] . ' </h5>
                                 <img src= stock_avatar/' . $article ["image"] . ' class="card-img-top" alt=" '. $article ["title"] . '">
                                 <div class="card-body mx-auto">
-                                    <p class="card-text"> ' . $article ["content"] . ' </p>
-                                    <a href="#" class="btn btn-info d-flex justify-content-center mb-3" >Voir l\'article complet</a>
+                                     <p class="card-text"> ' . substr(nl2br($article["content"]),0,1000) . ' ... </p>
+                                    <a href="full_article.php?id='. $article[0] . '" class="btn btn-info d-flex justify-content-center mb-3" >Voir l\'article complet</a>
                                 </div>
                             </div>
                         </div>
