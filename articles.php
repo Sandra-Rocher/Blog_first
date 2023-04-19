@@ -41,9 +41,9 @@ $articles = get_posts_voyage();
                             <div class="card mx-auto border border-info shadow-lg">
                                 <p class="card-text mx-auto mt-3"><small class="text-info">Publié le ' . date("d/m/Y à H:i", strtotime($article["date_articles"])) . ' par <span class="fw-bold">'. $article ["user_name"] . ' </span></small></p>
                                 <h5 class="card-title text-center"> ' . $article ["title"] . ' </h5>
-                                <img src= stock_avatar/' . $article ["image"] . ' class="card-img-top" alt=" '. $article ["title"] . '">
+                                <a href="full_article.php?id='. $article[0] . '"> <img src= stock_avatar/' . $article ["image"] . ' class="card-img-top" alt=" '. $article ["title"] . '"></a>
                                 <div class="card-body mx-auto">
-                                     <p class="card-text"> ' . substr(nl2br($article["content"]),0,1000) . ' ... </p>
+                                    <p class="card-text overflow-auto"> ' . substr(nl2br($article["content"]),0,1000) . ' ... </p>
                                     <a href="full_article.php?id='. $article[0] . '" class="btn btn-info d-flex justify-content-center mb-3" >Voir l\'article complet</a>
                                 </div>
                             </div>

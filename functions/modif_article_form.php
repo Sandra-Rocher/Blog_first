@@ -7,6 +7,21 @@ session_start();
 require_once 'database.php';
 
 
+
+// Vérifier qu'on prends bien l'id de l'article qu'on veut modifier
+if(isset($_GET['id']) && !empty($_GET['id'])) {
+
+    $get_id = htmlspecialchars($_GET['id']);
+
+}else {
+    // CREER sur la page l erreur... et indenter tout ça !!
+    header('Location:../modif_article.php?reg_err=error_no_art_id');
+    }
+
+
+
+
+
 // si la session n'est pas vide
 if(!empty($_SESSION['id'])){
    
@@ -54,7 +69,7 @@ if(!empty($_SESSION['id'])){
                         if(count($extens) <= 2 && in_array(strtolower(end($extens)), $authorised_extensions))
                         {
                         
-                            // on compare si l'img est de taille inférieur au max_size déclaré plsu haut, et si elle est en erreur 0 (dans manuel php : téléchargement correct)
+                            // on compare si l'img est de taille inférieur au max_size déclaré plus haut, et si elle est en erreur 0 (dans manuel php : téléchargement correct)
                             if($size_file < $max_size && $err_file == 0)
                             {
 
@@ -68,7 +83,7 @@ if(!empty($_SESSION['id'])){
                                                             SET (title, content, image)
                                                           
 
-                                                          WHERE id = ? 
+                                                          WHERE id = '. $_GET['id'] .'
 
 
 

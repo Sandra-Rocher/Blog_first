@@ -73,7 +73,7 @@ if(!empty($_FILES['avatar'] ['name']))
 
         $extens = explode('.', $name_file);
 
-        $max_size = 100000;
+        $max_size = 300000;
 
 
         if(in_array($type_file, $type))

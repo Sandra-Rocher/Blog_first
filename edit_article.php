@@ -40,8 +40,7 @@ SESSION_start();
                         case 'success':
                         ?>
                             <div class="alert alert-success">
-                                <strong>Succès</strong> Article bien reçu, l'admin vérifiera et s'il n'y à pas d'<a href="crit_valid.php">erreur</a>,  il sera posté!
-                                <p>Pour voir les règles d'un article c'est par <a href="crit_valid.php">Ici</a></p>
+                                <strong>Succès</strong> Article bien reçu, l'admin vérifiera et s'il corresponds aux <a href="crit_valid.php">critères de publication</a>, si c'est le cas il sera posté sur la page Accueil et dans votre page nommé l'User_partage !
                             </div>
                         <?php
                         break;

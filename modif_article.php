@@ -10,10 +10,9 @@ $article = get_full_article();
 
 // Verification que l'id de la personne soit bien connectée et celle qui à éditée l'article
 if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
-
     
         // redirection sur l'article en full qui été sélectionné par l'id
-  header('Location:full_article.php?id='. $article[0] . 'rep_err=wrong_id_us');
+  header('Location:full_article.php?id='. $article[0] . '&rep_err=wrong_id_us');
 }
 
 ?>
@@ -130,8 +129,6 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
 ?>
 
 <?php
-
-// var_dump($article);
    
 
     
@@ -146,20 +143,34 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
                                         <input type="text" class="form-control" name="tit" id="title_art"  placeholder="Titre de votre article..." value="' . $article[1] . '" required="required">
             
                                         <label for="comm_art" class="fs-4 mx-auto">Modifier votre commentaire</label>
-                                        <textarea class="form-control" name="cont" id="comm_art" rows="8" required="required" placeholder="' . $article[2] . '" ></textarea>
+                                        <textarea class="form-control" name="cont" id="comm_art" rows="8" required="required" placeholder="" >' . $article[2] . '</textarea>
             
-                                        <label for="image_art" class="fs-4 mx-auto">Modifier l\'image</label>
-                                        <input type="file" class="form-control" name="image" id="image_art"  placeholder="" value="<?= ' . $article[3] . ' ?>" required="required">
+
+                                       <div class="row mt-3">
+                                            <div class="col-6">
+                                                <img src= stock_avatar/' . $article [3] . ' class="card-img-top w-25" alt=" '. $article [1] . '">
+                                            </div> 
+                                            <div class="col-6 mt-auto mb-auto">
+                                                <label for="image_art" class="fs-4 mx-auto">Modifier l\'image</label>
+                                                <input type="file" class="form-control" name="image" id="image_art"  placeholder="" value="<?= ' . $article[3] . ' ?>" required="required">
+                                            </div> 
+                                        </div>
+                                        
+
+                                        <div class="row">
+                                            <div class="d-flex justify-content-around mx-auto mt-5 mb-4">
+                                                <a href="functions/delete_article.php?id= ' . $_GET['id'] . '"<button class="btn btn-info" type="submit">Supprimer entièrement l\'article</button></a>
+                                                <button class="btn btn-info" type="submit">Envoyer les modifications</button>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="d-grid col-2 gap-2 mx-auto mt-5 mb-4">
-                                        <button class="btn btn-info" type="submit">Envoyer les modifications</button>
-                                    </div>
+
                                     <div class="d-grid gap-2 mx-auto mt-4 mb-5">
                                         <div class="fs-bold"><a href="crit_valid.php">Avant de valider votre article, allez voir les critères de validation de celui-ci</a></div>
                                     </div>
                                 </form>    
-                                    
-                        </div> 
+                                     
                     </div>
                 </div> ';
                   

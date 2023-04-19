@@ -131,7 +131,7 @@ foreach($tables as $table_name => $table){
                                     <div class="modal" id="$comment_<?= $comment->id ?>">
                                          <div class="modal-content">
                                                 <h4> <?= $comment->title ?> </h4>
-                                                <p>Commentaire posté par <strong><?= $comment->name." (".$comment->email.")</strong>" Le ".date("d/m/Y à H:i", strtotime($comment->date)) ?></p>
+                                                <p>Commentaire posté par <strong><?= $comment->name. ". $comment->email ."  ?> </strong>  Le <?php date("d/m/Y à H:i", strtotime($comment->date))  ?> </p>
                                          </div>
                                          <div class="modal-footer">
                                                 <a href="" id="<?= $comment->id ?>" >Ok</a>

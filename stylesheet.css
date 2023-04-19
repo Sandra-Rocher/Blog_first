@@ -1,35 +1,37 @@
-/* .nav-item a.active-default{
-    color:rgb(218, 38, 182);
-} */
-
-/* 1:bleu dev blog
-2:bootstrap info */
-
+/* Color dans navbar */
 .nav-item a{
     color:rgb(17, 203, 240);
 }
 
+/* Color dans navbar en hover */
 .nav-item a:hover{
     color:rgb(19, 129, 144);
 }
 
-/* autre façon de faire la couleur sur les liens navbar actif..  */
+/* Color lorsque lien active */
 .nav-link.active{
     color:white!important;
 }
 
+/* même chose dans le footer:hs */
+.nav-item.active{
+    color:white!important;
+}
+
+/* Color menu burger */
 @media screen and (max-width: 1400px){
     .navbar-toggler{
-        
     color:white!important;
     background-color:white!important;
 }
 }
 
+/* Possibilité de bloquer la height des photos, mais fonctionne uniquement si la photo est en paysage et pas vertical */
 /* .card .card-img-top{
     max-height:350px!important;
 } */
 
+/* Controle la height du commentaire en le passant ensuite a overflow-auto(scroll) */
 .card p{
     max-height:350px!important;
 }

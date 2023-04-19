@@ -1,26 +1,23 @@
 <?php
 
+// démarrage de la session
 session_start();
 
+// on récupère l'id de l'user concerné
 $id = $_SESSION['id'];
 
 // connexion avec la database
 require_once 'database.php';
 
-
-// on supprime
+// on supprime dans la table
 $delete = $pdo->prepare("DELETE FROM users WHERE id = ?");
 $delete->execute([$id]);
 
+// la session est détruite
+session_destroy();
+// on redirige
+header('Location:../index.php?&success=supp_id_user');
+die();
 
-// session_start(); // demarrage de la session
-    session_destroy(); // on détruit la/les session(s), soit si vous utilisez une autre session, utilisez de préférence le unset()
-    header('Location:../index.php?success=suppression du compte réussi'); // On redirige
-    die();
-
-
-
-// // rediriger vers la page principal
-// header("Location: index.php?success=suppression du compte réussi");
-
+?>
 

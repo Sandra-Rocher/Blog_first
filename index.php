@@ -7,6 +7,7 @@ require_once 'functions/get_posts.php';
 
 $articles = get_posts_index();
 
+
 ?>
 
 
@@ -27,6 +28,25 @@ $articles = get_posts_index();
 
              <div class="container mt-5 mb-5">
                 <div class="row">
+
+
+<!-- Lorsqu'un user supprime son compte, il revient ici à l'accueil -->
+<?php 
+if(isset($_GET['success']))
+{
+    $success = htmlspecialchars($_GET['success']);
+
+    if($success === 'supp_id_user')
+    {
+        ?>
+            <div class="alert alert-danger">
+                <strong>Succès</strong> Votre compte à bien été supprimé.
+            </div>
+        <?php
+    }
+}
+?>
+
 
 <?php
     foreach($articles as $article){

@@ -20,11 +20,11 @@
   <div class="container p-4 pb-0">
     <section>
         <ul class="nav justify-content-center border-bottom mb-3">
-            <li class="nav-item"><a href="https://www.linkedin.com/in/sandra-rocher-376311264/" class="nav-link px-2 text-muted-white">Linkedin</a></li>
-            <li class="nav-item"><a href="https://github.com/Sandra-Rocher?tab=repositories" class="nav-link px-2 text-muted-white">Github</a></li>
-            <li class="nav-item"><a href="https://sandra-rocher.github.io/Portfolio-perso/" class="nav-link px-2 text-muted-white">Portfolio</a></li>
-            <li class="nav-item"><a href="https://cvdesignr.com/p/6405d12b8a89d" class="nav-link px-2 text-muted-white">CV</a></li>
-            <li class="nav-item"><a href="informations.php" class="nav-link px-5 text-muted-white">Vous êtes recruteur ?</a></li>
+            <li class="nav-item"><a href="https://www.linkedin.com/in/sandra-rocher-376311264/" target="_blank" class="nav-link px-2">Linkedin</a></li>
+            <li class="nav-item"><a href="https://github.com/Sandra-Rocher?tab=repositories" target="_blank" class="nav-link px-2">Github</a></li>
+            <li class="nav-item"><a href="https://sandra-rocher.github.io/Portfolio-perso/" target="_blank" class="nav-link px-2">Portfolio</a></li>
+            <li class="nav-item"><a href="https://cvdesignr.com/p/6405d12b8a89d" target="_blank" class="nav-link px-2">CV</a></li>
+            <li class="nav-item <?php if ($_SERVER['SCRIPT_NAME'] === '/Blog_first/informations.php'): ?> active aria-current='page' <?php endif; ?>"><a href="informations.php" class="nav-link px-5">Vous êtes recruteur ?</a></li>
         </ul>
     </section>
   </div>

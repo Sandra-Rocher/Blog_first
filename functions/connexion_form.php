@@ -39,7 +39,6 @@ if(isset($_POST['email']) && isset($_POST['password']))
 
                         } else { header('Location: ../connexion.php?login_err=fatalError'); die(); }
                         
-
                 }else{ header('Location:../connexion.php?login_err=wrong_password'); die(); }
 
             }  else{ header('Location:../connexion.php?login_err=wrong_email'); die(); }

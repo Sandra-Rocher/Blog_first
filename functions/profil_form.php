@@ -12,7 +12,6 @@ require_once 'database.php';
         $id = htmlspecialchars($_GET["id"]);
         $GETuser_name = htmlspecialchars($_GET["user_name"]);
     }
-    
 
     // si un user_name à été posté et existe
     if(isset($_POST["user_name"])){
@@ -28,7 +27,7 @@ require_once 'database.php';
             $edit->execute([$user_name, $id]);
 
             // en réussite :
-            header("Location: ../profil.php?success=modification réussi !");
+            header("Location: ../profil.php?&success=user_name_upd");
 
         }
         else{
@@ -61,7 +60,7 @@ require_once 'database.php';
             $edit->execute([$email, $id]);
 
             // si réussite :
-            header("Location: ../profil.php?success=modification réussi !");
+            header("Location: ../profil.php?&success=user_email_upd");
 
         }
         else{
@@ -98,7 +97,7 @@ require_once 'database.php';
             $edit->execute([$password, $id]);
 
             // si réussite :
-            header("Location: ../profil.php?success=modification réussi !");
+            header("Location: ../profil.php?&success=pass_user_upd");
 
         }
         else{
@@ -108,7 +107,11 @@ require_once 'database.php';
     }
 
 
+    // update de l'avatar :
 
+
+
+    
 ?>
 
 
@@ -130,12 +133,11 @@ require_once 'database.php';
             if(isset($_GET["user_name"])){
                 echo htmlspecialchars($_GET["user_name"]);
             }
-        
-        
+
         ?></p>
     </div>
 
-    <form action="" method="POST">
+    <form action="functions/profil_form.php" method="POST">
         <input type="text" placeholder="Entrez le nouveau login" name="user_name" value="<?php
             if(isset($_GET["user_name"])){
                 echo htmlspecialchars($_GET["user_name"]);
@@ -154,11 +156,10 @@ require_once 'database.php';
                 echo htmlspecialchars($_GET["email"]);
             }
         
-        
         ?></p>
     </div>
 
-    <form action="" method="POST">
+    <form action="functions/profil_form.php" method="POST">
         <input type="text" placeholder="Entrez le nouvel email" name="email" value="<?php
             if(isset($_GET["email"])){
                 echo htmlspecialchars($_GET["email"]);
@@ -169,19 +170,12 @@ require_once 'database.php';
     </form>
 
 
-<!-- modification du password -->
+    <!-- modification du password -->
     <div class='data'>
-        <p>Password actuel : <?php
-
-            if(isset($_GET["password"])){
-                echo htmlspecialchars($_GET["password"]);
-            }
-        
-        
-        ?></p>
+        <p>Password actuel : Non révélé</p>
     </div>
 
-    <form action="" method="POST">
+    <form action="functions/profil_form.php" method="POST">
         <input type="text" placeholder="Entrez le nouveau password" name="password" value="<?php
             if(isset($_GET["password"])){
                 echo htmlspecialchars($_GET["password"]);
@@ -191,7 +185,32 @@ require_once 'database.php';
         <input type="submit" value="Modifier">
     </form>
 
+
+    <!-- modification de l'avatar -->    
+    <div class='data'>
+        <p>Avatar actuel : <?php
+
+            if(isset($_GET["avatar"])){
+                echo htmlspecialchars($_GET["avatar"]);
+            }
+        
+        ?></p>
+    </div>
+
     
+    <form action="functions/profil_form.php" method="POST" enctype="multipart/form-data">
+        <input type="file" placeholder="Entrez le nouvel avatar" name="avatar" value="<?php
+            if(isset($_GET["avatar"])){
+                echo htmlspecialchars($_GET["avatar"]);
+            }
+
+        ?>">
+        <input type="submit" value="Modifier">
+    </form>
     
 </body>
 </html> 
+
+
+
+                     

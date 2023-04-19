@@ -1,19 +1,19 @@
 
 <?php
 
+// On ouvre la session
 session_start();
 
+// On récupère l'id de la session sinon on redirige
 if(!isset($_SESSION["id"])){
-    
     
     header("Location: connexion.php");
 }
 
-
+// On va chercher la fonction, et on la déclenche en dessous pour avoir les infos dans $data
 require_once 'functions/get_posts.php';
 
 $data = get_data_profil();
-
 
 ?>
 
@@ -34,27 +34,72 @@ $data = get_data_profil();
     <h2>Bienvenue sur votre profil <?= $_SESSION["user_name"] ?> ! </h2>
 </div> 
 
+                    <div class="container mt-5 mb-5">
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <div class="col-sm-12 col-md-8 col-lg-4 mx-auto">
+
+
+<!-- Retour des success ci dessous  -->
+<?php 
+        if(isset($_GET['success']))
+        {
+                    $success = htmlspecialchars($_GET['success']);
+
+                    switch($success)
+                    {
+
+                        case 'user_name_upd':
+                        ?>
+                            <div class="alert alert-success">
+                                <strong>Succès</strong> Modification de votre login réussi !
+                            </div>
+                        <?php
+                        break;
+
+                        case 'user_email_upd':
+                        ?>
+                            <div class="alert alert-success">
+                                <strong>Succès</strong>  Modification de votre email réussi !
+                            </div>
+                        <?php
+                        break;
+
+                        case 'pass_user_upd':
+                        ?>
+                            <div class="alert alert-success">
+                                <strong>Succès</strong>  Modification de votre password réussi !
+                            </div>
+                        <?php
+                        break;
+
+                        case 'avat_user_upd':
+                            ?>
+                                <div class="alert alert-success">
+                                    <strong>Succès</strong>  Modification de votre avatar réussi !
+                                </div>
+                            <?php
+                        break;
+                    }
+}
+?>
 
 
 <?php
 
 
-
-    echo     '       <div class="container mt-5 mb-5">
-                        <div class="row d-flex justify-content-center align-items-center">
-                            <div class="col-sm-12 col-md-8 col-lg-4 mx-auto">
+    echo     '       
     
                                 <div class="card border border-info shadow-lg bg-info-rounded" style="border-radius: 15px;">
                                     <div class="card-body text-center">
     
-                                         <div class="mx-auto mt-4 mb-4">
-                                            <img src= stock_avatar/' . $data ["avatar"] . ' class="rounded-circle">
+                                         <div class="mx-auto mt-4 mb-4 ">
+                                            <img src= stock_avatar/' . $data ["avatar"] . ' class="rounded-circle w-100">
                                         </div>
     
                                         <h4 class="mb-2"> '. $data ["user_name"] . ' </h4>
                                         <p class="text-muted mb-4"> '. $data ["email"] . ' </p>
                                 
-                                        <button type="button" class="btn btn-info btn-rounded btn-lg"> Modifier </button>
+                                        <a href="modif_profil.php?id= '. $data ["id"] .'&user_name='. $data ["user_name"] .'&email='. $data ["email"] .'&avatar=' . $data["avatar"] . '"> <button type="button" class="btn btn-info btn-rounded btn-lg"> Modifier </button></a>
                             
                                     </div>
                                 </div>
@@ -62,20 +107,8 @@ $data = get_data_profil();
                             </div>
                         </div>
                      </div> ';
- 
    
  ?>
-
-        <div class="text-center">
-              <h4 class="fs-5 mt-5">Voulez-vous supprimer votre compte <?php echo $_SESSION['user_name']; ?> ?</h4>
-              <!-- ou echo $data['user_name']; -->
-                 <br />
-             <a href="functions/delete.php" class="btn btn-danger btn-md mb-5">Oui, supprimer mon compte</a>
-            
-
-       </div>
-
-
 
 <?php require_once 'footer.php' ?>
 

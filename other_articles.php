@@ -29,8 +29,8 @@ $other_articles = get_posts_other();
 ?>
 
 
-<div class="fs-3 fw-bold text-center mt-5 mb-5">Ici, vous retrouverez tous vos articles personnellement publiés.</div>
-<div class="fs-4 fw-bold text-center mt-5 mb-5">Après validation de l'admin, ils seront ensuite publiés dans la page accueil.</div>
+<div class="fs-3 fw-bold text-center mt-5 mb-3">Ici, vous retrouverez tous vos articles personnellement publiés.</div>
+<div class="fs-5 fw-bold text-center mb-5">Après validation de l'admin, ils seront ensuite publiés dans la page accueil.</div>
 
         
             <div class="container mt-5">
@@ -46,9 +46,9 @@ $other_articles = get_posts_other();
                         <div class="card border border-info shadow-lg">
                             <p class="card-text mx-auto mt-3"><small class="text-info">Publié le ' . date("d/m/Y à H:i", strtotime($other_article["date_articles"])) . ' par <span class="fw-bold"> '. $other_article["user_name"] . ' </span></small></p>
                             <h5 class="card-title text-center"> ' . $other_article["title"] . ' </h5>
-                            <img src= stock_avatar/' . $other_article["image"] . ' class="card-img-top" alt=" '. $other_article["title"] . '">
+                            <a href="full_article.php?id='. $other_article[0] . '"> <img src= stock_avatar/' . $other_article["image"] . ' class="card-img-top" alt=" '. $other_article["title"] . '"></a>
                             <div class="card-body mx-auto">
-                               <p class="card-text"> ' . substr(nl2br($other_article["content"]),0,1000) . ' ... </p>
+                               <p class="card-text overflow-auto"> ' . substr(nl2br($other_article["content"]),0,1000) . ' ... </p>
                                 <a href="full_article.php?id='. $other_article[0] . '" class="btn btn-info d-flex justify-content-center" >Voir l\'article complet</a>
                             </div>
                         </div>
