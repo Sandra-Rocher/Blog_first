@@ -41,11 +41,11 @@ $data = get_data_profil();
 
 <!-- Retour des success ci dessous  -->
 <?php 
-        if(isset($_GET['success']))
+        if(isset($_GET['req']))
         {
-                    $success = htmlspecialchars($_GET['success']);
+                    $succOrErr = htmlspecialchars($_GET['req']);
 
-                    switch($success)
+                    switch($succOrErr)
                     {
 
                         case 'user_name_upd':
@@ -72,6 +72,14 @@ $data = get_data_profil();
                         <?php
                         break;
 
+                        case 'pass_user_error':
+                            ?>
+                                <div class="alert alert-danger">
+                                    <strong>Succès</strong>  Error password non modifié !
+                                </div>
+                            <?php
+                        break;
+
                         case 'avat_user_upd':
                             ?>
                                 <div class="alert alert-success">
@@ -79,6 +87,7 @@ $data = get_data_profil();
                                 </div>
                             <?php
                         break;
+
                     }
 }
 ?>
@@ -99,7 +108,7 @@ $data = get_data_profil();
                                         <h4 class="mb-2"> '. $data ["user_name"] . ' </h4>
                                         <p class="text-muted mb-4"> '. $data ["email"] . ' </p>
                                 
-                                        <a href="modif_profil.php?id= '. $data ["id"] .'&user_name='. $data ["user_name"] .'&email='. $data ["email"] .'&avatar=' . $data["avatar"] . '"> <button type="button" class="btn btn-info btn-rounded btn-lg"> Modifier </button></a>
+                                        <a href="modif_profil.php?id='. $data ["id"] .'&user_name='. $data ["user_name"] .'&email='. $data ["email"] .'&avatar=' . $data["avatar"] . '"> <button type="button" class="btn btn-info btn-rounded btn-lg"> Modifier </button></a>
                             
                                     </div>
                                 </div>

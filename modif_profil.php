@@ -40,8 +40,8 @@ $data = get_data_profil();
                         <div class="card border border-info shadow-lg bg-info-rounded" style="border-radius: 15px;">
                             <div class="card-body text-center mb-4">
     
-                                <div class="mx-auto mt-4 mb-4 ">
-                                     <img src= stock_avatar/ <?php $data["avatar"] ?> class="rounded-circle w-100">
+                                <div class="mx-auto mt-4 mb-4 "><?php
+                                    echo' <img src=stock_avatar/' . $data["avatar"] . ' class="rounded-circle w-50">'?>
                                 </div>
     
                                     
@@ -49,7 +49,7 @@ $data = get_data_profil();
                                                                 echo htmlspecialchars($_GET["user_name"]);
                                                                  } ?></h5>
 
-                                    <form action="functions/profil_form.php?id= <?php echo $data ["id"] ?>&user_name=<?php echo $data ["user_name"] ?>" method="POST">
+                                    <form action="functions/profil_form.php?id=<?php echo $data ["id"] ?>&user_name=<?php echo $data ["user_name"]?>" method="POST">
                                         <input type="text" placeholder="Entrez le nouveau login" name="user_name" value="<?php
                                                                 if(isset($_GET["user_name"])){
                                                                     echo htmlspecialchars($_GET["user_name"]);
@@ -80,7 +80,7 @@ $data = get_data_profil();
                                         <h5>Password actuel : Non révélé</h5>
                                      </div>
 
-                                     <form action="functions/profil_form.php?id=<?php echo $data['id'] ?>" method="POST">
+                                     <form action="functions/profil_form.php?id=<?php echo $data["id"] ?>" method="POST">
                                             <input type="text" placeholder="Entrez le nouveau password" name="password" value="<?php
                                                             if(isset($_GET["password"])){
                                                                  echo htmlspecialchars($_GET["password"]);
@@ -91,9 +91,7 @@ $data = get_data_profil();
 
                                     
                                      <div class="mt-4">
-                                        <h5>Avatar actuel : <?php if(isset($_GET["avatar"])){
-                                                                     echo htmlspecialchars($_GET["avatar"]);
-                                                                      } ?></h5>
+                                        <h5>Modifier votre avatar</h5>
                                     </div>
 
     
@@ -118,7 +116,7 @@ $data = get_data_profil();
 
              <div class="text-center">
                     <h4 class="fs-5 mt-5">Voulez-vous supprimer votre compte <?php echo $_SESSION['user_name']; ?> ?</h4>
-                    <!-- ou echo $data['user_name']; -->
+                                                                                <!-- ou echo $data['user_name']; -->
                     <br />
                     <a href="functions/delete.php" class="btn btn-danger btn-md mb-5">Oui, supprimer mon compte</a>
             </div>

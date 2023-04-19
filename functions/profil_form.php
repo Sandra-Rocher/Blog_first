@@ -27,7 +27,7 @@ require_once 'database.php';
             $edit->execute([$user_name, $id]);
 
             // en réussite :
-            header("Location: ../profil.php?&success=user_name_upd");
+            header("Location: ../profil.php?&req=user_name_upd");
 
         }
         else{
@@ -60,7 +60,7 @@ require_once 'database.php';
             $edit->execute([$email, $id]);
 
             // si réussite :
-            header("Location: ../profil.php?&success=user_email_upd");
+            header("Location: ../profil.php?&req=user_email_upd");
 
         }
         else{
@@ -72,11 +72,11 @@ require_once 'database.php';
 
     
 // update du password
-    if(isset($_GET["password"]) && isset($_GET["id"])){
+    if(isset($_POST["password"]) && isset($_GET["id"])){
 
         // on les passe en htmlspecialchars pour empecher les failles xss et on les place dans des variables qu'on à nommées
         $id = htmlspecialchars($_GET["id"]);
-        $GETpassword = htmlspecialchars($_GET["password"]);
+        $password = htmlspecialchars($_GET["password"]);
     }
     
 
@@ -93,11 +93,13 @@ require_once 'database.php';
         if($password !== ''){
 
             // on prepare et execute dans la table users le nouveau password choisis et post
-            $edit = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
-            $edit->execute([$password, $id]);
-
-            // si réussite :
-            header("Location: ../profil.php?&success=pass_user_upd");
+            $edit = $pdo->prepare("UPDATE users SET users.password = ? WHERE id = ?");
+            if($edit->execute([$password,$id]))
+                 {// si réussite :
+                header("Location: ../profil.php?&req=pass_user_upd");
+                // si échec :
+            }else{header("Location: ../profil.php?&req=pass_user_error");}
+            
 
         }
         else{
