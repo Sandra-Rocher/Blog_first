@@ -1,26 +1,41 @@
 <?php
-var_dump($_GET);
 
-if(isset($_GET['id']) AND !empty($_GET['id'])) {
-    $delete_id = htmlspecialchars($_GET['id']);
+require_once 'database.php';
 
-    $delete_id = $pdo->prepare('DELETE FROM articles
-                                WHERE id = ?');
-                    
-    $delete_id->execute(array($delete_id));
-    
-    header('Location:../other_articles.php?&success=del_art');
-}
 
+// Verification que l'id user soit connecté OU admin
+if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["id.users"] == $_SESSION["id_users"] || $_SESSION["id_role"] = '1') {
+                                                                       
+
+        if(isset($_GET['id']) AND !empty($_GET['id'])) {
+            $deleteId = htmlspecialchars($_GET['id']);
+
+            $delete_id = $pdo->prepare('DELETE FROM articles
+                                        WHERE id = ?');
+            
+
+                // si c'est un admin qui delete
+                if($_SESSION["id_role"] = '1'){
+
+                    if($delete_id->execute([$deleteId])){
+                    header("Location:../admin.php?&success=del_art");
+                    }
+                    else{header('Location:../admin.php?&success=dont_del_art');
+                    }
+                }
+
+                    // Si c'est l'éditeur de l'article qui delete
+                    elseif($_SESSION["id_role"] = '2'){
+
+                        if($delete_id->execute([$deleteId])){
+                        header('Location:../other_articles.php?&success=del_art');
+
+                        }else{header('Location:../other_articles.php?&success=dont_del_art');
+
+                        }    
+                    }
+        }
+ }
 ?>
 
-<!-- Mettre dans la page modif_articles :
-    <a href="functions/delete_article.php?id=<?=$_GET['id']?>"> Supprimer l'article </a>
-
-
-    exemple dans page full pr trouver l'article
-    <a href="modif_article.php?id='. $other_article['0'] . '" class="btn btn-info d-flex justify-content-center mb-3" >Modifier l\'article</a>
-
-
     
-    puis déplacer la fonction en la creant dans functions/get_posts.phppp -->

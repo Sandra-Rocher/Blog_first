@@ -87,7 +87,7 @@ $data = get_data_profil();
                                         <h5>Modifier votre avatar</h5>
                                     </div>
 
-                                    <form action="functions/profil_form.php" method="POST" enctype="multipart/form-data">
+                                    <form action="functions/profil_form.php?id=<?php echo $data["id"] ?>" method="POST" enctype="multipart/form-data">
                                         <div class="input-group">
                                             <input type="file" class="form-control" name="avatar" id="avatar" aria-describedby="avatar" aria-label="Upload">
                                             <button class="bg-info btn btn-outline-black" type="submit" id="avatar">Modifier</button>
@@ -111,7 +111,7 @@ $data = get_data_profil();
                     <h4 class="fs-5 mt-5">Voulez-vous supprimer votre compte <?php echo $_SESSION['user_name']; ?> ?</h4>
                                                                             
                     <br />
-                    <a href="functions/delete.php" class="btn btn-danger btn-md mb-5">Oui, supprimer mon compte</a>
+                    <a href="functions/delete_user.php" class="btn btn-danger btn-md mb-5">Oui, supprimer mon compte</a>
             </div>
           
                      

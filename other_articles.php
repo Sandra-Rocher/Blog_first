@@ -23,11 +23,32 @@ $other_articles = get_posts_other();
     
 <?php require_once 'header.php' ?>
 
-
 <?php
     if(!empty($_SESSION['id'])){
 ?>
 
+<?php 
+if(isset($_GET['success']))
+{
+    $success = htmlspecialchars($_GET['success']);
+
+    if($success === 'del_art')
+    {
+        ?>
+            <div class="alert alert-success">
+                <strong>Succès</strong> Vous avez supprimé l'article.
+            </div>
+        <?php
+    }else{($success === 'dont_del_art')
+        ?>
+            <div class="alert alert-danger">
+                <strong>Erreur</strong> Vous n'avez pas supprimé l'article.
+            </div>
+
+        <?php
+    }
+}
+?>
 
 <div class="fs-3 fw-bold text-center mt-5 mb-3">Ici, vous retrouverez tous vos articles personnellement publiés.</div>
 <div class="fs-5 fw-bold text-center mb-5">Après validation de l'admin, ils seront ensuite publiés dans la page accueil.</div>

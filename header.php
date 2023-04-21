@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-expand-xxl bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand ms-5 text-white" href="index.php"><span class="text-info fs-3 fw-bold">BLOG</span> "En voyage avec... <span class="text-info fs-3 fw-bold"><?php if(!empty($_SESSION['user_name'])){ echo $_SESSION['user_name']; }else{ }?></span>"</a>
+        <a class="navbar-brand ms-5 text-white" href="index.php"><span class="text-info fs-2 fw-bold">BLOG</span> En voyage avec... <span class="text-info fs-3 fw-bold"><?php if(!empty($_SESSION['user_name'])){ echo $_SESSION['user_name']; }else{ }?></span> </a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

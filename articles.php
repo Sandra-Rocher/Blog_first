@@ -4,7 +4,7 @@ SESSION_start();
 
 require_once 'functions/get_posts.php';
 
-$articles = get_posts_voyage();
+$articles = get_posts_index();
 
 ?>
 

@@ -136,7 +136,7 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
                     <div class="row text-center border border-info shadow-lg bg-info-rounded">
                         <h1 class="mt-5">Modifier un article</h1>
 
-                                <form class="form-group mt-3" method="POST" action="functions/modif_article_form.php" enctype="multipart/form-data">
+                                <form class="form-group mt-3" method="POST" action="functions/modif_article_form.php?id= ' . $_GET['id'] . '" enctype="multipart/form-data">
                                     <div class="d-grid gap-2 col-sm-12 col-md-8 col-lg-10 mx-auto mt-3">
 
                                         <label for="title_art" class="fs-4 mx-auto">Modifier votre titre</label>
@@ -152,7 +152,7 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
                                             </div> 
                                             <div class="col-6 mt-auto mb-auto">
                                                 <label for="image_art" class="fs-4 mx-auto">Modifier l\'image</label>
-                                                <input type="file" class="form-control" name="image" id="image_art"  placeholder="" value="<?= ' . $article[3] . ' ?>" required="required">
+                                                <input type="file" class="form-control" name="image" id="image_art"  placeholder="" value="<?= ' . $article[3] . ' ?>" ">
                                             </div> 
                                         </div>
                                         

@@ -1,10 +1,4 @@
-<!-- 
-Il faudra rajouté WHERE articles posted (is valid ?) ='1' aux requetes, c est a dire qu'elles ont été vérifié par l'admin.
-Je vais créer les functions qui appel le pdo pour que l admin face ça justement -->
-
 <?php
-
-
 
 // on récupère le pdo
 require_once 'database.php';
@@ -16,13 +10,47 @@ function get_data_profil(){
     global $pdo;
 
     $select = $pdo->prepare("SELECT id, user_name, email, avatar 
-                        FROM users 
-                        WHERE id=? 
-                        LIMIT 1"); 
+                             FROM users 
+                            WHERE id=? 
+                            LIMIT 1"); 
     $select->execute(array($_SESSION['id']));
     $data = $select->fetch();
 
     return $data;
+}
+
+
+// fetch de tous les articles pour la page admin-dashboard
+function get_all_posts(){
+
+    global $pdo;
+
+$sql = $pdo->prepare("SELECT * FROM articles
+                        JOIN users 
+                        ON articles.id_users=users.id
+                        WHERE is_valid = '0'
+                        ORDER BY date_articles ASC"); 
+$sql->execute();
+$articles = $sql->fetchAll();
+
+return $articles;
+}
+
+
+// fetch de tous les articles pour la page index/accueil
+function get_posts_index(){
+
+    global $pdo;
+
+$sql = $pdo->prepare("SELECT * FROM articles
+                        JOIN users 
+                        ON articles.id_users=users.id
+                        WHERE is_valid = '1'
+                        ORDER BY date_articles DESC"); 
+$sql->execute();
+$articles = $sql->fetchAll();
+
+return $articles;
 }
 
 
@@ -60,23 +88,6 @@ function get_posts_bonus(){
 }
 
 
-// fetch de tous les articles pour la page index
-function get_posts_index(){
-
-    global $pdo;
-
-
-$sql = $pdo->prepare("SELECT * FROM articles
-                        JOIN users 
-                        ON articles.id_users=users.id
-                        ORDER BY date_articles DESC"); 
-$sql->execute();
-$articles = $sql->fetchAll();
-
-return $articles;
-
-}
-
 
 // fetch de tous les articles pour la page other_article/articles perso des users
 function get_posts_other(){
@@ -87,12 +98,12 @@ function get_posts_other(){
                             JOIN users 
                             ON articles.id_users=users.id
                             WHERE id_users=? 
+                            AND is_valid ='1'
                             ORDER BY date_articles DESC"); 
     $select->execute(array($_SESSION['id']));
     $other_articles = $select->fetchAll();
 
     return $other_articles;
-
 }
 
 
@@ -107,11 +118,11 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
     $get_id = htmlspecialchars($_GET['id']);
 
     $articles = $pdo->prepare('SELECT * FROM articles 
-                            JOIN users
-                            ON articles.id_users=users.id
-                            WHERE articles.id = ?');
+                                JOIN users
+                                 ON articles.id_users=users.id
+                                WHERE articles.id = ?
+                                AND is_valid ="1"');
     $articles->execute(array($get_id));
-   
 
     if($articles->rowCount() == 1) {
         $other_article = $articles->fetch();

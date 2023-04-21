@@ -59,7 +59,7 @@ $data = get_data_profil();
                         case 'user_name_error':
                         ?>
                                 <div class="alert alert-danger">
-                                    <strong>Succès</strong> Error login non modifié !
+                                    <strong>Erreur</strong> login non modifié !
                                 </div>
                         <?php
                         break;
@@ -75,7 +75,7 @@ $data = get_data_profil();
                         case 'email_user_error':
                          ?>
                                 <div class="alert alert-danger">
-                                    <strong>Succès</strong>  Error email non modifié !
+                                    <strong>Erreur</strong> email non modifié !
                                 </div>
                         <?php
                         break;
@@ -83,7 +83,7 @@ $data = get_data_profil();
                         case 'pass_user_upd':
                         ?>
                             <div class="alert alert-success">
-                                <strong>Succès</strong>  Modification de votre password réussi !
+                                <strong>Succès</strong> Modification de votre password réussi !
                             </div>
                         <?php
                         break;
@@ -91,7 +91,7 @@ $data = get_data_profil();
                         case 'pass_user_error':
                         ?>
                                 <div class="alert alert-danger">
-                                    <strong>Succès</strong>  Error password non modifié !
+                                    <strong>Erreur</strong> password non modifié !
                                 </div>
                         <?php
                         break;
@@ -107,7 +107,7 @@ $data = get_data_profil();
                         case 'avat_user_err':
                         ?>
                                    <div class="alert alert-danger">
-                                       <strong>Succès</strong>  Error avatar non modifié !
+                                       <strong>Erreur</strong> avatar non modifié !
                                    </div>
                         <?php
                         break;

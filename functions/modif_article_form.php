@@ -34,7 +34,7 @@ if(!empty($_SESSION['id'])){
         // on passe le title en htmlspecialchars
         $tit = htmlspecialchars($_POST['tit']);
     
-    // si le content n'est pas vide
+        // si le content n'est pas vide
         if(!empty($_POST['cont']))
         {
              // on passe le content en htmlspecialchars
@@ -80,14 +80,9 @@ if(!empty($_SESSION['id'])){
 
                                     // on prepare et execute la requete, dans la table articles, on rentre le titre, le content, et l'image de l'article crée
                                     $insert = $pdo->prepare('UPDATE articles 
-                                                            SET (title, content, image)
-                                                          
+                                                            SET (title ="$tit", content = "$cont", image = "$image", is_valid ="0")
+                                                            WHERE id = '. $_GET['id'] .' ');
 
-                                                          WHERE id = '. $_GET['id'] .'
-
-
-
-                                                            VALUES (:toto, :cont, :img) ');
                                     $insert->execute(array(
                                     'toto'=> $tit,
                                      'cont'=> $cont,

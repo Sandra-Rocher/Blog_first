@@ -17,7 +17,7 @@
 
 
 <footer class="bg-dark text-center text-white">
-  <div class="container p-4 pb-0">
+  <div class="container p-3 pb-0">
     <section>
         <ul class="nav justify-content-center border-bottom mb-3">
             <li class="nav-item"><a href="https://www.linkedin.com/in/sandra-rocher-376311264/" target="_blank" class="nav-link px-2">Linkedin</a></li>
@@ -28,7 +28,7 @@
         </ul>
     </section>
   </div>
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">© 2023 Copyright Rocher Sandra</div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">© 2023 Copyright Rocher Sandra</div>
 </footer>
 
 <!-- lien bootstrap-->
