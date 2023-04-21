@@ -30,7 +30,7 @@ $data = get_data_profil();
 <?php require_once 'header.php' ?>
 
 <div class="text-center mt-5">
-    <h2>Modifier votre profil <?= $_SESSION["user_name"] ?> ! </h2>
+    <h2>Modifiez votre profil <?= $_SESSION["user_name"] ?> ! </h2>
 </div> 
 
      <!-- Formulaire dans profil : peut etre repartir du même -->
@@ -45,33 +45,27 @@ $data = get_data_profil();
                                 </div>
     
                                     
-                                    <h5 class="mt-4">Login actuel : <?php if(isset($_GET["user_name"])){
-                                                                echo htmlspecialchars($_GET["user_name"]);
-                                                                 } ?></h5>
+                                    <h5 class="mt-4">Login actuel : <?php if(isset($_GET["user_name"])){ echo htmlspecialchars($_GET["user_name"]); } ?></h5>
 
-                                    <form action="functions/profil_form.php?id=<?php echo $data ["id"] ?>&user_name=<?php echo $data ["user_name"]?>" method="POST">
-                                        <input type="text" placeholder="Entrez le nouveau login" name="user_name" value="<?php
-                                                                if(isset($_GET["user_name"])){
-                                                                    echo htmlspecialchars($_GET["user_name"]);
-                                                                    } ?>">
-                                       
-                                        <input class="btn btn-info btn-rounded btn-md" type="submit" value="Modifier">
+                                    <form action="functions/profil_form.php?id=<?php echo $data["id"] ?>&user_name=<?php echo $data["user_name"] ?>" method="POST">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="user_name" id="user_name"
+                                            value="<?php if(isset($_GET["user_name"])){ echo htmlspecialchars($_GET["user_name"]); } ?>">
+                                                                
+                                            <button class="bg-info btn btn-outline-black" type="submit" id="user_name">Modifier</button>
+                                        </div>
                                     </form>
 
 
-                                    <h5 class="mt-4">Email actuel : <?php if(isset($_GET["email"])){
-                                                                 echo htmlspecialchars($_GET["email"]);
-                                                                } ?></h5>
-
+                                    <h5 class="mt-4">Email actuel : <?php if(isset($_GET["email"])){ echo htmlspecialchars($_GET["email"]); } ?></h5>
 
                                     <form action="functions/profil_form.php?id=<?php echo $data["id"] ?>&email=<?php echo $data["email"] ?>" method="POST">
-                                        <input type="text" placeholder="Entrez le nouvel email" name="email" value="<?php
-                                                             if(isset($_GET["email"])){
-                                                                 echo htmlspecialchars($_GET["email"]);
-                                                                } ?>">
-
-        
-                                        <input class="btn btn-info btn-rounded btn-md" type="submit" value="Modifier">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="email" id="email"
+                                            value="<?php if(isset($_GET["email"])){ echo htmlspecialchars($_GET["email"]); } ?>">
+                                                                
+                                            <button class="bg-info btn btn-outline-black" type="submit" id="email">Modifier</button>
+                                        </div>
                                     </form>
 
                                     
@@ -81,33 +75,32 @@ $data = get_data_profil();
                                      </div>
 
                                      <form action="functions/profil_form.php?id=<?php echo $data["id"] ?>" method="POST">
-                                            <input type="text" placeholder="Entrez le nouveau password" name="password" value="<?php
-                                                            if(isset($_GET["password"])){
-                                                                 echo htmlspecialchars($_GET["password"]);
-                                                                } ?>">
-       
-                                            <input class="btn btn-info btn-rounded btn-md" type="submit" value="Modifier">
-                                     </form>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Entrez le nouveau password" name="password" id="password"
+                                            value="<?php if(isset($_GET["password"])){ echo htmlspecialchars($_GET["password"]); } ?>">
+                                                                
+                                            <button class="bg-info btn btn-outline-black" type="submit" id="password">Modifier</button>
+                                        </div>
+                                    </form>
 
-                                    
                                      <div class="mt-4">
                                         <h5>Modifier votre avatar</h5>
                                     </div>
 
+                                    <form action="functions/profil_form.php" method="POST" enctype="multipart/form-data">
+                                        <div class="input-group">
+                                            <input type="file" class="form-control" name="avatar" id="avatar" aria-describedby="avatar" aria-label="Upload">
+                                            <button class="bg-info btn btn-outline-black" type="submit" id="avatar">Modifier</button>
+                                        </div>
+                                    </form>
+                                     
     
                                      <form action="functions/profil_form.php" method="POST" enctype="multipart/form-data">
-                                         <input type="file" placeholder="Entrez le nouvel avatar" name="avatar" value="<?php
-                                                             if(isset($_GET["avatar"])){
-                                                                 echo htmlspecialchars($_GET["avatar"]);
-                                                                } ?>">
-
+                                         <input type="file" placeholder="" name="avatar" value="">
        
                                         <input class="btn btn-info btn-rounded btn-md" type="submit" value="Modifier">
                                      </form>
 
-
-                                    <!-- <a href="functions/profil_form.php"> <button type="button" class="btn btn-info btn-rounded btn-lg"> Modifier </button></a>
-                             -->
                             </div>
                         </div>
                     </div>
@@ -116,7 +109,7 @@ $data = get_data_profil();
 
              <div class="text-center">
                     <h4 class="fs-5 mt-5">Voulez-vous supprimer votre compte <?php echo $_SESSION['user_name']; ?> ?</h4>
-                                                                                <!-- ou echo $data['user_name']; -->
+                                                                            
                     <br />
                     <a href="functions/delete.php" class="btn btn-danger btn-md mb-5">Oui, supprimer mon compte</a>
             </div>

@@ -97,7 +97,7 @@ function get_posts_other(){
 
 
 
-// affiche l'article sélectionné par l'url get en entier dans full_article.php
+// affiche l'article sélectionné par l'url get en entier dans full_article.php et modif_article.php
 function get_full_article(){
 
     global $pdo;

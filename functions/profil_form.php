@@ -24,10 +24,13 @@ require_once 'database.php';
 
             // on prepare et execute dans la table users le nouveau user_name choisis et post
             $edit = $pdo->prepare("UPDATE users SET user_name = ? WHERE id = ?");
-            $edit->execute([$user_name, $id]);
-
+            if($edit->execute([$user_name, $id]))
+            {
             // en réussite :
             header("Location: ../profil.php?&req=user_name_upd");
+            // si échec :
+            }else{header("Location: ../profil.php?&req=user_name_error");
+            }
 
         }
         else{
@@ -57,13 +60,16 @@ require_once 'database.php';
 
             // on prepare et execute dans la table users le nouvel email choisis et post
             $edit = $pdo->prepare("UPDATE users SET email = ? WHERE id = ?");
-            $edit->execute([$email, $id]);
-
+            if($edit->execute([$email, $id]))
+            {
             // si réussite :
             header("Location: ../profil.php?&req=user_email_upd");
-
-        }
-        else{
+            // si échec :
+            }else{header("Location: ../profil.php?&req=email_user_error");
+            }
+           
+            
+        }else{
             // si erreur :
             $error = "veuillez remplir les champs";
         }
