@@ -10,7 +10,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["id.use
         if(isset($_GET['id']) AND !empty($_GET['id'])) {
             $deleteId = htmlspecialchars($_GET['id']);
 
-            $delete_id = $pdo->prepare('DELETE FROM articles
+            $delete_id = $pdo->prepare('DELETE FROM comm
                                         WHERE id = ?');
             
 
@@ -18,9 +18,9 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["id.use
                 if($_SESSION["id_role"] = '1'){
 
                     if($delete_id->execute([$deleteId])){
-                    header("Location:../admin.php?&req=del_art");
+                    header("Location:../admin.php?&req=del_com");
                     }
-                    else{header('Location:../admin.php?&req=dont_del_art');
+                    else{header('Location:../admin.php?&req=dont_del_com');
                     }
                 }
 
@@ -28,9 +28,9 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["id.use
                     elseif($_SESSION["id_role"] = '2'){
 
                         if($delete_id->execute([$deleteId])){
-                        header('Location:../other_articles.php?&success=del_art');
+                        header('Location:../other_articles.php?&req=del_com');
 
-                        }else{header('Location:../other_articles.php?&success=dont_del_art');
+                        }else{header('Location:../other_articles.php?&req=dont_del_com');
 
                         }    
                     }

@@ -144,15 +144,15 @@ $tables = [
 
  
     <div class="container mt-5 mb-5">        
-        <div class="d-flex justify-content-around">
+        <div class="row d-flex justify-content-around">
                 
 <?php
 foreach($tables as $table_name => $table){
 ?>
             <div class="card col-sm-12 col-md-6 col-lg-3">
-                <div class="card bg-info text-center">
-                    <h3> <?= $table_name ?></h3>
-                    <h4> <?=inTable($table)[0]; ?></h4>
+                <div class="card bg-info">
+                    <div class="card-title"> <?= $table_name ?></div>
+                    <h4>  <?=inTable($table)[0]; ?> </h4>
                    
                 </div>  
             </div>
@@ -202,12 +202,12 @@ foreach($tables as $table_name => $table){
                                                 <div class="modal-content">
                                                 
                                                     <div class="modal-header">
+                                                        <p class="modal-title fs-5 text-info" id="idArticle"> '.$article["title"].' </p>
                                                         <p>Commentaire posté par <strong> <p class="text-info">'.$article["user_name"].' </p></strong></p>
                                                         <p> Le '.date("d/m/Y à H:i", strtotime($article["date_articles"])).' </p>
                                                     </div>   
 
                                                     <div class="modal-body">
-                                                        <p class="modal-title" id="idArticle"><strong> Titre : </strong> '.$article["title"].' </p>
                                                          <img src="stock_avatar/'. $article['image'].'" width="450" height="400" alt="image de l\'article">
                                                          <p><strong>Commentaire :</strong> '.$article["content"].' </p>
                                                     </div>

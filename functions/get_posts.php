@@ -137,7 +137,23 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
 }
 
 
+// fetch de tous les commentaires pour la page admin-dashboard
+function get_all_comms(){
 
+    global $pdo;
+
+$sql = $pdo->prepare("SELECT * FROM comm
+                        JOIN users 
+                        ON comm.id_users=users.id
+                        JOIN articles
+                        ON articles.id=comm.id_articles
+                        WHERE comm.is_valid = '0'
+                        ORDER BY date_comm ASC"); 
+$sql->execute();
+$comments = $sql->fetchAll();
+
+return $comments;
+}
 
 
 

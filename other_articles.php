@@ -48,6 +48,27 @@ if(isset($_GET['success']))
         <?php
     }
 }
+
+if(isset($_GET['req']))
+{
+    $req = htmlspecialchars($_GET['req']);
+
+    if($req === 'del_com')
+    {
+        ?>
+            <div class="alert alert-success">
+                <strong>Succès</strong> Vous avez supprimé le commentaire.
+            </div>
+        <?php
+    }else{($req === 'dont_del_com')
+        ?>
+            <div class="alert alert-danger">
+                <strong>Erreur</strong> Vous n'avez pas supprimé le commentaire.
+            </div>
+
+        <?php
+    }
+}
 ?>
 
 <div class="fs-3 fw-bold text-center mt-5 mb-3">Ici, vous retrouverez tous vos articles personnellement publiés.</div>

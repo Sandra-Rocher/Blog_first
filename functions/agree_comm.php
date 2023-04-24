@@ -7,20 +7,19 @@ require_once 'database.php';
 if(isset($_SESSION["id"]) || $_SESSION["id_role"] = '1'){
 
         if(isset($_GET['id']) AND !empty($_GET['id'])) {
-            $articleId = htmlspecialchars($_GET['id']);
+            $commentId = htmlspecialchars($_GET['id']);
 
-            $agree_id = $pdo->prepare('UPDATE articles
+            $agree_id = $pdo->prepare('UPDATE comm
                                         SET is_valid = "1"
                                         WHERE id = ?');
                                          
-            if($agree_id->execute(array($articleId))){
+            if($agree_id->execute(array($commentId))){
 
-                header("Location:../admin.php?&req=agr_art");
+                header("Location:../admin.php?&req=agr_com");
             }else{
-                header("Location:../admin.php?&req=dont_agr_art");
+                header("Location:../admin.php?&req=dont_agr_com");
             }
         }
 
 }        
 ?>
-
