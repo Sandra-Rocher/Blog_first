@@ -68,8 +68,6 @@ if(isset($_GET['rep_err']))
 
 <?php
 
-
-
   echo     ' 
                      
 
@@ -79,16 +77,28 @@ if(isset($_GET['rep_err']))
                             <img src= stock_avatar/' . $other_article["image"] . ' class="card-img" alt=" '. $other_article["title"] . '">
                             <div class="card-body mx-auto">
                                 <p class="card-text"> ' . $other_article["content"] . ' </p>
-                                <a href="modif_article.php?id='. $other_article["0"] . '" class="btn btn-info d-flex justify-content-center mb-3" >Modifier l\'article</a>
+
+                                ';
+                                ?>
+
+                    <?php
+                    if(isset($_SESSION["id"]) && $_SESSION["id"] == $other_article["id"]) {
+                    ?>
+                    <?php
+                           echo '   <a href="modif_article.php?id='. $other_article["0"] . '" class="btn btn-info d-flex justify-content-center mb-3" >Modifier l\'article</a>
+                    
+                     
+                          
+                    
                             </div>
                         </div>
              ';
-
+            }
 ?>
                     </div>
                 </div>
             </div> 
-
+        
 <?php
 }
 ?>

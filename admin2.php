@@ -65,36 +65,6 @@ $tables = [
 
     <script>
 
-// $(document).ready(function() {
-//     var theHREF;
-
-//     $( "#dialog-confirm" ).dialog({
-//         resizable: false,
-//         height:160,
-//         width:500,
-//         autoOpen: false,
-//         modal: true,
-//         buttons: {
-//             "Oui": function() {
-//                 $( this ).dialog( "close" );
-//                 window.setTimeout(function(){
-//                     window.location.href = theHREF;
-//                 }, 100);
-//             },
-//             "Annuler": function() {
-//                 $( this ).dialog( "close" );
-//             }
-//         }
-//     });
-
-//     $("a.confirmModal").click(function(e) {
-//         e.preventDefault();
-//         theHREF = $(this).attr("href");
-//         $("#dialog-confirm").dialog("open");
-//     });
-// });
-
-
 $(document).ready(function() {
   var theHREF;
 
@@ -402,14 +372,7 @@ foreach($tables as $table_name => $table){
 <!-- lien footer -->
 <?php require_once 'footer.php' ?>
 
-<!-- <script>
-$(document).ready(function(){
-  $('.modal-trigger').click(function(){
-    var modal_id = $(this).attr('data-target');
-    $(modal_id).modal('show');
-  });
-});
-</script> -->
+
 
 <!-- <script>
     function ConfirmDelete()

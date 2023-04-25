@@ -53,8 +53,37 @@ $tables = [
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <!-- lien bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-
+    <!-- 3 Liens jquery js pour le modal de confirmation de suppression -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <title>Page Admin</title>
+
+
+    <!-- Script pour Modal de confirmation de suppression d'article -->
+<script>
+$(document).ready(function() {
+  var theHREF;
+
+  $('#dialog-confirm').on('show.bs.modal', function (event) {
+    var modal = $(this);
+    modal.find('.modal-body p').text('Etes-vous sûr de vouloir supprimer cet élément ?');
+    modal.find('#confirm-yes').click(function() {
+      modal.modal('hide');
+      window.setTimeout(function(){
+        window.location.href = theHREF;
+      }, 100);
+    });
+  });
+
+  $("a.confirmModal").click(function(e) {
+    e.preventDefault();
+    theHREF = $(this).attr("href");
+    $('#dialog-confirm').modal('show');
+  });
+});
+</script>
+
 
 </head>
 <body>
@@ -66,6 +95,27 @@ $tables = [
 <div class="text-center mt-5 mb-5">
      <h2>Bienvenue <?= $_SESSION["user_name"] ?>, l'admin ! </h2>
 </div> 
+
+<!-- Modal de confirmation de suppression d'article -->
+<div id="dialog-confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-confirm-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dialog-confirm-title">Confirmation de la suppression</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Etes-vous sûr de vouloir supprimer cet élément ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="confirm-yes">Confirmer</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <?php
@@ -194,7 +244,7 @@ foreach($tables as $table_name => $table){
                             <td>
                                 
                                 <a href="functions/agree_article.php?id='. $article[0].'" class="btn btn-success mb-3"><i class="bi bi-check"></i></a>
-                                <a href="functions/delete_article.php?id='. $article[0].'" class="btn btn-danger mb-3"><i class="bi bi-trash3"></i></a>
+                                <a class="confirmModal btn btn-danger mb-3" href="functions/delete_article.php?id='. $article[0].'" ><i class="bi bi-trash3"></i></a>
                                 <a href="#idArt'. $article[0] .'" data-bs-toggle="modal" data-bs-target="#idArt'. $article[0] .'" class="btn btn-info modal-trigger mb-3"><i class="bi bi-eye"></i></a>
 
                                         <div class="modal fade" id="idArt'. $article[0] .'" tabindex="-1" aria-labelledby="idArticle" aria-hidden="true">
@@ -214,7 +264,6 @@ foreach($tables as $table_name => $table){
 
                                                     <div class="modal-footer">
                                                          <a href="functions/agree_article.php?id='. $article[0].'" class="btn btn-success mb-3" ><i class="bi bi-check"></i></a>
-                                                         <a href="functions/delete_article.php?id='. $article[0].'" class="btn btn-danger mb-3" ><i class="bi bi-trash3"></i></a>
                                                          <button type="button" class="btn btn-dark mb-3" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
                                                     </div>
                                                 </div>
@@ -260,7 +309,7 @@ foreach($tables as $table_name => $table){
                             <td>
                                 
                                 <a href="functions/agree_comm.php?id='. $comment[0].'" class="btn btn-success mb-3"><i class="bi bi-check"></i></a>
-                                <a href="functions/delete_comm.php?id='. $comment[0].'" class="btn btn-danger mb-3"><i class="bi bi-trash3"></i></a>
+                                <a class="confirmModal btn btn-danger mb-3" href="functions/delete_comm.php?id='. $comment[0].'"><i class="bi bi-trash3"></i></a>
                                 <a href="#idArt'. $comment[0] .'" data-bs-toggle="modal" data-bs-target="#idArt'. $comment[0] .'" class="btn btn-info modal-trigger mb-3"><i class="bi bi-eye"></i></a>
 
                                         <div class="modal fade" id="idArt'. $comment[0] .'" tabindex="-1" aria-labelledby="idArticle" aria-hidden="true">
@@ -280,7 +329,6 @@ foreach($tables as $table_name => $table){
 
                                                     <div class="modal-footer">
                                                          <a href="functions/agree_comm.php?id='. $comment[0].'" class="btn btn-success mb-3" ><i class="bi bi-check"></i></a>
-                                                         <a href="functions/delete_comm.php?id='. $comment[0].'" class="btn btn-danger mb-3" ><i class="bi bi-trash3"></i></a>
                                                          <button type="button" class="btn btn-dark mb-3" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
                                                     </div>
                                                 </div>
