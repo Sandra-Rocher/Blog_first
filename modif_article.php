@@ -38,9 +38,6 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
 <?php
     if(!empty($_SESSION['id'])){
 ?>
-      
-
- <div class="fs-3 fw-bold text-center mt-5 mb-5">Voir et Modifier un article</div>
 
 
  <?php 

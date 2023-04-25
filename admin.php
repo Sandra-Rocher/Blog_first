@@ -202,14 +202,14 @@ foreach($tables as $table_name => $table){
                                                 <div class="modal-content">
                                                 
                                                     <div class="modal-header">
-                                                        <p>Commentaire posté par <strong> <p class="text-info">'.$article["user_name"].' </p></strong></p>
+                                                        <p>Article posté par <strong> <p class="text-info">'.$article["user_name"].' </p></strong></p>
                                                         <p> Le '.date("d/m/Y à H:i", strtotime($article["date_articles"])).' </p>
                                                     </div>   
 
                                                     <div class="modal-body">
-                                                        <p class="modal-title" id="idArticle"><strong> Titre : </strong> '.$article["title"].' </p>
+                                                        <p class="modal-title" id="idArticle"><strong> Titre et photo : </strong> '.$article["title"].' </p>
                                                          <img src="stock_avatar/'. $article['image'].'" width="450" height="400" alt="image de l\'article">
-                                                         <p><strong>Commentaire :</strong> '.$article["content"].' </p>
+                                                         <p><strong>Description :</strong> '.$article["content"].' </p>
                                                     </div>
 
                                                     <div class="modal-footer">
@@ -268,12 +268,12 @@ foreach($tables as $table_name => $table){
                                                 <div class="modal-content">
                                                 
                                                     <div class="modal-header">
-                                                        <p class="modal-title fs-5 text-info" id="idArticle"> '.$comment["title"].' </p>
                                                         <p>Commentaire posté par <strong> <p class="text-info">'.$comment["user_name"].' </p></strong></p>
                                                         <p> Le '.date("d/m/Y à H:i", strtotime($comment["date_comm"])).' </p>
                                                     </div>   
 
                                                     <div class="modal-body">
+                                                        <p class="modal-title" id="idArticle"> <strong> Titre et photo de l\'article concerné : </strong>'.$comment["title"].' </p>
                                                          <img src="stock_avatar/'. $comment['image'].'" width="450" height="400" alt="image de l\'article">
                                                          <p><strong>Commentaire :</strong> '.$comment["comm"].' </p>
                                                     </div>

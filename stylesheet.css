@@ -35,3 +35,8 @@
 .card p{
     max-height:350px!important;
 }
+
+#dialog-confirm{
+    position: absolute!important;
+    z-index:1056!important;
+}

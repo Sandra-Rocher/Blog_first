@@ -54,6 +54,74 @@ $tables = [
     <!-- lien bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
+    <link href="stylesheet.css" rel="stylesheet">
+
+    <!-- Lien jquery js pour le modal de confirmation de suppression -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+
+    <script>
+
+// $(document).ready(function() {
+//     var theHREF;
+
+//     $( "#dialog-confirm" ).dialog({
+//         resizable: false,
+//         height:160,
+//         width:500,
+//         autoOpen: false,
+//         modal: true,
+//         buttons: {
+//             "Oui": function() {
+//                 $( this ).dialog( "close" );
+//                 window.setTimeout(function(){
+//                     window.location.href = theHREF;
+//                 }, 100);
+//             },
+//             "Annuler": function() {
+//                 $( this ).dialog( "close" );
+//             }
+//         }
+//     });
+
+//     $("a.confirmModal").click(function(e) {
+//         e.preventDefault();
+//         theHREF = $(this).attr("href");
+//         $("#dialog-confirm").dialog("open");
+//     });
+// });
+
+
+$(document).ready(function() {
+  var theHREF;
+
+  $('#dialog-confirm').on('show.bs.modal', function (event) {
+    var modal = $(this);
+    modal.find('.modal-body p').text('Etes-vous sûr de vouloir supprimer cet élément ?');
+    modal.find('#confirm-yes').click(function() {
+      modal.modal('hide');
+      window.setTimeout(function(){
+        window.location.href = theHREF;
+      }, 100);
+    });
+  });
+
+  $("a.confirmModal").click(function(e) {
+    e.preventDefault();
+    theHREF = $(this).attr("href");
+    $('#dialog-confirm').modal('show');
+  });
+});
+
+</script>
+
+
+    
+
+
     <title>Page Admin</title>
 
 </head>
@@ -66,6 +134,35 @@ $tables = [
 <div class="text-center mt-5 mb-5">
      <h2>Bienvenue <?= $_SESSION["user_name"] ?>, l'admin ! </h2>
 </div> 
+
+
+<!-- <div id="dialog-confirm" title="Confirmation de la suppression" style="display:none;">
+  <p>
+    <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0; position:absolute; z-index:1056!important;"></span>
+    Etes-vous sûr de vouloir supprimer cet élément ?
+    </p>
+</div> -->
+
+<div id="dialog-confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-confirm-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dialog-confirm-title">Confirmation de la suppression</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Etes-vous sûr de vouloir supprimer cet élément ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="confirm-yes">Confirmer</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
     <?php
@@ -144,15 +241,15 @@ $tables = [
 
  
     <div class="container mt-5 mb-5">        
-        <div class="row d-flex justify-content-around">
+        <div class="d-flex justify-content-around">
                 
 <?php
 foreach($tables as $table_name => $table){
 ?>
             <div class="card col-sm-12 col-md-6 col-lg-3">
-                <div class="card bg-info">
-                    <div class="card-title"> <?= $table_name ?></div>
-                    <h4>  <?=inTable($table)[0]; ?> </h4>
+                <div class="card bg-info text-center">
+                    <h3> <?= $table_name ?></h3>
+                    <h4> <?=inTable($table)[0]; ?></h4>
                    
                 </div>  
             </div>
@@ -194,7 +291,8 @@ foreach($tables as $table_name => $table){
                             <td>
                                 
                                 <a href="functions/agree_article.php?id='. $article[0].'" class="btn btn-success mb-3"><i class="bi bi-check"></i></a>
-                                <a href="functions/delete_article.php?id='. $article[0].'" class="btn btn-danger mb-3"><i class="bi bi-trash3"></i></a>
+                                
+                                <a class="confirmModal btn btn-danger mb-3" href="functions/delete_article.php?id='. $article[0].'" ><i class="bi bi-trash3"></i></a>
                                 <a href="#idArt'. $article[0] .'" data-bs-toggle="modal" data-bs-target="#idArt'. $article[0] .'" class="btn btn-info modal-trigger mb-3"><i class="bi bi-eye"></i></a>
 
                                         <div class="modal fade" id="idArt'. $article[0] .'" tabindex="-1" aria-labelledby="idArticle" aria-hidden="true">
@@ -202,19 +300,19 @@ foreach($tables as $table_name => $table){
                                                 <div class="modal-content">
                                                 
                                                     <div class="modal-header">
-                                                        <p class="modal-title fs-5 text-info" id="idArticle"> '.$article["title"].' </p>
-                                                        <p>Commentaire posté par <strong> <p class="text-info">'.$article["user_name"].' </p></strong></p>
+                                                        <p>Article posté par <strong> <p class="text-info">'.$article["user_name"].' </p></strong></p>
                                                         <p> Le '.date("d/m/Y à H:i", strtotime($article["date_articles"])).' </p>
                                                     </div>   
 
                                                     <div class="modal-body">
+                                                        <p class="modal-title" id="idArticle"><strong> Titre et photo : </strong> '.$article["title"].' </p>
                                                          <img src="stock_avatar/'. $article['image'].'" width="450" height="400" alt="image de l\'article">
-                                                         <p><strong>Commentaire :</strong> '.$article["content"].' </p>
+                                                         <p><strong>Description :</strong> '.$article["content"].' </p>
                                                     </div>
 
                                                     <div class="modal-footer">
                                                          <a href="functions/agree_article.php?id='. $article[0].'" class="btn btn-success mb-3" ><i class="bi bi-check"></i></a>
-                                                         <a href="functions/delete_article.php?id='. $article[0].'" class="btn btn-danger mb-3" ><i class="bi bi-trash3"></i></a>
+                                                         <a class="confirmModal btn btn-danger mb-3" href="functions/delete_article.php?id='. $article[0].'" ><i class="bi bi-trash3"></i></a>
                                                          <button type="button" class="btn btn-dark mb-3" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
                                                     </div>
                                                 </div>
@@ -259,32 +357,8 @@ foreach($tables as $table_name => $table){
                             <td>'.substr($comment["comm"],0,125) .'...</td>
                             <td>
                                 
-                                <a href="functions/agree_comm.php?id='. $comment[0].' "class="btn btn-success mb-3"><i class="bi bi-check"></i></a>
-                                <a href="#idDel'. $comment[0] .'" data-bs-toggle="modal" data-bs-target="#idDel'. $comment[0] .'" class="btn btn-danger modal-trigger mb-3"><i class="bi bi-trash-3"></i></a>
-
-                                <div class="modal fade" id="idDel'. $comment[0] .'" tabindex="-1" aria-labelledby="idArticle" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                    
-                                        <div class="modal-header">
-                                            <p>Attention</p>
-                                        </div>   
-
-                                        <div class="modal-body">
-                                            <p>Etes-vous sur de vouloir supprimer ?</p>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                             <a href="functions/delete_comm.php?id='. $comment[0].'" class="btn btn-danger mb-3" >Oui, je supprime</a>
-                                             <button type="button" class="btn btn-dark mb-3" data-bs-dismiss="modal" aria-label="Close">Non, je garde</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
+                                <a href="functions/agree_comm.php?id='. $comment[0].'" class="btn btn-success mb-3"><i class="bi bi-check"></i></a>
+                                <a class="confirmModal btn btn-danger mb-3" href="functions/delete_comm.php?id='. $comment[0].'" ><i class="bi bi-trash3"></i></a>
                                 <a href="#idArt'. $comment[0] .'" data-bs-toggle="modal" data-bs-target="#idArt'. $comment[0] .'" class="btn btn-info modal-trigger mb-3"><i class="bi bi-eye"></i></a>
 
                                         <div class="modal fade" id="idArt'. $comment[0] .'" tabindex="-1" aria-labelledby="idArticle" aria-hidden="true">
@@ -292,12 +366,12 @@ foreach($tables as $table_name => $table){
                                                 <div class="modal-content">
                                                 
                                                     <div class="modal-header">
-                                                        <p class="modal-title fs-5 text-info" id="idArticle"> '.$comment["title"].' </p>
                                                         <p>Commentaire posté par <strong> <p class="text-info">'.$comment["user_name"].' </p></strong></p>
                                                         <p> Le '.date("d/m/Y à H:i", strtotime($comment["date_comm"])).' </p>
                                                     </div>   
 
                                                     <div class="modal-body">
+                                                        <p class="modal-title" id="idArticle"> <strong> Titre et photo de l\'article concerné : </strong>'.$comment["title"].' </p>
                                                          <img src="stock_avatar/'. $comment['image'].'" width="450" height="400" alt="image de l\'article">
                                                          <p><strong>Commentaire :</strong> '.$comment["comm"].' </p>
                                                     </div>
@@ -337,16 +411,17 @@ $(document).ready(function(){
 });
 </script> -->
 
-<!-- <script type="text/javascript">
-      function ConfirmDelete()
-      {
-            if (confirm("Delete Account?"))
-                 location.href='functions/delete_comm.php?id=<?php $comment[0]?>';
-      }
-  </script> -->
+<!-- <script>
+    function ConfirmDelete()
+    {
+      return confirm("Are you sure you want to delete?");
+    }
+</script>   -->
 
 
-  <!-- echo '<input type="button" onclick="ConfirmDelete()" value="DELETE ACCOUNT">'; -->
+
+
+
 
 <!-- lien bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
