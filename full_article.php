@@ -32,8 +32,8 @@ if($other_article == false){
 }else{
 
 ?>
-                                                                        <!-- NE FONCTIONNE PAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAS -->
-<div class="fs-3 fw-bold text-center mt-5 mb-5">Article sélectionné : <?php ' . $other_article["title"] . ' ?> </div>
+                                                                       
+<div class="fs-3 fw-bold text-center mt-5 mb-5">Article sélectionné :</div>
 
 
             

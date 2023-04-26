@@ -28,7 +28,7 @@ session_start();
 
     <div class="fs-6 mt-4 mb-5">
         <ul>
-            <li> Création d'un blog et sa base de données dans lequel on pourra :</li>
+            <li>Création d'un blog et sa base de données dans lequel on pourra :</li>
             <li>S'inscrire, modifier, ou supprimer un compte utilisateur</li>
             <li>Créer, modifier, supprimer un article (uniquement pour les connectés)</li>
             <li>Les articles peuvent contenir une photo, qui peuvent aussi être ajoutées, modifiées, ou supprimées</li>
