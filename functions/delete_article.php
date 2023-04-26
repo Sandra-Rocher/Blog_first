@@ -1,6 +1,6 @@
 <?php
 
-require_once 'database.php';
+require_once '../modele/database.php';
 
 
 // Verification que l'id user soit connecté OU admin

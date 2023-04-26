@@ -4,7 +4,7 @@ session_start();
 
 
 // connexion avec la database
-require_once 'database.php';
+require_once '../modele/database.php';
 
 
 

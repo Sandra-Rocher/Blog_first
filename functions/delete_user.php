@@ -7,7 +7,7 @@ session_start();
 $id = $_SESSION['id'];
 
 // connexion avec la database
-require_once 'database.php';
+require_once '../modele/database.php';
 
 // on supprime dans la table
 $delete = $pdo->prepare("DELETE FROM users WHERE id = ?");

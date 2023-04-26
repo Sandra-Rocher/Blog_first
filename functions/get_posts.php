@@ -1,7 +1,7 @@
 <?php
 
 // on récupère le pdo
-require_once 'database.php';
+require_once './modele/database.php';
 
 
 // fetch du profil sur la page profil
@@ -20,7 +20,7 @@ function get_data_profil(){
 }
 
 
-// fetch de tous les articles pour la page admin-dashboard
+// fetch de tous les articles non validés pour la page admin-dashboard
 function get_all_posts(){
 
     global $pdo;
@@ -37,7 +37,7 @@ return $articles;
 }
 
 
-// fetch de tous les articles pour la page index/accueil
+// fetch de tous les articles de tout le monde pour la page index/accueil
 function get_posts_index(){
 
     global $pdo;
@@ -80,7 +80,7 @@ function get_posts_bonus(){
     $sql = $pdo->prepare("SELECT * FROM articles
                             JOIN users 
                             ON articles.id_users=users.id
-                            WHERE id_role = '1' AND title LIKE 'moto%'
+                            WHERE id_role = '1' AND title LIKE '%moto%'
                             ORDER BY date_articles DESC"); 
     $sql->execute();
 
@@ -137,7 +137,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
 }
 
 
-// fetch de tous les commentaires pour la page admin-dashboard
+// fetch de tous les commentaires non validés pour la page admin-dashboard
 function get_all_comms(){
 
     global $pdo;

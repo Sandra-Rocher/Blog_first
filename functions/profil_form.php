@@ -1,7 +1,7 @@
 <?php
 
    // connexion avec la database
-require_once 'database.php';
+require_once '../modele/database.php';
 
 
 // update de l'user_name : on vérifie si il y a un user_name et un id

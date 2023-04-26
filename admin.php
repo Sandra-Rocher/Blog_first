@@ -17,7 +17,7 @@ $comments = get_all_comms();
 
 
 // a partir de là c'est nickwall 
-require_once 'functions/database.php';
+require_once 'modele/database.php';
 
 
 // on mettra apres dans functions/get_posts

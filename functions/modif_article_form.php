@@ -4,7 +4,7 @@ session_start();
 
 
 // connexion avec la database
-require_once 'database.php';
+require_once '../modele/database.php';
 
 
 
@@ -47,6 +47,8 @@ if(!empty($_SESSION['id'])){
             $cont = htmlspecialchars($_POST['cont']);
 
 
+            if(isset($_FILES['image'])) {
+                
                 // si il y a une image avec son nom 
                 if(!empty($_FILES['image'] ['name']))
                 {
@@ -115,7 +117,8 @@ if(!empty($_SESSION['id'])){
 
                     // echo "Veuillez selectionner une image";
                 }else{header('Location:../other_articles.php?reg_err=check'); }
-
+                
+            }   
                     
         // echo "Veuillez mettre une description, ou un commentaire à votre article";
         }else{header('Location:../other_articles.php?reg_err=cont_empty'); }  

@@ -32,9 +32,10 @@ test pr iframe :
 
 
 
+<!-- Pour reclasser les fichiers correctement : 
             controler               c est le js mes functions
             model                   c est la database solo
             vue view template       c est le ejs mes .php
             assett ou public        js image css normalement que image mais bon
             il restera .htaccess et index.php : ce sont les seuls qui ne sont pas dans des dossiers
-            
+             -->
