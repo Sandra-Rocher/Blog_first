@@ -28,6 +28,12 @@ if(!empty($_SESSION['id'])){
     // on recupere la session
     $my_session = $_SESSION['id'];
 
+    // ici nous modifions un article déjà validé par l'admin et visible du public. (donc is_valid = 1). Pour ne pas que la
+    //  personne en profite pour écrire n'importe quoi, il faudra que l'admin le re-vérifie : donc on passe is_valid à 0 comme 
+    //  lorsqu'on créer un article du départ. Si il réponds de nouveau aux critères, l'admin repassera is_valid à 1 et l'article
+    //   sera de nouveau publié.
+    $is_valid = 0;
+
     // si le title n'est pas vide
     if(!empty($_POST['tit']))
     {
@@ -77,54 +83,50 @@ if(!empty($_SESSION['id'])){
                                 $image = uniqid() . '.' . strtolower(end($extens));
                                 if(move_uploaded_file($tmp_file, '../stock_avatar/' . $image))
                                 {
-
+                                    
                                     // on prepare et execute la requete, dans la table articles, on rentre le titre, le content, et l'image de l'article crée
                                     $insert = $pdo->prepare('UPDATE articles 
-                                                            SET (title ="$tit", content = "$cont", image = "$image", is_valid ="0")
-                                                            WHERE id = '. $_GET['id'] .' ');
-
-                                    $insert->execute(array(
-                                    'toto'=> $tit,
-                                     'cont'=> $cont,
-                                     'img'=> $image,
-                                     ));
+                                                             SET title = ?, content = ?, image = ?, is_valid = ?
+                                                             WHERE id = ?');
+           
+                                    $insert->execute([$tit, $cont, $image, $is_valid, $get_id]);
 
                                     //  Si on a rencontré une erreur, on la nomme ci dessous celon a quel endroit elle à eu lieu
                                      // echo "Article reçu, il sera vérifié par l'admin et publié ou supprimé !";
-                                    header('Location:../edit_article.php?reg_err=success'); 
+                                    header('Location:../other_articles.php?reg_err=success_upd'); 
                                     die();
                                 
                                 
                                     // echo "Erreur, upload non effectué";
-                                }else{header('Location:../edit_article.php?reg_err=error'); }
+                                }else{header('Location:../other_articles.php?reg_err=error_upd'); }
                                 
                             
                                 // echo "Image trop lourde ou format incorrect";
-                            }else{header('Location:../edit_article.php?reg_err=type_file'); }
+                            }else{header('Location:../other_articles.php?reg_err=type_file'); }
                             
                         
                             // echo "Merci de mettre une image";
-                        }else{header('Location:../edit_article.php?reg_err=image'); }
+                        }else{header('Location:../other_articles.php?reg_err=image'); }
                         
                     
                         // echo "Type non autorisé. Veuillez choisir une image.png ou .jpg ou .jpeg ou .gif";
-                    }else{header('Location:../edit_article.php?reg_err=type'); }
+                    }else{header('Location:../other_articles.php?reg_err=type'); }
 
 
                     // echo "Veuillez selectionner une image";
-                }else{header('Location:../edit_article.php?reg_err=check'); }
+                }else{header('Location:../other_articles.php?reg_err=check'); }
 
                     
         // echo "Veuillez mettre une description, ou un commentaire à votre article";
-        }else{header('Location:../edit_article.php?reg_err=cont_empty'); }  
+        }else{header('Location:../other_articles.php?reg_err=cont_empty'); }  
 
 
         // echo "Veuillez remplir le titre de l'article" ;
-    }else{header('Location:../edit_article.php?reg_err=tit_empty'); }   
+    }else{header('Location:../other_articles.php?reg_err=tit_empty'); }   
 
     
     // echo "Erreur d'id";
-}else{header('Location:../edit_article.php?reg_err=error_id'); }  
+}else{header('Location:../other_articles.php?reg_err=error_id'); }  
                   
 
 ?>

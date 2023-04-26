@@ -33,6 +33,29 @@ $data = get_data_profil();
     <h2>Modifiez votre profil <?= $_SESSION["user_name"] ?> ! </h2>
 </div> 
 
+
+<!-- Modal de confirmation de suppression du profil, script modal.js -->
+<div id="dialog-confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-confirm-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dialog-confirm-title">Confirmation de la suppression</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Etes-vous sûr de vouloir supprimer cet élément ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="confirm-yes">Confirmer</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
      <!-- Formulaire dans profil : peut etre repartir du même -->
             <div class="container mt-5 mb-5">
                 <div class="row d-flex justify-content-center align-items-center">
@@ -76,8 +99,7 @@ $data = get_data_profil();
 
                                      <form action="functions/profil_form.php?id=<?php echo $data["id"] ?>" method="POST">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Entrez le nouveau password" name="password" id="password"
-                                            value="<?php if(isset($_GET["password"])){ echo htmlspecialchars($_GET["password"]); } ?>">
+                                            <input type="text" class="form-control" placeholder="Entrez le nouveau password" name="password" id="password">
                                                                 
                                             <button class="bg-info btn btn-outline-black" type="submit" id="password">Modifier</button>
                                         </div>
@@ -93,13 +115,6 @@ $data = get_data_profil();
                                             <button class="bg-info btn btn-outline-black" type="submit" id="avatar">Modifier</button>
                                         </div>
                                     </form>
-                                     
-    
-                                     <form action="functions/profil_form.php" method="POST" enctype="multipart/form-data">
-                                         <input type="file" placeholder="" name="avatar" value="">
-       
-                                        <input class="btn btn-info btn-rounded btn-md" type="submit" value="Modifier">
-                                     </form>
 
                             </div>
                         </div>
@@ -111,7 +126,7 @@ $data = get_data_profil();
                     <h4 class="fs-5 mt-5">Voulez-vous supprimer votre compte <?php echo $_SESSION['user_name']; ?> ?</h4>
                                                                             
                     <br />
-                    <a href="functions/delete_user.php" class="btn btn-danger btn-md mb-5">Oui, supprimer mon compte</a>
+                    <a class="confirmModal btn btn-danger btn-md mb-5" href="functions/delete_user.php" >Oui, supprimer mon compte</a>
             </div>
           
                      

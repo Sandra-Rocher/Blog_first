@@ -9,10 +9,6 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- lien bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  
     <title>Page pour les recruteurs</title>
 </head>
 <body>
@@ -35,16 +31,17 @@ session_start();
             <li> Création d'un blog et sa base de données dans lequel on pourra :</li>
             <li>S'inscrire, modifier, ou supprimer un compte utilisateur</li>
             <li>Créer, modifier, supprimer un article (uniquement pour les connectés)</li>
-            <li>Les articles peuvent contenir une photo ou une vidéo, qui peuvent aussi être ajoutées, modifiées, ou supprimées</li>
-            <li>Ils seront ensuite envoyé à l'admin qui modèrera les articles, en les publiant ou en les supprimant avant la mise en page public</li>
+            <li>Les articles peuvent contenir une photo, qui peuvent aussi être ajoutées, modifiées, ou supprimées</li>
+            <li>Les articles sont ensuite envoyé à l'admin qui les vérifie, pour ensuite soit supprimer soit autoriser l'article sur les pages public</li>
             <li>Un article ne peut être modifié que par son éditeur, il sera de nouveau vérifié par l'admin</li>
             <li>Afficher sur la page d'accueil tous les articles, même pour les non-connectés</li>
             <li>Afficher sur la page admin_voyage uniquement les articles créer par l'admin sur le thème voyage</li>
             <li>Afficher sur la page admin_samuse uniquement les articles créer par l'admin sur le thème moto</li>
             <li>Afficher connexion pour les non-connectés</li>
-            <li>Afficher déconnexion ainsi que le profil du connecté</li>
-            <li>Seul les connectés peuvent liker, commenter, ou mettre en favoris les articles, ils pourront les retrouver dans leur profil</li>
+            <li>Afficher déconnexion, la page d'user partage ainsi que le profil du connecté</li>
+            <li>Seul les connectés peuvent commenter les articles, ils seront visible dans la page de l'article concerné</li>
             <li>Sécurisé les pages, afin que personne n'accède à la page admin à part celui ci</li>
+            <li>Sécurisé les pages, afin que personne n'accède par l'url aux pages qui ne le concerne pas</li>
             <li>Sécurisé la base de données afin qu'elle ne révèle pas les emails et les mots de passe des utilisateurs</li>
             <li>Sécurisé le blog des failles XSS et injection SQL</li>
             <li>Mise en page responsive avec bootstrap pour le mobile</li>
@@ -53,12 +50,17 @@ session_start();
     </div>
 </div>
 
+<div class="fs-3 fw-bold text-center mt-5 mb-5">Voici un aperçu de l'envers du décor</div>
+
+<!-- devra être screené et mise en page -->
+    <img src= admin.php         class="card-img w-100" alt="">
+    <img src= edit_article.php  class="card-img w-50" alt="">
+    <img src= profil.php        class="card-img w-50" alt="">
+    <img src= modif_profil.php  class="card-img w-50" alt="">
+    <img src= modif_article.php class="card-img w-50" alt="">
+
 <!-- lien footer -->
 <?php require_once 'footer.php' ?>
-
-<!-- lien bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
- 
 
 </body>
 </html>

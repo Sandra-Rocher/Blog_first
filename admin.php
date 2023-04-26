@@ -49,41 +49,7 @@ $tables = [
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- lien bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <!-- lien bootstrap icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-    <!-- 3 Liens jquery js pour le modal de confirmation de suppression -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <title>Page Admin</title>
-
-
-    <!-- Script pour Modal de confirmation de suppression d'article -->
-<script>
-$(document).ready(function() {
-  var theHREF;
-
-  $('#dialog-confirm').on('show.bs.modal', function (event) {
-    var modal = $(this);
-    modal.find('.modal-body p').text('Etes-vous sûr de vouloir supprimer cet élément ?');
-    modal.find('#confirm-yes').click(function() {
-      modal.modal('hide');
-      window.setTimeout(function(){
-        window.location.href = theHREF;
-      }, 100);
-    });
-  });
-
-  $("a.confirmModal").click(function(e) {
-    e.preventDefault();
-    theHREF = $(this).attr("href");
-    $('#dialog-confirm').modal('show');
-  });
-});
-</script>
-
 
 </head>
 <body>
@@ -96,7 +62,7 @@ $(document).ready(function() {
      <h2>Bienvenue <?= $_SESSION["user_name"] ?>, l'admin ! </h2>
 </div> 
 
-<!-- Modal de confirmation de suppression d'article -->
+<!-- Modal de confirmation de suppression d'article, script modal.js -->
 <div id="dialog-confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-confirm-title" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -346,23 +312,8 @@ foreach($tables as $table_name => $table){
  </div>
 
 
-
-
-
 <!-- lien footer -->
 <?php require_once 'footer.php' ?>
-
-<!-- <script>
-$(document).ready(function(){
-  $('.modal-trigger').click(function(){
-    var modal_id = $(this).attr('data-target');
-    $(modal_id).modal('show');
-  });
-});
-</script> -->
-
-<!-- lien bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-  
+ 
 </body>
 </html>

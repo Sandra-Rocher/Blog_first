@@ -15,9 +15,7 @@ $other_articles = get_posts_other();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <title>Vos articles</title>
+     <title>Vos articles</title>
 </head>
 <body>
     
@@ -26,6 +24,7 @@ $other_articles = get_posts_other();
 <?php
     if(!empty($_SESSION['id'])){
 ?>
+
 
 <?php 
 if(isset($_GET['success']))
@@ -71,6 +70,91 @@ if(isset($_GET['req']))
 }
 ?>
 
+<?php 
+
+        if(isset($_GET['reg_err']))
+        {
+            $err = htmlspecialchars($_GET['reg_err']);
+
+            switch($err)
+            {
+                case 'success_upd':
+                ?>
+                    <div class="alert alert-success">
+                        <strong>Succès</strong> Article modifié, l'admin vérifiera et s'il corresponds aux <a href="crit_valid.php">critères de publication</a>, si c'est le cas il sera posté sur la page Accueil et dans votre page nommée l'User_partage !
+                    </div>
+                <?php
+                break;
+
+                case 'error_upd':
+                ?>
+                    <div class="alert alert-danger">
+                        <strong>Erreur</strong> Erreur, l'article n'a pas pu être modifié
+                    </div>
+                <?php
+                break;
+
+                case 'type_file':
+                ?>
+                    <div class="alert alert-danger">
+                        <strong>Erreur</strong> Image trop lourde ou format incorrect 
+                    </div>
+                <?php
+                break;
+
+                case 'image':
+                ?>
+                    <div class="alert alert-danger">
+                        <strong>Erreur</strong> Merci de sélectionner une image
+                    </div>
+                <?php 
+                break;
+
+                case 'type':
+                ?>
+                    <div class="alert alert-danger">
+                        <strong>Erreur</strong> Type non autorisé. Veuillez choisir une image.png ou .jpg ou .jpeg ou .gif
+                    </div>
+                <?php 
+                break;
+
+                case 'check':
+                ?>
+                    <div class="alert alert-danger">
+                        <strong>Erreur</strong> Veuillez sélectionner une image
+                    </div>
+                <?php 
+                break;
+
+                case 'tit_empty':
+                    ?>
+                        <div class="alert alert-danger">
+                            <strong>Erreur</strong> Veuillez remplir le titre de l'article
+                        </div>
+                    <?php 
+                break;
+
+                case 'cont_empty':
+                    ?>
+                        <div class="alert alert-danger">
+                            <strong>Erreur</strong> Veuillez mettre une description, ou un commentaire à votre article
+                        </div>
+                    <?php 
+                break;
+
+                case 'error_id':
+                    ?>
+                        <div class="alert alert-danger">
+                            <strong>Erreur</strong> Erreur d'id
+                        </div>
+                    <?php 
+                break;
+
+            }
+        }
+?>
+
+
 <div class="fs-3 fw-bold text-center mt-5 mb-3">Ici, vous retrouverez tous vos articles personnellement publiés.</div>
 <div class="fs-5 fw-bold text-center mb-5">Après validation de l'admin, ils seront ensuite publiés dans la page accueil.</div>
 
@@ -115,8 +199,5 @@ if(isset($_GET['req']))
 
 <?php require_once 'footer.php' ?>
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
- 
 </body>
 </html>

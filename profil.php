@@ -112,8 +112,62 @@ $data = get_data_profil();
                         <?php
                         break;
 
+
+
+// Erreurs upload avatar ci dessous
+                        case 'success_avat':
+                        ?>
+                            <div class="alert alert-success">
+                                <strong>Succès</strong> Changement de l'avatar réussie !
+                            </div>
+                        <?php
+                        break;
+
+                        case 'error':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> Upload non effectué
+                            </div>
+                        <?php
+                        break;
+
+                        case 'type_file':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> Image trop lourde ou format incorrect 
+                            </div>
+                        <?php
+                        break;
+
+                        case 'image':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> Merci de sélectionner une image
+                            </div>
+                        <?php 
+                        break;
+
+                        case 'type':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> Type non autorisé. Veuillez choisir une image.png ou .jpg ou .jpeg ou .gif
+                            </div>
+                        <?php 
+                        break;
+
+                        case 'check':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> Veuillez sélectionner une image
+                            </div>
+                        <?php 
+                        break;
+
+
                     }
-}
+        }
+
+
 ?>
 
 
@@ -126,7 +180,7 @@ $data = get_data_profil();
                                     <div class="card-body text-center">
     
                                          <div class="mx-auto mt-4 mb-4 ">
-                                            <img src= stock_avatar/' . $data ["avatar"] . ' class="rounded-circle w-100">
+                                            <img src= stock_avatar/' . $data["avatar"] . ' class="rounded-circle w-100">
                                         </div>
     
                                         <h4 class="mb-2"> '. $data ["user_name"] . ' </h4>
