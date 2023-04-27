@@ -33,6 +33,6 @@
 
 /* Controle la height du commentaire en le passant ensuite a overflow-auto(scroll) */
 .card p{
-    max-height:350px!important;
+    max-height:300px!important;
 }
 

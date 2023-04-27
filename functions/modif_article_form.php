@@ -115,8 +115,18 @@ if(!empty($_SESSION['id'])){
                     }else{header('Location:../other_articles.php?reg_err=type'); }
 
 
-                    // echo "Veuillez selectionner une image";
-                }else{header('Location:../other_articles.php?reg_err=check'); }
+                    
+                } // on prepare et execute la requete, dans la table articles, on rentre le titre, le content, et l'image de l'article crée
+                $insert = $pdo->prepare('UPDATE articles 
+                                         SET title = ?, content = ?, is_valid = ?
+                                         WHERE id = ?');
+
+                $insert->execute([$tit, $cont, $is_valid, $get_id]);
+
+                //  Si on a rencontré une erreur, on la nomme ci dessous celon a quel endroit elle à eu lieu
+                 // echo "Article reçu, il sera vérifié par l'admin et publié ou supprimé !";
+                header('Location:../other_articles.php?reg_err=success_upd'); 
+                die();
                 
             }   
                     

@@ -88,10 +88,10 @@ if(isset($_GET['rep_err']))
   echo     '         
                     <img src= stock_avatar/' . $other_articles['image'] . ' class="card-img" alt=" '. $other_articles['title'] . '">
                         <div class="container">
-                            <h3 class="mt-3 mb-3"> ' . $other_articles['title'] . ' </h3>
-                            <p class=""><small>Publié le ' . date("d/m/Y à H:i", strtotime($other_articles['date_articles'])) . ' par <span class="fw-bold"> '. $other_articles['user_name'] . ' </span></small></p>
+                            <h2 class="mt-3 mb-3"> ' . $other_articles['title'] . ' </h2>
+                            <p class="text-info"><small>Publié le ' . date("d/m/Y à H:i", strtotime($other_articles['date_articles'])) . ' par <span class="fw-bold"> '. $other_articles['user_name'] . ' </span></small></p>
                                 <div class="">
-                                <p class=""> ' . $other_articles['content'] . ' </p>
+                                <p class="mb-5"> ' . nl2br($other_articles['content']) . ' </p>
                                 </div>
                         </div> 
                                 ';
@@ -136,8 +136,8 @@ if(!empty($comments)){
     foreach($comments as $comment){
         echo '
                         <div class="mt-4">
-                            <p class=""><small>Publié le ' . date("d/m/Y à H:i", strtotime($comment['date_comm'])) . ' par <span class="fw-bold"> '. $comment['user_name'] . ' </span></small></p>
-                            <p>'.$comment['comment'] .' </p>
+                            <p class="text-info"><small>Publié le ' . date("d/m/Y à H:i", strtotime($comment['date_comm'])) . ' par <span class="fw-bold"> '. $comment['user_name'] . ' </span></small></p>
+                            <p>'. nl2br($comment['comment']) .' </p>
                         </div>
                                 
 

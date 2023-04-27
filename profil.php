@@ -113,7 +113,7 @@ $data = get_data_profil();
                             <?php
                         break;
 
-                        case 'req_email':
+                        case 'email':
                             ?>
                                 <div class="alert alert-danger">
                                     <strong>Erreur</strong> Mauvais email !
@@ -137,6 +137,9 @@ $data = get_data_profil();
                         <?php
                         break;
 
+
+
+// Ils sont ou ceux la ? je les trouve pas...
                         case 'avat_user_upd':
                          ?>
                                 <div class="alert alert-success">

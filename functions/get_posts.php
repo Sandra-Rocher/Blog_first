@@ -83,6 +83,7 @@ function get_posts_voyage(){
                             JOIN users 
                             ON articles.id_users=users.id
                             WHERE id_role = '1' AND title LIKE '%USA%'
+                            AND is_valid ='1'
                             ORDER BY date_articles DESC"); 
     $sql->execute();
     $articles = $sql->fetchAll();
@@ -100,6 +101,7 @@ function get_posts_bonus(){
                             JOIN users 
                             ON articles.id_users=users.id
                             WHERE id_role = '1' AND title LIKE '%moto%'
+                            AND is_valid ='1'
                             ORDER BY date_articles DESC"); 
     $sql->execute();
 

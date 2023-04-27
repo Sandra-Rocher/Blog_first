@@ -4,15 +4,6 @@
 require_once '../modele/database.php';
 
 
-
-    $check = $pdo->prepare('SELECT 
-                                    user_name, 
-                                    email  
-                                    FROM users');
-    $check->execute();
-    $data = $check->fetchAll();
-
-
 // update de l'user_name : on vérifie si il y a un user_name et un id
     if(isset($_GET["user_name"]) && isset($_GET["id"])){
 
@@ -30,8 +21,16 @@ require_once '../modele/database.php';
         // si le user_name n'est pas vide dans l'input
         if($user_name !== ''){
 
-            if($user_name != $data['user_name'])
-            {
+            
+            $check = $pdo->prepare('SELECT 
+                                            user_name, 
+                                            email  
+                                        FROM users
+                                        WHERE user_name = ?
+                                        ');
+            $check->execute(array($user_name));
+            if($check->rowCount() == 0) 
+            {       
 
                 if(strlen($user_name) <= 255)
                 {
@@ -45,11 +44,11 @@ require_once '../modele/database.php';
                         die();
 
                     // si échec :
-                    }else{header("Location: ../profil.php?&req=user_name_error");
-                    }
+                    }else{header("Location: ../profil.php?&req=user_name_error"); }
+                    
 
                  //   echo "Pseudo trop long";
-                }else{ header('Location:../inscription.php?req=login_name_length');  die(); }   
+                }else{ header('Location:../profil.php?req=login_name_length');  die(); }   
 
             //   echo "Login déja existant";
             }else{ header('Location:../profil.php?req=login_already_exist');  die(); }  
@@ -82,8 +81,16 @@ require_once '../modele/database.php';
 
             $email = strtolower($email);
 
-                if($email != $data['email'])
-                {
+                $check = $pdo->prepare('SELECT 
+                                                user_name, 
+                                                email  
+                                            FROM users
+                                            WHERE email = ?
+                                            ');
+                $check->execute(array($email));
+                if($check->rowCount() == 0) 
+                {       
+
                     if(strlen($email) <= 255)
                     {
 
@@ -102,14 +109,14 @@ require_once '../modele/database.php';
                             }
 
                         //   echo "Email invalide";
-                        }else{ header('Location:../inscription.php?req=email');  die(); }
+                        }else{ header('Location:../profil.php?req=email');  die(); }
 
                       
                     //   echo "Email trop long";
-                    }else{ header('Location:../inscription.php?req=email_length');  die(); } 
+                    }else{ header('Location:../profil.php?req=email_length');  die(); } 
            
                  //   echo "Email déja existant";
-                }else{ header('Location:../inscription.php?req=email_already_exist');  die(); }       
+                }else{ header('Location:../profil.php?req=email_already_exist');  die(); }       
             
         }else{
          // si erreur :
