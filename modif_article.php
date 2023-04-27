@@ -6,7 +6,7 @@ SESSION_start();
 require_once 'functions/get_posts.php';
 
 // même fonction que full article, car on veut aussi afficher l'article en grand avant de le modifier
-$article = get_full_article();
+$article = get_full_articles();
 
 // Verification que l'id de la personne soit bien connectée et celle qui à éditée l'article
 if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){

@@ -37,6 +37,25 @@ return $articles;
 }
 
 
+// fetch de tous les commentaires non validés pour la page admin-dashboard
+function get_all_comms(){
+
+    global $pdo;
+
+$sql = $pdo->prepare("SELECT * FROM comm
+                        JOIN users 
+                        ON comm.id_users=users.id
+                        JOIN articles
+                        ON articles.id=comm.id_articles
+                        WHERE comm.is_valid = '0'
+                        ORDER BY date_comm ASC"); 
+$sql->execute();
+$comments = $sql->fetchAll();
+
+return $comments;
+}
+
+
 // fetch de tous les articles de tout le monde pour la page index/accueil
 function get_posts_index(){
 
@@ -63,7 +82,7 @@ function get_posts_voyage(){
     $sql = $pdo->prepare("SELECT * FROM articles
                             JOIN users 
                             ON articles.id_users=users.id
-                            WHERE id_role = '1' AND title LIKE 'USA%'
+                            WHERE id_role = '1' AND title LIKE '%USA%'
                             ORDER BY date_articles DESC"); 
     $sql->execute();
     $articles = $sql->fetchAll();
@@ -109,7 +128,7 @@ function get_posts_other(){
 
 
 // affiche l'article sélectionné par l'url get en entier dans full_article.php et modif_article.php
-function get_full_article(){
+function get_full_articles(){
 
     global $pdo;
 
@@ -125,11 +144,11 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
     $articles->execute(array($get_id));
 
     if($articles->rowCount() == 1) {
-        $other_article = $articles->fetch();
+        $other_articles = $articles->fetch();
 
-        return $other_article; 
+        return $other_articles; 
 
-    }else{ die('Cet article n\'existe pas !');   
+    }else{ die('Cet article n\'existe pas, ou pas encore !');   
     }
     
 }else{ die('Erreur');         
@@ -137,27 +156,37 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
 }
 
 
-// fetch de tous les commentaires non validés pour la page admin-dashboard
-function get_all_comms(){
+
+// affiche l'article sélectionné par l'url get en entier dans full_article.php et dans modif_comm.php
+function get_full_comments(){
 
     global $pdo;
 
-$sql = $pdo->prepare("SELECT * FROM comm
-                        JOIN users 
-                        ON comm.id_users=users.id
-                        JOIN articles
-                        ON articles.id=comm.id_articles
-                        WHERE comm.is_valid = '0'
-                        ORDER BY date_comm ASC"); 
-$sql->execute();
-$comments = $sql->fetchAll();
+if(isset($_GET['id']) && !empty($_GET['id'])) {
 
-return $comments;
+    $get_id = htmlspecialchars($_GET['id']);
+
+    $comms = $pdo->prepare('SELECT * FROM comm
+                                    JOIN users 
+                                    ON comm.id_users=users.id
+                                    JOIN articles
+                                    ON articles.id=comm.id_articles
+                                    WHERE articles.id = ? AND comm.is_valid ="1"
+                                    ORDER BY date_comm ASC
+                                ');
+    $comms->execute(array($get_id));
+
+    if($comms->rowCount() > 0 ) {
+        $comments = $comms->fetchAll();
+
+        return $comments; 
+
+    }else{ die('Il n\'y en à pas encore, soyez le ou la premier(e) !');   
+    }
+    
+}else{ die('Erreur');         
 }
-
-
-
-
+}
 
 
 ?>

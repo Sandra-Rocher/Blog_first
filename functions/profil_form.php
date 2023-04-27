@@ -4,12 +4,21 @@
 require_once '../modele/database.php';
 
 
+
+    $check = $pdo->prepare('SELECT 
+                                    user_name, 
+                                    email  
+                                    FROM users');
+    $check->execute();
+    $data = $check->fetchAll();
+
+
 // update de l'user_name : on vérifie si il y a un user_name et un id
     if(isset($_GET["user_name"]) && isset($_GET["id"])){
 
         // on les passe en htmlspecialchars pour empecher les failles xss et on les place dans des variables qu'on à nommées
         $id = htmlspecialchars($_GET["id"]);
-        $GETuser_name = htmlspecialchars($_GET["user_name"]);
+        $user_name = htmlspecialchars($_GET["user_name"]);
     }
 
     // si un user_name à été posté et existe
@@ -20,23 +29,35 @@ require_once '../modele/database.php';
 
         // si le user_name n'est pas vide dans l'input
         if($user_name !== ''){
-            
-            // on prepare et execute dans la table users le nouveau user_name choisis et post
-            $edit = $pdo->prepare("UPDATE users SET user_name = ? WHERE id = ?");
-            if($edit->execute([$user_name, $id]))
-            {
-            // en réussite :
-                header("Location: ../profil.php?&req=user_name_upd");
-                die();
 
-            // si échec :
-            }else{header("Location: ../profil.php?&req=user_name_error");
-            }
+            if($user_name != $data['user_name'])
+            {
+
+                if(strlen($user_name) <= 255)
+                {
+            
+                    // on prepare et execute dans la table users le nouveau user_name choisis et post
+                    $edit = $pdo->prepare("UPDATE users SET user_name = ? WHERE id = ?");
+                    if($edit->execute([$user_name, $id]))
+                    {
+                    // en réussite :
+                        header("Location: ../profil.php?&req=user_name_upd");
+                        die();
+
+                    // si échec :
+                    }else{header("Location: ../profil.php?&req=user_name_error");
+                    }
+
+                 //   echo "Pseudo trop long";
+                }else{ header('Location:../inscription.php?req=login_name_length');  die(); }   
+
+            //   echo "Login déja existant";
+            }else{ header('Location:../profil.php?req=login_already_exist');  die(); }  
 
         }
         else{
-            // si erreur :
-            $error = "veuillez remplir les champs";
+         // si erreur :
+        $error = "veuillez remplir les champs";
         }
     }
 
@@ -46,7 +67,7 @@ require_once '../modele/database.php';
 
         // on les passe en htmlspecialchars pour empecher les failles xss et on les place dans des variables qu'on à nommées
         $id = htmlspecialchars($_GET["id"]);
-        $GETemail = htmlspecialchars($_GET["email"]);
+        $email = htmlspecialchars($_GET["email"]);
     }
     
 
@@ -56,24 +77,43 @@ require_once '../modele/database.php';
         // on le passe en htmlspecialchars
         $email = htmlspecialchars($_POST["email"]);
 
-    // si l'email n'est pas vide dans l'input
+        // si l'email n'est pas vide dans l'input
         if($email !== ''){
 
-            // on prepare et execute dans la table users le nouvel email choisis et post
-            $edit = $pdo->prepare("UPDATE users SET email = ? WHERE id = ?");
-            if($edit->execute([$email, $id]))
-            {
-            // si réussite :
-            header("Location: ../profil.php?&req=user_email_upd");
-            die();
-            // si échec :
-            }else{header("Location: ../profil.php?&req=email_user_error");
-            }
+            $email = strtolower($email);
+
+                if($email != $data['email'])
+                {
+                    if(strlen($email) <= 255)
+                    {
+
+                        if(filter_var($email, FILTER_VALIDATE_EMAIL))
+                        {
+
+                            // on prepare et execute dans la table users le nouvel email choisis et post
+                            $edit = $pdo->prepare("UPDATE users SET email = ? WHERE id = ?");
+                            if($edit->execute([$email, $id]))
+                            {
+                            // si réussite :
+                            header("Location: ../profil.php?&req=user_email_upd");
+                            die();
+                            // si échec :
+                            }else{header("Location: ../profil.php?&req=email_user_error");
+                            }
+
+                        //   echo "Email invalide";
+                        }else{ header('Location:../inscription.php?req=email');  die(); }
+
+                      
+                    //   echo "Email trop long";
+                    }else{ header('Location:../inscription.php?req=email_length');  die(); } 
            
+                 //   echo "Email déja existant";
+                }else{ header('Location:../inscription.php?req=email_already_exist');  die(); }       
             
         }else{
-            // si erreur :
-            $error = "veuillez remplir les champs";
+         // si erreur :
+        $error = "veuillez remplir les champs";
         }
     }
 

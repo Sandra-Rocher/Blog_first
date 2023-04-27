@@ -146,6 +146,20 @@ if(!empty($comments)){
 }
 ?>
 
+
+
+<?php
+                    if(isset($_SESSION["id"]) && $_SESSION["id"] == $comment["user_name"]) {
+                    ?>
+                    <?php
+                           echo '   <a href="modif_comm_form.php?id='. $other_articles["id"] . '" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon commentaire</a>
+                                            
+             ';
+            }
+?>
+
+
+
     </div>
 
 <!-- page footer -->

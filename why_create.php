@@ -31,7 +31,7 @@ session_start();
     <div class="fs-6 mt-4 mb-5">
         <ul>
             <li>Pour participer aux fonctions qu'il réserve en vous inscrivant</li>
-            <li>Pour l'agayer d'articles et le faire vivre</li>
+            <li>Pour l'agayer d'articles, de commentaires et le faire vivre</li>
             <li>Pour challenger la créatrice et l'admin, si vous trouvez des erreurs, bugs, 404 etc : dites "false" sur mon email</li>
             <li>Vos informations seront stockées dans une base de données qui ne sera jamais divulgée sur internet, pas 
                 d'utilisation à des fins commercial, pas de pub monnayés, pas d'offre de pop-up qui vous saute dessus, rien.</li>

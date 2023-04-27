@@ -64,6 +64,23 @@ $data = get_data_profil();
                         <?php
                         break;
 
+                        case 'login_already_exist':
+                            ?>
+                                <div class="alert alert-danger">
+                                    <strong>Erreur</strong>  Login déjà existant !
+                                </div>
+                            <?php
+                        break;
+
+                        case 'login_name_length':
+                            ?>
+                                <div class="alert alert-danger">
+                                    <strong>Erreur</strong> Login trop long !
+                                </div>
+                            <?php
+                        break;
+    
+
                         case 'user_email_upd':
                         ?>
                             <div class="alert alert-success">
@@ -78,6 +95,30 @@ $data = get_data_profil();
                                     <strong>Erreur</strong> email non modifié !
                                 </div>
                         <?php
+                        break;
+
+                        case 'email_already_exist':
+                            ?>
+                                <div class="alert alert-danger">
+                                    <strong>Erreur</strong> Email déjà existant !
+                                </div>
+                            <?php
+                        break;
+
+                        case 'email_length':
+                            ?>
+                                <div class="alert alert-danger">
+                                    <strong>Erreur</strong> Email trop long !
+                                </div>
+                            <?php
+                        break;
+
+                        case 'req_email':
+                            ?>
+                                <div class="alert alert-danger">
+                                    <strong>Erreur</strong> Mauvais email !
+                                </div>
+                            <?php
                         break;
 
                         case 'pass_user_upd':

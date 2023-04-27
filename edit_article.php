@@ -29,6 +29,7 @@ SESSION_start();
             <h1 class="mt-5">Créer un article</h1>
                 <form class="form-group" method="POST" action="functions/edit_article_form.php" enctype="multipart/form-data">
                     <div class="d-grid gap-2 col-sm-12 col-md-8 col-lg-10 mx-auto mt-4">
+                        
  <?php 
 
                 if(isset($_GET['reg_err']))

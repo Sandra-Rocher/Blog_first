@@ -205,8 +205,8 @@ foreach($tables as $table_name => $table){
                         <tr id="Article_' . $article[0] . '">
                         
                             <td> <img src="stock_avatar/'. $article['image'].'" width="120" height="80" alt="image de l\'article"></td>
-                            <td>'.substr($article["title"],0,40).'...</td>
-                            <td>'.substr($article["content"],0,100) .'...</td>
+                            <td>'.substr($article["title"],0,30).'...</td>
+                            <td>'.substr($article["content"],0,80) .'...</td>
                             <td>
                                 
                                 <a href="functions/agree_article.php?id='. $article[0].'" class="btn btn-success mb-3"><i class="bi bi-check"></i></a>
@@ -271,7 +271,7 @@ foreach($tables as $table_name => $table){
                         
                             <td> <img src="stock_avatar/'. $comment['image'].'" width="120" height="80" alt="image de l\'article"></td>
                             
-                            <td>'.substr($comment["comm"],0,125) .'...</td>
+                            <td>'.substr($comment["comment"],0,80) .'...</td>
                             <td>
                                 
                                 <a href="functions/agree_comm.php?id='. $comment[0].'" class="btn btn-success mb-3"><i class="bi bi-check"></i></a>
@@ -290,7 +290,7 @@ foreach($tables as $table_name => $table){
                                                     <div class="modal-body">
                                                         <p class="modal-title" id="idArticle"> <strong> Titre et photo de l\'article concerné : </strong>'.$comment["title"].' </p>
                                                          <img src="stock_avatar/'. $comment['image'].'" width="450" height="400" alt="image de l\'article">
-                                                         <p><strong>Commentaire :</strong> '.$comment["comm"].' </p>
+                                                         <p><strong>Commentaire :</strong> '.$comment["comment"].' </p>
                                                     </div>
 
                                                     <div class="modal-footer">
