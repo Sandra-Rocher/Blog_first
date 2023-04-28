@@ -101,7 +101,7 @@ if(!empty($_FILES['avatar'] ['name']))
                               ));
 
                             //   echo "Inscription réussie !";
-                              header('Location:../inscription.php?reg_err=success_ins'); 
+                              header('Location:../connexion.php?login_err=success_ins'); 
 
                      //   echo "Upload non effectué";
                     }else{header('Location:../inscription.php?reg_err=error');  die(); }

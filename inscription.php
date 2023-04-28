@@ -37,13 +37,6 @@ SESSION_start();
                     {
 
  // Erreurs inscription ci dessous
-                        case 'success_ins':
-                        ?>
-                            <div class="alert alert-success">
-                                <strong>Succès</strong> Inscription réussie !
-                            </div>
-                        <?php
-                        break;
 
                         case 'password':
                         ?>

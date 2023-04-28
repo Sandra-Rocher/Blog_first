@@ -22,7 +22,7 @@ SESSION_start();
     if(empty($_SESSION['id'])){
 ?>
 
-        
+<div class="container d-flex align-items-center" style="height: 550px;">
     <div class="container col-sm-12 col-md-8 col-lg-3 border border-info shadow-lg mb-5 mt-5">
         <div class="row shadow-lg bg-info-rounded">
             <div class="text-center mt-4">
@@ -38,6 +38,15 @@ SESSION_start();
 
                     switch($err)
                     {
+
+                        case 'success_ins':
+                            ?>
+                                <div class="alert alert-success">
+                                    <strong>Succès</strong> Inscription réussie !
+                                </div>
+                            <?php
+                        break;
+
                         case 'wrong_password':
                         ?>
                             <div class="alert alert-danger">
@@ -77,6 +86,15 @@ SESSION_start();
                                  </div>
                             <?php
                         break;
+
+// succes changement de mdp oublié
+                        case 'finaly':
+                            ?>
+                                <div class="alert alert-success">
+                                    <strong>Succès</strong> Mot de passe modifié !
+                                </div>
+                            <?php
+                        break;
                     }
         }
 ?> 
@@ -90,12 +108,13 @@ SESSION_start();
                             <button tpe="submit" class="btn btn-info">Connexion</button>
                         </div>
                     </form>
-                            <p class="text-center mt-4 mb-4">Pas encore de compte ? <a href="inscription.php">S'inscrire</a></p>
+                            <p class="text-center mt-4"><a href="forgot_code.php">Mot de passe oublié</a></p>
+                            <p class="text-center mb-4">Pas encore de compte ? <a href="inscription.php">S'inscrire</a></p>
                     
             </div>
         </div>
     </div>
-
+</div>
 
 <?php
 }else{
