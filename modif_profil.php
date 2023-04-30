@@ -64,13 +64,13 @@ $data = get_data_profil();
                             <div class="card-body text-center mb-4">
     
                                 <div class="mx-auto mt-4 mb-4 "><?php
-                                    echo' <img src=stock_avatar/' . $data["avatar"] . ' class="rounded-circle w-50">'?>
+                                    echo' <img src=stock_avatar/'.$data["avatar"].' class="rounded-circle w-50">'?>
                                 </div>
     
                                     
                                     <h5 class="mt-4">Login actuel : <?php if(isset($_GET["user_name"])){ echo htmlspecialchars($_GET["user_name"]); } ?></h5>
 
-                                    <form action="functions/profil_form.php?id=<?php echo $data["id"] ?>&user_name=<?php echo $data["user_name"] ?>" method="POST">
+                                    <form action="functions/profil_form.php?&id=<?php echo $data["id"] ?>&user_name=<?php echo $data["user_name"] ?>" method="POST">
                                         <div class="input-group">
                                             <input type="text" class="form-control" name="user_name" id="user_name"
                                             value="<?php if(isset($_GET["user_name"])){ echo htmlspecialchars($_GET["user_name"]); } ?>">
@@ -82,7 +82,7 @@ $data = get_data_profil();
 
                                     <h5 class="mt-4">Email actuel : <?php if(isset($_GET["email"])){ echo htmlspecialchars($_GET["email"]); } ?></h5>
 
-                                    <form action="functions/profil_form.php?id=<?php echo $data["id"] ?>&email=<?php echo $data["email"] ?>" method="POST">
+                                    <form action="functions/profil_form.php?&id=<?php echo $data["id"] ?>&email=<?php echo $data["email"] ?>" method="POST">
                                         <div class="input-group">
                                             <input type="text" class="form-control" name="email" id="email"
                                             value="<?php if(isset($_GET["email"])){ echo htmlspecialchars($_GET["email"]); } ?>">
@@ -97,7 +97,7 @@ $data = get_data_profil();
                                         <h5>Password actuel : Non révélé</h5>
                                      </div>
 
-                                     <form action="functions/profil_form.php?id=<?php echo $data["id"] ?>" method="POST">
+                                     <form action="functions/profil_form.php?&id=<?php echo $data["id"] ?>" method="POST">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Entrez le nouveau password" name="password" id="password">
                                                                 
@@ -109,7 +109,7 @@ $data = get_data_profil();
                                         <h5>Modifier votre avatar</h5>
                                     </div>
 
-                                    <form action="functions/profil_form.php?id=<?php echo $data["id"] ?>" method="POST" enctype="multipart/form-data">
+                                    <form action="functions/profil_form.php?&id=<?php echo $data["id"] ?>" method="POST" enctype="multipart/form-data">
                                         <div class="input-group">
                                             <input type="file" class="form-control" name="avatar" id="avatar" aria-describedby="avatar" aria-label="Upload">
                                             <button class="bg-info btn btn-outline-black" type="submit" id="avatar">Modifier</button>

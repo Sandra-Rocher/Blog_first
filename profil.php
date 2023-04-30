@@ -219,18 +219,17 @@ $data = get_data_profil();
 
 
     echo     '       
-    
                                 <div class="card border border-info shadow-lg bg-info-rounded" style="border-radius: 15px;">
                                     <div class="card-body text-center">
     
                                          <div class="mx-auto mt-4 mb-4 ">
-                                            <img src= stock_avatar/' . $data["avatar"] . ' class="rounded-circle w-100">
+                                            <img src= stock_avatar/'.$data["avatar"].' class="rounded-circle w-100">
                                         </div>
     
-                                        <h4 class="mb-2"> '. $data ["user_name"] . ' </h4>
-                                        <p class="text-muted mb-4"> '. $data ["email"] . ' </p>
+                                        <h4 class="mb-2"> '.$data["user_name"].' </h4>
+                                        <p class="text-muted mb-4"> '.$data["email"].' </p>
                                 
-                                        <a href="modif_profil.php?id='. $data ["id"] .'&user_name='. $data ["user_name"] .'&email='. $data ["email"] .'&avatar=' . $data["avatar"] . '"> <button type="button" class="btn btn-info btn-rounded btn-lg"> Modifier </button></a>
+                                        <a href="modif_profil.php?&id='.$data["id"].'&user_name='. $data["user_name"].'&email='.$data["email"].'&avatar='.$data["avatar"].'"> <button type="button" class="btn btn-info btn-rounded btn-lg">Modifier</button></a>
                             
                                     </div>
                                 </div>
@@ -238,7 +237,7 @@ $data = get_data_profil();
                             </div>
                         </div>
                      </div> ';
-   
+                     
  ?>
 
 <?php require_once 'footer.php' ?>

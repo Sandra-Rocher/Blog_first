@@ -12,7 +12,7 @@ $article = get_full_articles();
 if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
     
         // redirection sur l'article en full qui été sélectionné par l'id
-  header('Location:full_article.php?id='. $article[0] . '&rep_err=wrong_id_us');
+  header('Location:full_article.php?id='.$article[0].'&rep_err=wrong_id_us');
 }
 
 ?>
@@ -64,30 +64,30 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
                     <div class="row text-center border border-info shadow-lg bg-info-rounded">
                         <h1 class="mt-5">Modifier un article</h1>
 
-                                <form class="form-group mt-3" method="POST" action="functions/modif_article_form.php?id= ' . $_GET['id'] . '" enctype="multipart/form-data">
+                                <form class="form-group mt-3" method="POST" action="functions/modif_article_form.php?&id='.$_GET['id'].'" enctype="multipart/form-data">
                                     <div class="d-grid gap-2 col-sm-12 col-md-8 col-lg-10 mx-auto mt-3">
 
                                         <label for="title_art" class="fs-4 mx-auto">Modifier votre titre</label>
-                                        <input type="text" class="form-control" name="tit" id="title_art"  placeholder="Titre de votre article..." value="' . $article[1] . '" required="required">
+                                        <input type="text" class="form-control" name="tit" id="title_art"  placeholder="Titre de votre article..." value="'.$article[1].'" required="required">
             
                                         <label for="comm_art" class="fs-4 mx-auto">Modifier votre commentaire</label>
-                                        <textarea class="form-control" name="cont" id="comm_art" rows="8" required="required" placeholder="" >' . $article[2] . '</textarea>
+                                        <textarea class="form-control" name="cont" id="comm_art" rows="8" required="required" placeholder="" >'.$article[2].'</textarea>
             
 
                                        <div class="row mt-3">
                                             <div class="col-6">
-                                                <img src= stock_avatar/' . $article [3] . ' class="card-img-top w-25" alt=" '. $article [1] . '">
+                                                <img src= stock_avatar/'.$article [3].' class="card-img-top w-25" alt=" '.$article [1].'">
                                             </div> 
                                             <div class="col-6 mt-auto mb-auto">
                                                 <label for="image_art" class="fs-4 mx-auto">Modifier l\'image</label>
-                                                <input type="file" class="form-control" name="image" id="image_art"  placeholder="" value="<?= ' . $article[3] . ' ?>" ">
+                                                <input type="file" class="form-control" name="image" id="image_art"  placeholder="" value="<?= '.$article[3].' ?>" ">
                                             </div> 
                                         </div>
                                         
 
                                         <div class="row">
                                             <div class="d-flex justify-content-around mx-auto mt-5 mb-4">
-                                                <a href="functions/delete_article.php?id= ' . $_GET['id'] . '"<button class="confirmModal btn btn-info" type="submit">Supprimer entièrement l\'article</button></a>
+                                                <a href="functions/delete_article.php?&id='.$_GET['id'].'"<button class="confirmModal btn btn-info" type="submit">Supprimer entièrement l\'article</button></a>
                                                 <button class="btn btn-info" type="submit">Envoyer les modifications</button>
                                             </div>
                                         </div>

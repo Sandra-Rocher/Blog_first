@@ -9,7 +9,6 @@ require_once 'functions/get_posts.php';
 $other_articles = get_full_articles();
 
 
-
 ?>
 
 
@@ -89,10 +88,13 @@ if(isset($_GET['rep_err']))
                     <img src= stock_avatar/' . $other_articles['image'] . ' class="card-img" alt=" '. $other_articles['title'] . '">
                         <div class="container">
                             <h3 class="mt-3 mb-3"> ' . $other_articles['title'] . ' </h3>
-                            <p class=""><small>Publié le ' . date("d/m/Y à H:i", strtotime($other_articles['date_articles'])) . ' par <span class="fw-bold"> '. $other_articles['user_name'] . ' </span></small></p>
-                                <div class="">
-                                <p class=""> ' . $other_articles['content'] . ' </p>
-                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class=""><small>Publié le ' . date("d/m/Y à H:i", strtotime($other_articles['date_articles'])) . ' par <span class="fw-bold"> '. $other_articles['user_name'] . ' </span></small></p>
+                                    <a class="mt-3 btn btn-info" href="like_form.php?&id='.$other_articles['0'].'" role="button"><i class="bi bi-hand-thumbs-up"> '.$other_articles["likesPerArticle"].'</i></a>
+                                </div>    
+                                    <div class="">
+                                        <p class=""> ' . $other_articles['content'] . ' </p>
+                                    </div>
                         </div> 
                                 ';
                                 ?>
@@ -101,7 +103,7 @@ if(isset($_GET['rep_err']))
                     if(isset($_SESSION["id"]) && $_SESSION["id"] == $other_articles["id"]) {
                     ?>
                     <?php
-                           echo '   <a href="modif_article.php?id='. $other_articles["0"] . '" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon article</a>
+                           echo '   <a href="modif_article.php?&id='. $other_articles["0"] . '" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon article</a>
                                             
              ';
             }
@@ -110,7 +112,7 @@ if(isset($_GET['rep_err']))
 <?php
      echo  ' <div class="container">
             <div class="row">
-                <form class="form-group" method="POST" action="functions/comm_form.php?id= '.$other_articles['0'] .'">
+                <form class="form-group" method="POST" action="functions/comm_form.php?&id= '.$other_articles['0'] .'">
                     <div class="d-grid gap-2 col-sm-12 col-md-8 col-lg-10 mx-auto mt-4">
 
                             <label for="comm_art" class="fs-5 fw-bold">Ecrivez votre commentaire :</label>
@@ -152,7 +154,7 @@ if(!empty($comments)){
                     if(isset($_SESSION["id"]) && $_SESSION["id"] == $comment["user_name"]) {
                     ?>
                     <?php
-                           echo '   <a href="modif_comm_form.php?id='. $other_articles["id"] . '" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon commentaire</a>
+                           echo '   <a href="modif_comm_form.php?&id='. $other_articles["id"] . '" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon commentaire</a>
                                             
              ';
             }

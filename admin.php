@@ -204,32 +204,32 @@ foreach($tables as $table_name => $table){
                 echo '
                         <tr id="Article_' . $article[0] . '">
                         
-                            <td> <img src="stock_avatar/'. $article['image'].'" width="120" height="80" alt="image de l\'article"></td>
+                            <td> <img src="stock_avatar/'.$article['image'].'" width="120" height="80" alt="image de l\'article"></td>
                             <td>'.substr($article["title"],0,30).'...</td>
                             <td>'.substr($article["content"],0,80) .'...</td>
                             <td>
                                 
                                 <a href="functions/agree_article.php?id='. $article[0].'" class="btn btn-success mb-3"><i class="bi bi-check"></i></a>
-                                <a class="confirmModal btn btn-danger mb-3" href="functions/delete_article.php?id='. $article[0].'" ><i class="bi bi-trash3"></i></a>
-                                <a href="#idArt'. $article[0] .'" data-bs-toggle="modal" data-bs-target="#idArt'. $article[0] .'" class="btn btn-info modal-trigger mb-3"><i class="bi bi-eye"></i></a>
+                                <a class="confirmModal btn btn-danger mb-3" href="functions/delete_article.php?id='.$article[0].'" ><i class="bi bi-trash3"></i></a>
+                                <a href="#idArt'.$article[0].'" data-bs-toggle="modal" data-bs-target="#idArt'.$article[0].'" class="btn btn-info modal-trigger mb-3"><i class="bi bi-eye"></i></a>
 
-                                        <div class="modal fade" id="idArt'. $article[0] .'" tabindex="-1" aria-labelledby="idArticle" aria-hidden="true">
+                                        <div class="modal fade" id="idArt'.$article[0].'" tabindex="-1" aria-labelledby="idArticle" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-scrollable">
                                                 <div class="modal-content">
                                                 
                                                     <div class="modal-header">
-                                                        <p>Article posté par <strong> <p class="text-info">'.$article["user_name"].' </p></strong></p>
-                                                        <p> Le '.date("d/m/Y à H:i", strtotime($article["date_articles"])).' </p>
+                                                        <p>Article posté par <strong> <p class="text-info">'.$article["user_name"].'</p></strong></p>
+                                                        <p> Le '.date("d/m/Y à H:i", strtotime($article["date_articles"])).'</p>
                                                     </div>   
 
                                                     <div class="modal-body">
                                                         <p class="modal-title" id="idArticle"><strong> Titre et photo : </strong> '.$article["title"].' </p>
-                                                         <img src="stock_avatar/'. $article['image'].'" width="450" height="400" alt="image de l\'article">
-                                                         <p><strong>Description :</strong> '.$article["content"].' </p>
+                                                         <img src="stock_avatar/'.$article['image'].'" width="450" height="400" alt="image de l\'article">
+                                                         <p><strong>Description :</strong> '.$article["content"].'</p>
                                                     </div>
 
                                                     <div class="modal-footer">
-                                                         <a href="functions/agree_article.php?id='. $article[0].'" class="btn btn-success mb-3" ><i class="bi bi-check"></i></a>
+                                                         <a href="functions/agree_article.php?id='.$article[0].'" class="btn btn-success mb-3" ><i class="bi bi-check"></i></a>
                                                          <button type="button" class="btn btn-dark mb-3" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
                                                     </div>
                                                 </div>
@@ -276,7 +276,7 @@ foreach($tables as $table_name => $table){
                                 
                                 <a href="functions/agree_comm.php?id='. $comment[0].'" class="btn btn-success mb-3"><i class="bi bi-check"></i></a>
                                 <a class="confirmModal btn btn-danger mb-3" href="functions/delete_comm.php?id='. $comment[0].'"><i class="bi bi-trash3"></i></a>
-                                <a href="#idArt'. $comment[0] .'" data-bs-toggle="modal" data-bs-target="#idArt'. $comment[0] .'" class="btn btn-info modal-trigger mb-3"><i class="bi bi-eye"></i></a>
+                                <a href="#idArt'.$comment[0].'" data-bs-toggle="modal" data-bs-target="#idArt'.$comment[0].'" class="btn btn-info modal-trigger mb-3"><i class="bi bi-eye"></i></a>
 
                                         <div class="modal fade" id="idArt'. $comment[0] .'" tabindex="-1" aria-labelledby="idArticle" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-scrollable">
@@ -294,7 +294,7 @@ foreach($tables as $table_name => $table){
                                                     </div>
 
                                                     <div class="modal-footer">
-                                                         <a href="functions/agree_comm.php?id='. $comment[0].'" class="btn btn-success mb-3" ><i class="bi bi-check"></i></a>
+                                                         <a href="functions/agree_comm.php?id='.$comment[0].'" class="btn btn-success mb-3" ><i class="bi bi-check"></i></a>
                                                          <button type="button" class="btn btn-dark mb-3" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
                                                     </div>
                                                 </div>

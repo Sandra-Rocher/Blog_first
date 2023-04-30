@@ -37,15 +37,15 @@ if(isset($_POST['email']) && isset($_POST['password']))
                         {
                             header('Location: ../profil.php');
 
-                        } else { header('Location: ../connexion.php?login_err=fatalError'); die(); }
+                        } else { header('Location: ../connexion.php?&login_err=fatalError'); die(); }
                         
-                }else{ header('Location:../connexion.php?login_err=wrong_password'); die(); }
+                }else{ header('Location:../connexion.php?&login_err=wrong_password'); die(); }
 
-            }  else{ header('Location:../connexion.php?login_err=wrong_email'); die(); }
+            }  else{ header('Location:../connexion.php?&login_err=wrong_email'); die(); }
 
-        } else{ header('Location:../connexion.php?login_err=no_exist'); die(); }
+        } else{ header('Location:../connexion.php?&login_err=no_exist'); die(); }
 
-    } else{ header('Location:../connexion.php?login_err=empty'); die(); }
+    } else{ header('Location:../connexion.php?&login_err=empty'); die(); }
 
 } else{ header('Location:../connexion.php'); die(); }
 

@@ -58,10 +58,10 @@ if(isset($_GET['success']))
                             </div> 
                                 <h5 class="card-title text-center"> '.$article["title"].'</h5>
                                 <a href="full_article.php?id='.$article[0].'"> <img src= stock_avatar/'.$article["image"].' class="card-img-top" alt="'.$article["title"].'"></a>
-                                    <div class="card-body mx-auto">
-                                        <p class="card-text overflow-auto"> '.substr(nl2br($article["content"]),0,1000).'...</p>
-                                        <a href="full_article.php?id='.$article[0].'" class="btn btn-info d-flex justify-content-center mb-3" >Voir l\'article en entier</a>
-                                    </div>
+                                <div class="card-body mx-auto">
+                                    <p class="card-text overflow-auto"> '.substr(nl2br($article["content"]),0,1000).'...</p>
+                                    <a href="full_article.php?id='.$article[0].'" class="btn btn-info d-flex justify-content-center mb-3" >Voir l\'article en entier</a>
+                                </div>
                         </div>
                     </div>
                 ';

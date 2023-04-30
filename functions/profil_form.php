@@ -48,10 +48,10 @@ require_once '../modele/database.php';
                     
 
                  //   echo "Pseudo trop long";
-                }else{ header('Location:../profil.php?req=login_name_length');  die(); }   
+                }else{ header('Location:../profil.php?&req=login_name_length');  die(); }   
 
             //   echo "Login déja existant";
-            }else{ header('Location:../profil.php?req=login_already_exist');  die(); }  
+            }else{ header('Location:../profil.php?&req=login_already_exist');  die(); }  
 
         }
         else{
@@ -109,14 +109,14 @@ require_once '../modele/database.php';
                             }
 
                         //   echo "Email invalide";
-                        }else{ header('Location:../profil.php?req=email');  die(); }
+                        }else{ header('Location:../profil.php?&req=email');  die(); }
 
                       
                     //   echo "Email trop long";
-                    }else{ header('Location:../profil.php?req=email_length');  die(); } 
+                    }else{ header('Location:../profil.php?&req=email_length');  die(); } 
            
                  //   echo "Email déja existant";
-                }else{ header('Location:../profil.php?req=email_already_exist');  die(); }       
+                }else{ header('Location:../profil.php?&req=email_already_exist');  die(); }       
             
         }else{
          // si erreur :
@@ -213,22 +213,22 @@ require_once '../modele/database.php';
                               $insert->execute([$newname, $id]);
 
                             //   echo "Changement de l'avatar réussie !";
-                              header('Location:../profil.php?req=success_avat'); 
+                              header('Location:../profil.php?&req=success_avat'); 
 
                      //   echo "Upload non effectué";
-                    }else{header('Location:../profil.php?req=error');  die(); }
+                    }else{header('Location:../profil.php?&req=error');  die(); }
                     
                      //   echo "Image trop lourde ou format incorrect";
-                }else{header('Location:../profil.php?req=type_file');  die(); }
+                }else{header('Location:../profil.php?&req=type_file');  die(); }
                 
                  //   echo "Merci de sélectionner une image";
-            }else{header('Location:../profil.php?req=image'); die(); }
+            }else{header('Location:../profil.php?&req=image'); die(); }
         
              //   echo "Type non autorisé. Veuillez choisir une image.png ou .jpg ou .jpeg ou .gif";
-        }else{header('Location:../profil.php?req=type');  die(); }
+        }else{header('Location:../profil.php?&req=type');  die(); }
     
          //   echo "Veuillez selectionner une image";
-    }else{header('Location:../profil.php?req=check');  die();
+    }else{header('Location:../profil.php?&req=check');  die();
         
     }
 

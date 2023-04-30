@@ -68,7 +68,7 @@ if(isset($_GET['email'])){
                 <div class="text-center mt-4">
                         <h2 class="text-center">Mot de passe oublié</h2>
                         <h3 class="text-center">Etape intermédiaire</h3>
-                        <form class="form-group" method="POST" action="functions/forgot_code_hash_form.php?email=<?php echo $email ?>">
+                        <form class="form-group" method="POST" action="functions/forgot_code_hash_form.php?&email=<?php echo $email ?>">
                             <div class="d-grid gap-2 mx-auto mt-4">
 
                                 <label for="forg_hash" class="fs-5 mx-auto">Veuillez saisir le code reçu par email</label>

@@ -38,22 +38,22 @@
                                     // la suite plus bas, pour add en une seule fois
 
                                      //   echo "Mot de passe différent";
-                                }else{ header('Location:../inscription.php?reg_err=password');  die(); }
+                                }else{ header('Location:../inscription.php?&reg_err=password');  die(); }
                                 
                                 //   echo "Email invalide";
-                            }else{ header('Location:../inscription.php?reg_err=email');  die(); }
+                            }else{ header('Location:../inscription.php?&reg_err=email');  die(); }
 
                              //   echo "Email trop long";
-                        }else{ header('Location:../inscription.php?reg_err=email_length');  die(); }    
+                        }else{ header('Location:../inscription.php?&reg_err=email_length');  die(); }    
 
                          //   echo "Pseudo trop long";
-                    }else{ header('Location:../inscription.php?reg_err=user_name_length');  die(); }
+                    }else{ header('Location:../inscription.php?&reg_err=user_name_length');  die(); }
 
                       //   echo "Email déja existant";
-                }else{ header('Location:../inscription.php?reg_err=email_already_exist');  die(); }
+                }else{ header('Location:../inscription.php?&reg_err=email_already_exist');  die(); }
 
                   //   echo "Login déja existant";
-            }else{ header('Location:../inscription.php?reg_err=user_name_already_exist');  die(); }    
+            }else{ header('Location:../inscription.php?&reg_err=user_name_already_exist');  die(); }    
 
  }
 
@@ -101,22 +101,22 @@ if(!empty($_FILES['avatar'] ['name']))
                               ));
 
                             //   echo "Inscription réussie !";
-                              header('Location:../connexion.php?login_err=success_ins'); 
+                              header('Location:../connexion.php?&login_err=success_ins'); 
 
                      //   echo "Upload non effectué";
-                    }else{header('Location:../inscription.php?reg_err=error');  die(); }
+                    }else{header('Location:../inscription.php?&reg_err=error');  die(); }
                     
                      //   echo "Image trop lourde ou format incorrect";
-                }else{header('Location:../inscription.php?reg_err=type_file');  die(); }
+                }else{header('Location:../inscription.php?&reg_err=type_file');  die(); }
                 
                  //   echo "Merci de sélectionner une image";
-            }else{header('Location:../inscription.php?reg_err=image'); die(); }
+            }else{header('Location:../inscription.php?&reg_err=image'); die(); }
         
              //   echo "Type non autorisé. Veuillez choisir une image.png ou .jpg ou .jpeg ou .gif";
-        }else{header('Location:../inscription.php?reg_err=type');  die(); }
+        }else{header('Location:../inscription.php?&reg_err=type');  die(); }
     
          //   echo "Veuillez selectionner une image";
-    }else{header('Location:../inscription.php?reg_err=check');  die();
+    }else{header('Location:../inscription.php?&reg_err=check');  die();
         
     }
    

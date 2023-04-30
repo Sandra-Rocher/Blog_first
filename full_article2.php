@@ -27,7 +27,7 @@ $other_article = get_full_article();
 <?php
 // NE FONCTIONNE PAAAAAAAAAAAAAAASSSSSSSSSSSS car je n'ai pas mis la reg dans la page concernée ?
 if($other_article == false){
-    header("Location:other_articles.php?message=error_full");
+    header("Location:other_articles.php?&message=error_full");
 
 }else{
 
@@ -68,11 +68,11 @@ if(isset($_GET['rep_err']))
                      
 
                         <div class="card border border-info shadow-lg mt-3>
-                            <p class="card-text"><small class="text-info text-center mt-3">Publié le ' . date("d/m/Y à H:i", strtotime($other_article["date_articles"])) . ' par <span class="fw-bold"> '. $other_article["user_name"] . ' </span></small></p>
+                            <p class="card-text"><small class="text-info text-center mt-3">Publié le ' . date("d/m/Y à H:i", strtotime($other_article["date_articles"])).' par <span class="fw-bold"> '. $other_article["user_name"].' </span></small></p>
                             <h5 class="card-title text-center"> ' . $other_article["title"] . ' </h5>
-                            <img src= stock_avatar/' . $other_article["image"] . ' class="card-img" alt=" '. $other_article["title"] . '">
+                            <img src= stock_avatar/'.$other_article["image"].' class="card-img" alt=" '.$other_article["title"].'">
                             <div class="card-body mx-auto">
-                                <p class="card-text"> ' . $other_article["content"] . ' </p>
+                                <p class="card-text"> '.$other_article["content"].'</p>
 
                                 ';
                                 ?>
@@ -81,7 +81,7 @@ if(isset($_GET['rep_err']))
                     if(isset($_SESSION["id"]) && $_SESSION["id"] == $other_article["id"]) {
                     ?>
                     <?php
-                           echo '   <a href="modif_article.php?id='. $other_article["0"] . '" class="btn btn-info d-flex justify-content-center mb-3" >Modifier l\'article</a>
+                           echo '   <a href="modif_article.php?&id='.$other_article["0"] .'" class="btn btn-info d-flex justify-content-center mb-3" >Modifier l\'article</a>
                     
                      
                           

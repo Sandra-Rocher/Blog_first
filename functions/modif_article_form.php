@@ -95,24 +95,24 @@ if(!empty($_SESSION['id'])){
 
                                     //  Si on a rencontré une erreur, on la nomme ci dessous celon a quel endroit elle à eu lieu
                                      // echo "Article reçu, il sera vérifié par l'admin et publié ou supprimé !";
-                                    header('Location:../other_articles.php?reg_err=success_upd'); 
+                                    header('Location:../other_articles.php?&reg_err=success_upd'); 
                                     die();
                                 
                                 
                                     // echo "Erreur, upload non effectué";
-                                }else{header('Location:../other_articles.php?reg_err=error_upd'); }
+                                }else{header('Location:../other_articles.php?&reg_err=error_upd'); }
                                 
                             
                                 // echo "Image trop lourde ou format incorrect";
-                            }else{header('Location:../other_articles.php?reg_err=type_file'); }
+                            }else{header('Location:../other_articles.php?&reg_err=type_file'); }
                             
                         
                             // echo "Merci de mettre une image";
-                        }else{header('Location:../other_articles.php?reg_err=image'); }
+                        }else{header('Location:../other_articles.php?&reg_err=image'); }
                         
                     
                         // echo "Type non autorisé. Veuillez choisir une image.png ou .jpg ou .jpeg ou .gif";
-                    }else{header('Location:../other_articles.php?reg_err=type'); }
+                    }else{header('Location:../other_articles.php?&reg_err=type'); }
 
 
                     
@@ -125,21 +125,21 @@ if(!empty($_SESSION['id'])){
 
                 //  Si on a rencontré une erreur, on la nomme ci dessous celon a quel endroit elle à eu lieu
                  // echo "Article reçu, il sera vérifié par l'admin et publié ou supprimé !";
-                header('Location:../other_articles.php?reg_err=success_upd'); 
+                header('Location:../other_articles.php?&reg_err=success_upd'); 
                 die();
                 
             }   
                     
         // echo "Veuillez mettre une description, ou un commentaire à votre article";
-        }else{header('Location:../other_articles.php?reg_err=cont_empty'); }  
+        }else{header('Location:../other_articles.php?&reg_err=cont_empty'); }  
 
 
         // echo "Veuillez remplir le titre de l'article" ;
-    }else{header('Location:../other_articles.php?reg_err=tit_empty'); }   
+    }else{header('Location:../other_articles.php?&reg_err=tit_empty'); }   
 
     
     // echo "Erreur d'id";
-}else{header('Location:../other_articles.php?reg_err=error_id'); }  
+}else{header('Location:../other_articles.php?&reg_err=error_id'); }  
                   
 
 ?>

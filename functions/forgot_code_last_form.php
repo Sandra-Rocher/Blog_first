@@ -38,12 +38,12 @@ if(isset($_GET['email']) && !empty($_GET['email'])){
 
 
                 //   echo "Mot de passe différent";
-                }else{ header('Location:../forgot_code_last.php?err=password_err');  die(); }
+                }else{ header('Location:../forgot_code_last.php?&err=password_err');  die(); }
 
 
-            }else{header('Location:../forgot_code_last.php?err=empty_pwd2');  die(); }
+            }else{header('Location:../forgot_code_last.php?&err=empty_pwd2');  die(); }
 
 
-        }else{header('Location:../forgot_code_last.php?err=empty_pwd1');  die(); }
+        }else{header('Location:../forgot_code_last.php?&err=empty_pwd1');  die(); }
 
 ?>

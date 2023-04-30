@@ -56,12 +56,13 @@ return $comments;
 }
 
 
-// fetch de tous les articles de tout le monde pour la page index/accueil
+
+// fetch de tous les articles de tout le monde pour la page index/accueil AVEC les likes
 function get_posts_index(){
 
     global $pdo;
 
-$sql = $pdo->prepare("SELECT * FROM articles
+$sql = $pdo->prepare("SELECT *, (SELECT COUNT(*) FROM likes WHERE likes.id_articles = articles.id) AS likesPerArticle FROM articles
                         JOIN users 
                         ON articles.id_users=users.id
                         WHERE is_valid = '1'
@@ -79,7 +80,7 @@ function get_posts_voyage(){
 
     global $pdo;
 
-    $sql = $pdo->prepare("SELECT * FROM articles
+    $sql = $pdo->prepare("SELECT *, (SELECT COUNT(*) FROM likes WHERE likes.id_articles = articles.id) AS likesPerArticle FROM articles
                             JOIN users 
                             ON articles.id_users=users.id
                             WHERE id_role = '1' AND title LIKE '%USA%'
@@ -97,7 +98,7 @@ function get_posts_bonus(){
 
     global $pdo;
 
-    $sql = $pdo->prepare("SELECT * FROM articles
+    $sql = $pdo->prepare("SELECT *, (SELECT COUNT(*) FROM likes WHERE likes.id_articles = articles.id) AS likesPerArticle FROM articles
                             JOIN users 
                             ON articles.id_users=users.id
                             WHERE id_role = '1' AND title LIKE '%moto%'
@@ -115,7 +116,7 @@ function get_posts_other(){
 
     global $pdo;
 
-    $select = $pdo->prepare("SELECT * FROM articles
+    $select = $pdo->prepare("SELECT *, (SELECT COUNT(*) FROM likes WHERE likes.id_articles = articles.id) AS likesPerArticle FROM articles
                             JOIN users 
                             ON articles.id_users=users.id
                             WHERE id_users=? 
@@ -138,7 +139,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
 
     $get_id = htmlspecialchars($_GET['id']);
 
-    $articles = $pdo->prepare('SELECT * FROM articles 
+    $articles = $pdo->prepare('SELECT *, (SELECT COUNT(*) FROM likes WHERE likes.id_articles = articles.id) AS likesPerArticle FROM articles 
                                 JOIN users
                                  ON articles.id_users=users.id
                                 WHERE articles.id = ?

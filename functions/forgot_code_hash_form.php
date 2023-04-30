@@ -30,11 +30,11 @@ require_once '../modele/database.php';
             header('Location:../forgot_code_hash.php?err=err_code');  die();
 
         }else{ 
-            //   echo "ok maintenant que tout corresponds, on redirige vers la derniere étape";
-            header('Location:../forgot_code_last.php?email='. $email. 'err=ok_let_pwd');  die(); }
+            //   echo "ok maintenant que tout correspond, on redirige vers la derniere étape";
+            header('Location:../forgot_code_last.php?email='.$email.'&err=ok_let_pwd');  die(); }
             
 
       // il manque le code      
-    }else{header('Location:../forgot_code_hash.php?err=empty_code');  die(); }
+    }else{header('Location:../forgot_code_hash.php?&err=empty_code');  die(); }
 
 ?>

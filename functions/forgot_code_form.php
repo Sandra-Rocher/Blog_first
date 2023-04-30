@@ -72,7 +72,7 @@ require_once '../modele/database.php';
                 }  
 
         //   echo "Email invalide";
-        }else{ header('Location:../forgot_code.php?err=wrong_email');  die(); }   
+        }else{ header('Location:../forgot_code.php?&err=wrong_email');  die(); }   
 
     }
 

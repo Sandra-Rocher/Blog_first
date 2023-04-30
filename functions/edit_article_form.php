@@ -63,40 +63,40 @@ if(!empty($_SESSION['id'])){
                                      ));
 
                                      // echo "Article reçu, l'admin va regarder et valider ou non.. !";
-                                    header('Location:../edit_article.php?reg_err=success'); 
+                                    header('Location:../edit_article.php?&reg_err=success'); 
                                     die();
                                 
                                 
                                     // echo "Erreur (upload non effectué)";
-                                }else{header('Location:../edit_article.php?reg_err=error'); }
+                                }else{header('Location:../edit_article.php?&reg_err=error'); }
                                 
                             
                                 // echo "Image trop lourde ou format incorrect";
-                            }else{header('Location:../edit_article.php?reg_err=type_file'); }
+                            }else{header('Location:../edit_article.php?&reg_err=type_file'); }
                             
                         
                             // echo "Merci de mettre une image";
-                        }else{header('Location:../edit_article.php?reg_err=image'); }
+                        }else{header('Location:../edit_article.php?&reg_err=image'); }
                         
                     
                         // echo "Type non autorisé. Veuillez choisir une image.png ou .jpg ou .jpeg ou .gif";
-                    }else{header('Location:../edit_article.php?reg_err=type'); }
+                    }else{header('Location:../edit_article.php?&reg_err=type'); }
 
 
                  // echo "veuillez sélectionner une image";
-                }else{header('Location:../edit_article.php?reg_err=check'); }
+                }else{header('Location:../edit_article.php?&reg_err=check'); }
                     
 
             // echo "Veuillez mettre un commentaire à votre article";
-        }else{header('Location:../edit_article.php?reg_err=cont_empty'); }  
+        }else{header('Location:../edit_article.php?&reg_err=cont_empty'); }  
 
 
          // echo "Veuillez mettre un titre à votre article";
-    }else{header('Location:../edit_article.php?reg_err=tit_empty'); }   
+    }else{header('Location:../edit_article.php?&reg_err=tit_empty'); }   
     
     
     // echo "Erreur d'id";
-}else{header('Location:../edit_article.php?reg_err=error_id'); }  
+}else{header('Location:../edit_article.php?&reg_err=error_id'); }  
                   
 
 ?>
