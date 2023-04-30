@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_GET['email']) && !empty($_POST['email'])){
+if(isset($_GET['email']) && !empty($_GET['email'])){
 
     $email = $_GET['email'];
 }
@@ -26,7 +26,7 @@ if(isset($_GET['email']) && !empty($_POST['email'])){
                     $new_password = password_hash($new_password, PASSWORD_DEFAULT);
 
 
-                    $edit = $pdo->prepare("UPDATE users SET password = ? WHERE email = ?");
+                    $edit = $pdo->prepare("UPDATE users SET users.password = ? WHERE email = ?");
                     if($edit->execute([$new_password, $email]))
                     {
                     // en réussite :

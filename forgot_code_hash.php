@@ -72,7 +72,7 @@ if(isset($_GET['email'])){
                             <div class="d-grid gap-2 mx-auto mt-4">
 
                                 <label for="forg_hash" class="fs-5 mx-auto">Veuillez saisir le code reçu par email</label>
-                                <input type="password" id="forg_hash" name="forg_hash" class="form-control text-center" placeholder="Code" required="required" autocomplete="off">
+                                <input type="text" id="forg_hash" name="forg_hash" class="form-control text-center" placeholder="Code" required="required" autocomplete="off">
                                 
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto mt-4 mb-4">

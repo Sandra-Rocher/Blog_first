@@ -38,24 +38,33 @@ require_once '../modele/database.php';
                             if($forg_pwd->execute(array($token, $id)))
                             {
 
+                                // prépare l'encodage interne du mail en utf8
+                                mb_internal_encoding('UTF-8');
+
                                     // On prépare le mail
                                     $to      = $email;
-                                    $subject = 'Mot de passe oublié Blog "En voyage avec"';
+                                    $subject = 'Mot de passe oublié Blog "En voyage avec..."';
                                     $message = 'Bonjour ' . $user_name . ' , voici votre code : ' . $token . ' ';
                                     $headers = array(
                                                     'From' => 'admin_Blog_voyage@hotmail.fr',
                                                     'Reply-To' => 'No reply',
+                                                    'Content-Type' => 'text/html; charset=UTF=8\r\n',
                                                     'X-Mailer' => 'PHP/' . phpversion()
                                                     );
+        
+                                    //pour que l'accent é fonctionne, on utilise mimeheader qui encode l'entête ici nommé : subject            
+                                     $subject = mb_encode_mimeheader($subject);
+
 
                                     // envoie du mail
-                                    if(mail($to, $subject, $message))
-                                    {
+                                    if(mail($to, $subject, $message, $headers)) {
                                         // On redirige vers la page et c'est ok jusque là : passage à l'étape suivante
-                                        header("Location: ../forgot_code_hash.php?email='. $email .'&err=hash_created");
+                                        header("Location: ../forgot_code_hash.php?&email=$email&err=hash_created");
                                         die();
 
-                                    }else{header("Location: ../forgot_code.php?&err=email_send_not_ok"); die(); }    
+                                    } else {
+                                        header("Location: ../forgot_code.php?&err=email_send_not_ok"); die(); 
+                                    }    
 
                             // si échec :
                             }else{header("Location: ../forgot_code.php?&err=udp_forg_not_ok"); die(); } 

@@ -2,7 +2,7 @@
 
 session_start();
 
-if(isset($_GET['email']) && !empty($_POST['email'])){
+if(isset($_GET['email']) && !empty($_GET['email'])){
 
     $email = $_GET['email'];
 }
@@ -26,7 +26,7 @@ require_once '../modele/database.php';
         $check_code->execute(array($email, $code_hash_recup));
         if($check_code->rowCount() == 0 ) 
         {   
-            //   echo "erreur";
+            //   echo "erreur, les codes ne correspondent pas";
             header('Location:../forgot_code_hash.php?err=err_code');  die();
 
         }else{ 
