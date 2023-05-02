@@ -63,6 +63,7 @@ require_once '../modele/database.php';
                                         die();
 
                                     } else {
+                                        // echo print_r(error_get_last());
                                         header("Location: ../forgot_code.php?&err=email_send_not_ok"); die(); 
                                     }    
 

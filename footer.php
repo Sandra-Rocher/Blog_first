@@ -23,7 +23,7 @@
             <li class="nav-item"><a href="https://github.com/Sandra-Rocher?tab=repositories" target="_blank" class="nav-link px-2">Github</a></li>
             <li class="nav-item"><a href="https://sandra-rocher.github.io/Portfolio-perso/" target="_blank" class="nav-link px-2">Portfolio</a></li>
             <li class="nav-item"><a href="https://cvdesignr.com/p/6405d12b8a89d" target="_blank" class="nav-link px-2">CV</a></li>
-            <li class="nav-item"><a href="mentions_legales.php" class="nav-link px-5">Mentions légales</a></li>
+            <li class="nav-item"><a href="mentions_legales.php" class="nav-link px-2">Mentions légales</a></li>
             <li class="nav-item <?php if ($_SERVER['SCRIPT_NAME'] === '/Blog_first/informations.php'): ?> active aria-current='page' <?php endif; ?>"><a href="informations.php" class="nav-link px-5">Vous êtes recruteur ?</a></li>
         </ul>
     </section>

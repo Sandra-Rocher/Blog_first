@@ -116,7 +116,7 @@ if(isset($_GET['rep_err']))
                     <div class="d-grid gap-2 col-sm-12 col-md-8 col-lg-10 mx-auto mt-4">
 
                             <label for="comm_art" class="fs-5 fw-bold">Ecrivez votre commentaire :</label>
-                            <textarea class="form-control" name="content" id="comm_art" rows="3" placeholder="Pour mieux voir votre texte vous pouvez agrandir vous pouvez cliquer en bas a droite et déployer vers le bas"></textarea>
+                            <textarea class="form-control" name="content" id="comm_art" rows="3" placeholder="Pour mieux voir votre texte vous pouvez agrandir vous pouvez cliquer en bas à droite et déployer vers le bas"></textarea>
 
                                     <div class="d-grid gap-2 col-2 mx-auto mt-4">
                                         <button class="btn btn-info" type="submit">Envoyer</button>

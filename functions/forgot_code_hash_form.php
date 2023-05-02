@@ -4,7 +4,7 @@ session_start();
 
 if(isset($_GET['email']) && !empty($_GET['email'])){
 
-    $email = $_GET['email'];
+    $email = htmlspecialchars($_GET['email']);
 }
 
 

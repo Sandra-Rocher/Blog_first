@@ -50,14 +50,92 @@ session_start();
     </div>
 </div>
 
+
 <div class="fs-3 fw-bold text-center mt-5 mb-5">Voici un aperçu de l'envers du décor</div>
 
-<!-- devra être screené et mise en page -->
-    <img src= admin.php         class="card-img w-100" alt="">
-    <img src= edit_article.php  class="card-img w-50" alt="">
-    <img src= profil.php        class="card-img w-50" alt="">
-    <img src= modif_profil.php  class="card-img w-50" alt="">
-    <img src= modif_article.php class="card-img w-50" alt="">
+<div class="container">
+    <div id="carouselDuBlog" class="carousel slide mb-5" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselDuBlog" data-bs-slide-to="0" class="active bg-info" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselDuBlog" data-bs-slide-to="1" class="bg-info" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselDuBlog" data-bs-slide-to="2" class="bg-info" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselDuBlog" data-bs-slide-to="3" class="bg-info" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselDuBlog" data-bs-slide-to="4" class="bg-info" aria-label="Slide 5"></button>
+        <button type="button" data-bs-target="#carouselDuBlog" data-bs-slide-to="5" class="bg-info" aria-label="Slide 6"></button>
+        <button type="button" data-bs-target="#carouselDuBlog" data-bs-slide-to="6" class="bg-info" aria-label="Slide 7"></button>
+      </div>
+
+      <div class="carousel-inner">
+
+        <div class="carousel-item active" data-bs-interval="5000">
+          <img src="public/carousel/maquette_figma.jpg" class="d-block w-100" alt="maquette_figma">
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5 class="text-danger">Maquette figma</h5> -->
+            <!-- <p class="text-danger">Présentation de la maquette complête du Blog.</p> -->
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="public/carousel/dashboard_admin.jpg" class="d-block w-100" alt="dashboard_admin">
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5 class="text-danger">Dashboard admin</h5> -->
+            <!-- <p class="text-danger">Contrôle des articles et des commentaires avant publications.</p> -->
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="public/carousel/dashboard_admin2.jpg" class="d-block w-100" alt="dashboard_admin_2">
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5 class="text-danger">Dashboard admin-suite</h5> -->
+            <!-- <p class="text-danger">Aperçu en détail des articles et des commentaires.</p> -->
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="public/carousel/creer_article.jpg" class="d-block w-100" alt="page création d'article">
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5 class="text-danger">Création d'article</h5> -->
+            <!-- <p class="text-danger">Uniquement pour les connectés. Quelques vérifications seront effectués (extension, taille de l'image, etc)</p> -->
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="public/carousel/modif_article.jpg" class="d-block w-100" alt="page modification d'article">
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5 class="text-danger">Modification d'article</h5> -->
+            <!-- <p class="text-danger">Uniquement pour l'éditeur de l'article connecté. L'article sera de nouveau analysé par l'admin</p> -->
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="public/carousel/page_profil.jpg" class="d-block w-100" alt="page profil">
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5 class="text-danger">Page profil</h5> -->
+            <!-- <p class="text-danger">Uniquement pour les connectés.</p> -->
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="public/carousel/modif_profil.jpg" class="d-block w-100" alt="page modification de profil">
+          <div class="carousel-caption d-none d-md-block">
+            <!-- <h5 class="text-danger">Modification du profil</h5> -->
+            <!-- <p class="text-danger">Les vérifications dans la base de données (login, email en double) seront les même qu'a l'inscription</p> -->
+          </div>
+        </div>
+
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselDuBlog" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-info" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselDuBlog" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-info" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+  </div>
+</div>
+
 
 <!-- lien footer -->
 <?php require_once 'footer.php' ?>
