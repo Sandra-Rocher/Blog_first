@@ -1,6 +1,6 @@
 <?php
 
-SESSION_start();
+session_start();
 
 require_once 'functions/get_posts.php';
 

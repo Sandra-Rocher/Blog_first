@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if(isset($_GET['email']) && !empty($_GET['email'])){
 
     $email = htmlspecialchars($_GET['email']);
@@ -39,7 +37,7 @@ if(isset($_GET['email']) && !empty($_GET['email'])){
 
 
                 //   echo "Mot de passe différent";
-                }else{ header('Location:../forgot_code_last.php?&err=password_err');  die(); }
+                }else{ header('Location:../forgot_code_last.php?&email='.$email.'&err=password_err');  die(); }
 
 
             }else{header('Location:../forgot_code_last.php?&err=empty_pwd2');  die(); }

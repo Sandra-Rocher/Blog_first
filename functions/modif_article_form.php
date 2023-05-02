@@ -9,22 +9,19 @@ require_once '../modele/database.php';
 
 
 // Vérifier qu'on prends bien l'id de l'article qu'on veut modifier
-if(isset($_GET['id']) && !empty($_GET['id'])) {
+if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $get_id = htmlspecialchars($_GET['id']);
-
-}else {
+} else {
     // CREER sur la page l erreur... et indenter tout ça !!
     header('Location:../modif_article.php?reg_err=error_no_art_id');
-    }
-
-
+}
 
 
 
 // si la session n'est pas vide
-if(!empty($_SESSION['id'])){
-   
+if (!empty($_SESSION['id'])) {
+
     // on recupere la session
     $my_session = $_SESSION['id'];
 
@@ -35,23 +32,20 @@ if(!empty($_SESSION['id'])){
     $is_valid = 0;
 
     // si le title n'est pas vide
-    if(!empty($_POST['tit']))
-    {
+    if (!empty($_POST['tit'])) {
         // on passe le title en htmlspecialchars
         $tit = htmlspecialchars($_POST['tit']);
-    
+
         // si le content n'est pas vide
-        if(!empty($_POST['cont']))
-        {
-             // on passe le content en htmlspecialchars
+        if (!empty($_POST['cont'])) {
+            // on passe le content en htmlspecialchars
             $cont = htmlspecialchars($_POST['cont']);
 
 
-            if(isset($_FILES['image'])) {
-                
+            if (isset($_FILES['image'])) {
+
                 // si il y a une image avec son nom 
-                if(!empty($_FILES['image'] ['name']))
-                {
+                if (!empty($_FILES['image']['name'])) {
 
                     // on récupere les infos de l'image
                     $name_file = $_FILES['image']['name'];
@@ -71,51 +65,52 @@ if(!empty($_SESSION['id'])){
                     $max_size = 300000;
 
                     // on compare dans le tableau si le type file correspond au type
-                    if(in_array($type_file, $type))
-                    {
+                    if (in_array($type_file, $type)) {
                         // on compte le nombre d'extension apres le ., on passe l'extension en minuscule
-                        if(count($extens) <= 2 && in_array(strtolower(end($extens)), $authorised_extensions))
-                        {
-                        
+                        if (count($extens) <= 2 && in_array(strtolower(end($extens)), $authorised_extensions)) {
+
                             // on compare si l'img est de taille inférieur au max_size déclaré plus haut, et si elle est en erreur 0 (dans manuel php : téléchargement correct)
-                            if($size_file < $max_size && $err_file == 0)
-                            {
+                            if ($size_file < $max_size && $err_file == 0) {
 
                                 // on creer un numéro unique, que l'on recole l'extension précédément explode puis on l'envois vers le fichier stock_avatar une fois renommé en uniqid.
                                 $image = uniqid() . '.' . strtolower(end($extens));
-                                if(move_uploaded_file($tmp_file, '../stock_avatar/' . $image))
-                                {
-                                    
+                                if (move_uploaded_file($tmp_file, '../stock_avatar/' . $image)) {
+
                                     // on prepare et execute la requete, dans la table articles, on rentre le titre, le content, et l'image de l'article crée
                                     $insert = $pdo->prepare('UPDATE articles 
                                                              SET title = ?, content = ?, image = ?, is_valid = ?
                                                              WHERE id = ?');
-           
+
                                     $insert->execute([$tit, $cont, $image, $is_valid, $get_id]);
 
                                     //  Si on a rencontré une erreur, on la nomme ci dessous celon a quel endroit elle à eu lieu
-                                     // echo "Article reçu, il sera vérifié par l'admin et publié ou supprimé !";
-                                    header('Location:../other_articles.php?&reg_err=success_upd'); 
+                                    // echo "Article reçu, il sera vérifié par l'admin et publié ou supprimé !";
+                                    header('Location:../other_articles.php?&reg_err=success_upd');
                                     die();
-                                
-                                
+
+
                                     // echo "Erreur, upload non effectué";
-                                }else{header('Location:../other_articles.php?&reg_err=error_upd'); }
-                                
-                            
+                                } else {
+                                    header('Location:../other_articles.php?&reg_err=error_upd');
+                                }
+
+
                                 // echo "Image trop lourde ou format incorrect";
-                            }else{header('Location:../other_articles.php?&reg_err=type_file'); }
-                            
-                        
+                            } else {
+                                header('Location:../other_articles.php?&reg_err=type_file');
+                            }
+
+
                             // echo "Merci de mettre une image";
-                        }else{header('Location:../other_articles.php?&reg_err=image'); }
-                        
-                    
+                        } else {
+                            header('Location:../other_articles.php?&reg_err=image');
+                        }
+
+
                         // echo "Type non autorisé. Veuillez choisir une image.png ou .jpg ou .jpeg ou .gif";
-                    }else{header('Location:../other_articles.php?&reg_err=type'); }
-
-
-                    
+                    } else {
+                        header('Location:../other_articles.php?&reg_err=type');
+                    }
                 } // on prepare et execute la requete, dans la table articles, on rentre le titre, le content, et l'image de l'article crée
                 $insert = $pdo->prepare('UPDATE articles 
                                          SET title = ?, content = ?, is_valid = ?
@@ -124,22 +119,24 @@ if(!empty($_SESSION['id'])){
                 $insert->execute([$tit, $cont, $is_valid, $get_id]);
 
                 //  Si on a rencontré une erreur, on la nomme ci dessous celon a quel endroit elle à eu lieu
-                 // echo "Article reçu, il sera vérifié par l'admin et publié ou supprimé !";
-                header('Location:../other_articles.php?&reg_err=success_upd'); 
+                // echo "Article reçu, il sera vérifié par l'admin et publié ou supprimé !";
+                header('Location:../other_articles.php?&reg_err=success_upd');
                 die();
-                
-            }   
-                    
-        // echo "Veuillez mettre une description, ou un commentaire à votre article";
-        }else{header('Location:../other_articles.php?&reg_err=cont_empty'); }  
+            }
+
+            // echo "Veuillez mettre une description, ou un commentaire à votre article";
+        } else {
+            header('Location:../other_articles.php?&reg_err=cont_empty');
+        }
 
 
         // echo "Veuillez remplir le titre de l'article" ;
-    }else{header('Location:../other_articles.php?&reg_err=tit_empty'); }   
+    } else {
+        header('Location:../other_articles.php?&reg_err=tit_empty');
+    }
 
-    
+
     // echo "Erreur d'id";
-}else{header('Location:../other_articles.php?&reg_err=error_id'); }  
-                  
-
-?>
+} else {
+    header('Location:../other_articles.php?&reg_err=error_id');
+}

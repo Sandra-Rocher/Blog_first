@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once '../modele/database.php';
 
 
@@ -14,26 +16,26 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["id.use
                                         WHERE id = ?');
             
 
-                // si c'est un admin qui delete
-                if($_SESSION["id_role"] = '1'){
+            // si c'est un admin qui delete
+            if($_SESSION['id_role'] == '1'){
 
-                    if($delete_id->execute([$deleteId])){
-                    header("Location:../admin.php?&req=del_art");
-                    }
-                    else{header('Location:../admin.php?&req=dont_del_art');
-                    }
+                if($delete_id->execute([$deleteId])){
+                header("Location:../admin.php?&req=del_art");
                 }
+                else{header('Location:../admin.php?&req=dont_del_art');
+                }
+            }
 
-                    // Si c'est l'éditeur de l'article qui delete
-                    elseif($_SESSION["id_role"] = '2'){
+            // Si c'est l'éditeur de l'article qui delete
+            else if($_SESSION['id_role'] == '2'){
 
-                        if($delete_id->execute([$deleteId])){
-                        header('Location:../other_articles.php?&success=del_art');
+                if($delete_id->execute([$deleteId])){
+                header('Location:../other_articles.php?&success=del_art');
 
-                        }else{header('Location:../other_articles.php?&success=dont_del_art');
+                }else{header('Location:../other_articles.php?&success=dont_del_art');
 
-                        }    
-                    }
+                }    
+            }
         }
  }
 ?>

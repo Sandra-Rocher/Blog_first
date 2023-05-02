@@ -18,6 +18,3 @@ session_destroy();
 // on redirige
 header('Location:../index.php?&success=supp_id_user');
 die();
-
-?>
-

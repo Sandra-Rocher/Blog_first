@@ -48,6 +48,3 @@ if(isset($_POST['email']) && isset($_POST['password']))
     } else{ header('Location:../connexion.php?&login_err=empty'); die(); }
 
 } else{ header('Location:../connexion.php'); die(); }
-
-
-?>

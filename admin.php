@@ -1,6 +1,6 @@
 <?php
 
-SESSION_start();
+session_start();
 
 // Verification que l'id user soit connecté ET admin
 if(!isset($_SESSION["id"]) || $_SESSION["id_role"] != '1'){

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once '../modele/database.php';
 
 
@@ -15,7 +17,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["id.use
             
 
                 // si c'est un admin qui delete
-                if($_SESSION["id_role"] = '1'){
+                if($_SESSION["id_role"] == '1'){
 
                     if($delete_id->execute([$deleteId])){
                     header("Location:../admin.php?&req=del_com");
@@ -24,16 +26,16 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["id.use
                     }
                 }
 
-                    // Si c'est l'éditeur de l'article qui delete
-                    elseif($_SESSION["id_role"] = '2'){
+                // Si c'est l'éditeur de l'article qui delete
+                elseif($_SESSION["id_role"] == '2'){
 
-                        if($delete_id->execute([$deleteId])){
-                        header('Location:../other_articles.php?&req=del_com');
+                    if($delete_id->execute([$deleteId])){
+                    header('Location:../other_articles.php?&req=del_com');
 
-                        }else{header('Location:../other_articles.php?&req=dont_del_com');
+                    }else{header('Location:../other_articles.php?&req=dont_del_com');
 
-                        }    
-                    }
+                    }    
+                }
         }
  }
 ?>

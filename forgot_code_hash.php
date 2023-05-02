@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if(isset($_GET['email'])){
 
     $email = htmlspecialchars($_GET['email']);

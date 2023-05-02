@@ -76,8 +76,3 @@ require_once '../modele/database.php';
         }else{ header('Location:../forgot_code.php?&err=wrong_email');  die(); }   
 
     }
-
-
-?>
-
-            
