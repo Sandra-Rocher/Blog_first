@@ -59,20 +59,20 @@ require_once '../modele/database.php';
                                     // envoie du mail
                                     if(mail($to, $subject, $message, $headers)) {
                                         // On redirige vers la page et c'est ok jusque là : passage à l'étape suivante
-                                        header("Location: ../forgot_code_hash.php?&email=$email&err=hash_created");
+                                        header("Location: ../forgot_code_hash.php?&email='.$email.'&err=hash_created");
                                         die();
 
                                     } else {
                                         // echo print_r(error_get_last());
-                                        header("Location: ../forgot_code.php?&err=email_send_not_ok"); die(); 
+                                        header("Location: ../forgot_code.php?&email='.$email.'&err=email_send_not_ok"); die(); 
                                     }    
 
                             // si échec :
-                            }else{header("Location: ../forgot_code.php?&err=udp_forg_not_ok"); die(); } 
+                            }else{header("Location: ../forgot_code.php?&email='.$email.'&err=udp_forg_not_ok"); die(); } 
                             
                 }  
 
         //   echo "Email invalide";
-        }else{ header('Location:../forgot_code.php?&err=wrong_email');  die(); }   
+        }else{ header('Location:../forgot_code.php?&email='.$email.'&err=wrong_email');  die(); }   
 
     }

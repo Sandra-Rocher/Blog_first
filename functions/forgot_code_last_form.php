@@ -36,13 +36,13 @@ if(isset($_GET['email']) && !empty($_GET['email'])){
                     }else{header("Location: ../forgot_code_last.php?&err=not_udp"); die(); }
 
 
-                //   echo "Mot de passe différent";
+                //   echo "Mot de passe différent"
                 }else{ header('Location:../forgot_code_last.php?&email='.$email.'&err=password_err');  die(); }
 
+                // echo "mot de passe2 vide"
+            }else{header('Location:../forgot_code_last.php?'.$email.'&err=empty_pwd2');  die(); }
 
-            }else{header('Location:../forgot_code_last.php?&err=empty_pwd2');  die(); }
-
-
-        }else{header('Location:../forgot_code_last.php?&err=empty_pwd1');  die(); }
+            // echo "mot de passe1 vide"
+        }else{header('Location:../forgot_code_last.php?'.$email.'&err=empty_pwd1');  die(); }
 
 ?>

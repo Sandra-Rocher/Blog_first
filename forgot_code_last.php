@@ -42,7 +42,7 @@ if(isset($_GET['email'])){
                         case 'empty_pwd1':
                             ?>
                                 <div class="alert alert-danger">
-                                    <strong>Erreur</strong> Mot de passe inexistant
+                                    <strong>Erreur</strong> Mot de passe1 inexistant
                                 </div>
                             <?php
                         break;
@@ -50,7 +50,7 @@ if(isset($_GET['email'])){
                         case 'empty_pwd2':
                             ?>
                                 <div class="alert alert-danger">
-                                    <strong>Erreur</strong> Mot de passe inexistant
+                                    <strong>Erreur</strong> Mot de passe2 inexistant
                                 </div>
                             <?php
                         break;

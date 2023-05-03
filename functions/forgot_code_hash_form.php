@@ -25,7 +25,7 @@ require_once '../modele/database.php';
         if($check_code->rowCount() == 0 ) 
         {   
             //   echo "erreur, les codes ne correspondent pas";
-            header('Location:../forgot_code_hash.php?err=err_code');  die();
+            header('Location:../forgot_code_hash.php?'.$email.'err=err_code');  die();
 
         }else{ 
             //   echo "ok maintenant que tout correspond, on redirige vers la derniere étape";
@@ -33,6 +33,6 @@ require_once '../modele/database.php';
             
 
       // il manque le code      
-    }else{header('Location:../forgot_code_hash.php?&err=empty_code');  die(); }
+    }else{header('Location:../forgot_code_hash.php?&email='.$email.'&err=empty_code');  die(); }
 
 ?>
