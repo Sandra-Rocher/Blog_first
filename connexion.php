@@ -14,7 +14,7 @@ session_start();
 </head>
 <body>
 
-<!-- lien header navbar -->
+
  <?php require_once 'header.php' ?>
 
  <!-- Si la personne est déja connecté on ne lui affiche pas la connexion. Il faudra qu'elle se déconnecte (ce qu'on lui propose plus bas) -->
@@ -129,7 +129,6 @@ session_start();
 ?>
 
 
-<!-- lien footer -->
 <?php require_once 'footer.php' ?>
 
 </body>

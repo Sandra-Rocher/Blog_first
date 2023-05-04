@@ -24,7 +24,7 @@
 </head>
 <body>
 
-<!-- lien header navbar -->
+
 <?php require 'header.php' ?>
 
       <div class="text-center">
@@ -32,7 +32,7 @@
              <a href="functions/deconnexion.php" class="btn btn-danger btn-lg mb-5">Déconnexion</a>
        </div>
 
-<!-- lien footer -->
+
 <?php require_once 'footer.php' ?>
 
 

@@ -27,7 +27,7 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
 </head>
 <body>
 
-<!-- lien header navbar -->
+
 <?php require 'header.php' ?>
 
 
@@ -117,7 +117,7 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
 }
 ?>
 
- <!-- lien footer -->
+
 <?php require_once 'footer.php' ?>
 
  </body>

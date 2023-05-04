@@ -20,7 +20,7 @@ $articles = get_posts_voyage();
 </head>
 <body>
 
-  <!-- lien header navbar -->
+
 <?php require_once 'header.php' ?>
 
         
@@ -56,7 +56,6 @@ $articles = get_posts_voyage();
             </div>
 
 
-<!-- lien footer -->
 <?php require_once 'footer.php' ?> 
   
 </body> 

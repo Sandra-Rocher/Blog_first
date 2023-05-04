@@ -17,7 +17,7 @@ session_start();
 </head>
 <body>
 
-<!-- lien header navbar -->
+
 <?php require_once 'header.php' ?>
 
 <?php
@@ -148,7 +148,7 @@ session_start();
 }
 ?>
 
-<!-- lien footer -->
+
 <?php require_once 'footer.php' ?>
 
 <!-- lien bootstrap-->

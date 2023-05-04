@@ -24,7 +24,7 @@ $other_articles = get_full_articles();
 
 <body>
 
-    <!-- page header navbar -->
+
     <?php require_once 'header.php' ?>
 
 
@@ -159,8 +159,8 @@ $other_articles = get_full_articles();
 
         </div>
 
-        <!-- page footer -->
-        <?php require_once 'footer.php' ?>
+        
+<?php require_once 'footer.php' ?>
 
 </body>
 

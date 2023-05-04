@@ -21,7 +21,7 @@ $other_article = get_full_article();
 </head>
 <body>
     
-<!-- page header navbar -->
+
 <?php require_once 'header.php' ?>
 
 <?php
@@ -100,8 +100,6 @@ if(isset($_GET['rep_err']))
 ?>
 
 
-
-<!-- page footer -->
 <?php require_once 'footer.php' ?>
 
 </body>

@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<!-- lien header navbar -->
+
 <?php require 'header.php' ?>
 
 <?php 
@@ -78,8 +78,6 @@
 </div>
 
   
-
-<!-- lien footer -->
 <?php require_once 'footer.php' ?>
 
 </body>

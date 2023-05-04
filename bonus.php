@@ -22,7 +22,7 @@ $articles = get_posts_bonus();
 </head>
 <body>
 
-<!-- lien header navbar -->
+
 <?php require_once 'header.php' ?>
 
         
@@ -58,7 +58,7 @@ $articles = get_posts_bonus();
                 </div>
             </div>
 
-<!-- lien footer -->
+
 <?php require_once 'footer.php' ?>
 
 </body> 

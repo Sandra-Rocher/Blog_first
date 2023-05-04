@@ -23,7 +23,7 @@ $other_articles = get_full_articles();
 </head>
 <body>
     
-<!-- page header navbar -->
+
 <?php require_once 'header.php' ?>
 
                                                             
@@ -148,7 +148,7 @@ if(!empty($comments)){
 
     </div>
 
-<!-- page footer -->
+
 <?php require_once 'footer.php' ?>
 
 </body>

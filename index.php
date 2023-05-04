@@ -18,7 +18,8 @@ $articles = get_posts_index();
          <title>Accueil</title>
 </head>
 <body>
-<!-- lien header navbar -->
+
+
 <?php require 'header.php' ?>
       
  <div class="fs-3 fw-bold text-center mt-5 mb-5">Bienvenue sur la page de tous les articles partagés par ordre d'actualité.</div>
@@ -71,9 +72,7 @@ if(isset($_GET['success']))
                 </div>
              </div>
 
-             
-
-<!-- lien footer -->
+            
 <?php require_once 'footer.php' ?>
 
 </body>

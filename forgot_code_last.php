@@ -17,7 +17,6 @@ if(isset($_GET['email'])){
 </head>
 <body>
 
-<!-- lien header navbar -->
 <?php require 'header.php' ?>
 
 
@@ -100,8 +99,6 @@ if(isset($_GET['email'])){
 </div>
 
   
-
-<!-- lien footer -->
 <?php require_once 'footer.php' ?>
 
 </body>

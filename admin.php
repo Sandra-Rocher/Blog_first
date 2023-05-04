@@ -54,7 +54,6 @@ $tables = [
 </head>
 <body>
 
-<!-- lien header navbar -->
 <?php require_once 'header.php' ?>
 
 
@@ -312,7 +311,6 @@ foreach($tables as $table_name => $table){
  </div>
 
 
-<!-- lien footer -->
 <?php require_once 'footer.php' ?>
  
 </body>
