@@ -31,19 +31,19 @@ session_start();
             <li>Création d'un blog et sa base de données dans lequel on pourra :</li>
             <li>S'inscrire, modifier, ou supprimer un compte utilisateur</li>
             <li>Créer, modifier, supprimer un article (uniquement pour les connectés)</li>
-            <li>Les articles peuvent contenir une photo, qui peuvent aussi être ajoutées, modifiées, ou supprimées</li>
-            <li>Les articles sont ensuite envoyé à l'admin qui les vérifie, pour ensuite soit supprimer soit autoriser l'article sur les pages public</li>
+            <li>Les articles peuvent contenir une photo, qui peut aussi être ajoutée, modifiée, ou supprimée</li>
+            <li>Les articles sont ensuite envoyés à l'admin qui les vérifie, pour ensuite soit supprimer soit autoriser l'article sur les pages publiques</li>
             <li>Un article ne peut être modifié que par son éditeur, il sera de nouveau vérifié par l'admin</li>
             <li>Afficher sur la page d'accueil tous les articles, même pour les non-connectés</li>
-            <li>Afficher sur la page admin_voyage uniquement les articles créer par l'admin sur le thème voyage</li>
-            <li>Afficher sur la page admin_samuse uniquement les articles créer par l'admin sur le thème moto</li>
+            <li>Afficher sur la page admin_voyage uniquement les articles crées par l'admin sur le thème voyage</li>
+            <li>Afficher sur la page admin_s'amuse uniquement les articles crées par l'admin sur le thème moto</li>
             <li>Afficher connexion pour les non-connectés</li>
             <li>Afficher déconnexion, la page d'user partage ainsi que le profil du connecté</li>
-            <li>Seul les connectés peuvent commenter les articles, ils seront visible dans la page de l'article concerné</li>
-            <li>Sécurisé les pages, afin que personne n'accède à la page admin à part celui ci</li>
-            <li>Sécurisé les pages, afin que personne n'accède par l'url aux pages qui ne le concerne pas</li>
-            <li>Sécurisé la base de données afin qu'elle ne révèle pas les emails et les mots de passe des utilisateurs</li>
-            <li>Sécurisé le blog des failles XSS et injection SQL</li>
+            <li>Seuls les connectés peuvent commenter les articles, ils ne seront visible que dans la page de l'article concerné</li>
+            <li>Sécuriser les pages, afin que personne n'accède à la page admin à part celui ci</li>
+            <li>Sécuriser les pages, afin que personne n'accède par l'url aux pages qui ne le concernent pas</li>
+            <li>Sécuriser la base de données afin qu'elle ne révèle aucun email et mot de passe des utilisateurs</li>
+            <li>Sécuriser le blog des failles XSS et injection SQL</li>
             <li>Mise en page responsive avec bootstrap pour le mobile</li>
             <li>Une maquette figma à été réalisée pour la réalisation du projet</li>
         </ul>    

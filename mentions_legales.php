@@ -23,6 +23,7 @@ session_start();
 <div container class="col-sm-12 col-md-10 col-lg-8 mx-auto">
     <div class="fs-6 mt-5">
         <p class="text-center">Ce blog est un exercice d'étudiante en développement web.</p>
+        <p class="text-center">Les photos que j'utilise ont été prise par moi-même, je suis consciente qu'en les publiant, elles sont rendues publiques.</p>
         <p class="text-center">Je vous propose d'apporter votre aide !</p>
     </div>   
     
@@ -30,13 +31,13 @@ session_start();
 
     <div class="fs-6 mt-4 mb-5">
         <ul>
-            <li>Pour participer aux fonctions qu'il réserve en vous inscrivant</li>
-            <li>Pour l'égayer d'articles, de commentaires et le faire vivre</li>
-            <li>Pour challenger la créatrice et l'admin, si vous trouvez des erreurs, bugs, 404 etc : dites "false" sur mon email</li>
+            <li>Pour participer aux fonctions qu'il réserve en vous inscrivant.</li>
+            <li>Pour l'égayer d'articles, de commentaires et le faire vivre.</li>
+            <li>Pour challenger la créatrice et l'admin, si vous trouvez des erreurs, bugs, 404 etc : dites "false" sur mon email.</li>
             <li>Vos informations seront stockées dans une base de données qui ne sera jamais divulgée sur internet, pas 
-                d'utilisation à des fins commercial, pas de pub monnayés, pas d'offre de pop-up qui vous saute dessus, rien.</li>
-            <li>Gratuité d'utilisation du blog éternelle </li>
-            <li>Pour toute questions : sandra.rocher@hotmail.fr</li>
+                d'utilisation à des fins commerciales, pas de pub monnayée, pas d'offres ou de pop-up qui vous sautent dessus, rien.</li>
+            <li>Gratuité d'utilisation du blog éternel.</li>
+            <li>Pour toutes questions : sandra.rocher@hotmail.fr</li>
         </ul>    
     </div>
 </div>

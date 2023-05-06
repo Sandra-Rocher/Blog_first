@@ -1,3 +1,57 @@
+
+------ TODOLISt : 
+
+Like en ajax
+
+delete in cascade articles ->comm -> stock avatar
+
+test sur toutes les pages / toute les fonctionnalités
+
+test responsif sur le tell
+
+maquette figma
+
+modif comm / modif comm formm
+
+creer article moto + usaa
+
+indentation pages
+
+
+
+
+
+
+------ Possible évolution : 
+
+pas d'avatar obligatoire ? photo par défaut
+
+upload de plusieurs photos, ou de vidéos 
+
+regex mdp
+
+MVC / routing / paging / graphicart php html 8mn 9.46 ajout de title sur pages
+
+favoris
+
+page informations + mention legales : si fait : rajouter like vidéos favoris 
+
+fleche pour remonter en haut de la pagee
+
+modif profil get/post/$data dans l url
+
+refactorisation 
+
+autosearch
+
+graphicart tuto php like ou dislike 24.27 
+
+
+
+
+
+
+
 test pr iframe :
 
     youtube donne ca comme lien qd on le copy integer partager

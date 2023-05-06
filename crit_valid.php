@@ -24,7 +24,7 @@ session_start();
 <div container class="col-sm-12 col-md-10 col-lg-8 mx-auto">
 
     <div class="fs-6 mt-5">
-        <p>Pour respecter l'éthique de publications visuelle et public :</p>
+        <p>Pour respecter l'éthique de publication visuelle et public :</p>
     </div>  
 
     <div class="fs-6 mt-4 mb-5">
@@ -45,7 +45,7 @@ session_start();
     <div class="fs-6 mt-4 mb-5">
         <ul>
             <li>Image à caractères pornographique, choquante, sanglante.</li>
-            <li>Commentaire ou article à caractères raciste, homophobe, anarchiste, politique, misogyne, pédophile, dangereux, complotiste, 
+            <li>Commentaire ou article à caractère raciste, homophobe, anarchiste, politique, misogyne, pédophile, dangereux, complotiste, 
                 ou tendancieux.</li>
         </ul>    
     </div>
