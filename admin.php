@@ -209,7 +209,7 @@ foreach($tables as $table_name => $table){
                             <td>
                                 
                                 <a href="functions/agree_article.php?id='. $article[0].'" class="btn btn-success mb-3"><i class="bi bi-check"></i></a>
-                                <a class="confirmModal btn btn-danger mb-3" href="functions/delete_article.php?id='.$article[0].'" ><i class="bi bi-trash3"></i></a>
+                                <a class="confirmModal btn btn-danger mb-3" href="functions/delete_article_ad.php?id='.$article[0].'" ><i class="bi bi-trash3"></i></a>
                                 <a href="#idArt'.$article[0].'" data-bs-toggle="modal" data-bs-target="#idArt'.$article[0].'" class="btn btn-info modal-trigger mb-3"><i class="bi bi-eye"></i></a>
 
                                         <div class="modal fade" id="idArt'.$article[0].'" tabindex="-1" aria-labelledby="idArticle" aria-hidden="true">

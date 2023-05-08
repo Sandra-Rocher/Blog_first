@@ -37,15 +37,18 @@ session_start();
             <li>Afficher sur la page d'accueil tous les articles, même pour les non-connectés</li>
             <li>Afficher sur la page admin_voyage uniquement les articles crées par l'admin sur le thème voyage</li>
             <li>Afficher sur la page admin_s'amuse uniquement les articles crées par l'admin sur le thème moto</li>
-            <li>Afficher connexion pour les non-connectés</li>
-            <li>Afficher déconnexion, la page d'user partage ainsi que le profil du connecté</li>
+            <li>Afficher connexion pour les non-connectés, la page mentions-legales, et la page vous êtes recruteurs </li>
+            <li>Afficher déconnexion, la page d'user partage, créer un article, ainsi que le profil du connecté</li>
             <li>Seuls les connectés peuvent commenter les articles, ils ne seront visible que dans la page de l'article concerné</li>
+            <li>Seuls les connectés peuvent liker les articles, ils ne seront visible que dans la page de l'article concerné</li>
             <li>Sécuriser les pages, afin que personne n'accède à la page admin à part celui ci</li>
             <li>Sécuriser les pages, afin que personne n'accède par l'url aux pages qui ne le concernent pas</li>
             <li>Sécuriser la base de données afin qu'elle ne révèle aucun email et mot de passe des utilisateurs</li>
             <li>Sécuriser le blog des failles XSS et injection SQL</li>
             <li>Mise en page responsive avec bootstrap pour le mobile</li>
             <li>Une maquette figma à été réalisée pour la réalisation du projet</li>
+            <li>Bien sûr il y a encore beaucoup de fonctionnalités à venir comme : l'upload de plusieurs photos ou de vidéos, l'autosearch d'un article par mots clés 
+              dans le titre, avoir des favoris, mettre des dislikes, faire des regex plus strict sur le mot de passe, etc.</li>
         </ul>    
     </div>
 </div>

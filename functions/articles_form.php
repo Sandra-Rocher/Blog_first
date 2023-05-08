@@ -14,10 +14,6 @@ test responsif sur le tell (a revoir : page mention legales / crit_article / mod
 
 maquette figma
 
-modif comm / modif comm formm (pk id_users il le trouve pas ?)
-
-delete article pour les non admin ? page delete_article... sait pas si possible ou pas...a cause du role = 1 dans le coin en haut
-
 creer article moto + usaa
 
 indentation pages

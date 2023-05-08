@@ -6,35 +6,57 @@ require_once '../modele/database.php';
 
 
 // Verification que l'id user soit connecté OU admin
-if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["id.users"] == $_SESSION["id_users"] || $_SESSION["id_role"] = '1') {
+if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["id.users"] == $_SESSION["id_users"] || $_SESSION["id_role"] = '1 || 2') {
                                                                        
+    $sessionId = $_SESSION["id"];
 
         if(isset($_GET['id']) AND !empty($_GET['id'])) {
-            $deleteId = htmlspecialchars($_GET['id']);
+            $deleteArt = htmlspecialchars($_GET['id']);
 
-            $delete_id = $pdo->prepare('DELETE FROM articles
-                                        WHERE id = ?');
-            
 
-            // si c'est un admin qui delete
-            if($_SESSION['id_role'] == '1'){
+            $verif = $pdo->prepare(' SELECT * from articles
+                                                WHERE id = ? 
+                                                AND articles.id_users = ?
+                                    ');
+            if($verif->execute([$deleteArt, $sessionId])) {
 
-                if($delete_id->execute([$deleteId])){
-                header("Location:../admin.php?&req=del_art");
+                if ($verif->rowCount() == 1) {
+
+
+                        $delete_id = $pdo->prepare('DELETE FROM articles
+                                                    WHERE id = ?');
+                        
+
+                        // si c'est un admin qui delete
+                        if($_SESSION['id_role'] == '1'){
+
+                            if($delete_id->execute([$deleteArt])){
+                            header("Location:../admin.php?&req=del_art");
+                            }
+                            else{header('Location:../admin.php?&req=dont_del_art');
+                            }
+                        }
+
+                        // Si c'est l'éditeur de l'article qui delete
+                        else if($_SESSION['id_role'] == '2'){
+
+                            if($delete_id->execute([$deleteArt])){
+                            header('Location:../other_articles.php?&success=del_art');
+
+                            }else{header('Location:../other_articles.php?&success=dont_del_art');
+
+                            }    
+                        }
+
+                                 
+                } else { 
+                    echo "Vous n'êtes pas l'éditeur de l'article";
+
                 }
-                else{header('Location:../admin.php?&req=dont_del_art');
-                }
-            }
 
-            // Si c'est l'éditeur de l'article qui delete
-            else if($_SESSION['id_role'] == '2'){
+            } else { 
+                echo "Erreur3";
 
-                if($delete_id->execute([$deleteId])){
-                header('Location:../other_articles.php?&success=del_art');
-
-                }else{header('Location:../other_articles.php?&success=dont_del_art');
-
-                }    
             }
         }
  }
