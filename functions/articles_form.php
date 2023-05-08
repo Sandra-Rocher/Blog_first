@@ -1,4 +1,7 @@
 
+<!-- todo SRO : a finir : pr les retrouver : shift ctrl + f = rechercher / sinon shift alt et f pour auto indent-->
+
+
 ------ TODOLISt : 
 
 Like en ajax
@@ -7,11 +10,13 @@ delete in cascade articles ->comm -> stock avatar
 
 test sur toutes les pages / toute les fonctionnalités
 
-test responsif sur le tell
+test responsif sur le tell (a revoir : page mention legales / crit_article / modifier l article buttons)
 
 maquette figma
 
-modif comm / modif comm formm
+modif comm / modif comm formm (pk id_users il le trouve pas ?)
+
+delete article pour les non admin ? page delete_article... sait pas si possible ou pas...a cause du role = 1 dans le coin en haut
 
 creer article moto + usaa
 

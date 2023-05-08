@@ -274,7 +274,7 @@ foreach($tables as $table_name => $table){
                             <td>
                                 
                                 <a href="functions/agree_comm.php?id='. $comment[0].'" class="btn btn-success mb-3"><i class="bi bi-check"></i></a>
-                                <a class="confirmModal btn btn-danger mb-3" href="functions/delete_comm.php?id='. $comment[0].'"><i class="bi bi-trash3"></i></a>
+                                <a class="confirmModal btn btn-danger mb-3" href="functions/delete_comm_ad.php?id='. $comment[0].'"><i class="bi bi-trash3"></i></a>
                                 <a href="#idArt'.$comment[0].'" data-bs-toggle="modal" data-bs-target="#idArt'.$comment[0].'" class="btn btn-info modal-trigger mb-3"><i class="bi bi-eye"></i></a>
 
                                         <div class="modal fade" id="idArt'. $comment[0] .'" tabindex="-1" aria-labelledby="idArticle" aria-hidden="true">

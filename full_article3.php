@@ -29,13 +29,13 @@ $other_articles = get_full_articles();
 
 
 
-    <!-- Erreur si la personne qui tente de modifier l'article n'est pas l'éditeur de celui ci -->
+    <!-- Erreur si la personne qui tente de modifier l'article n'est pas l'éditeur de celui ci + autres erreurs -->
     <?php
     if (isset($_GET['rep_err'])) {
         $rep_err = htmlspecialchars($_GET['rep_err']);
 
         if ($rep_err === 'wrong_id_us') {
-    ?>
+        ?>
             <div class="alert alert-danger">
                 <strong>Erreur</strong> Vous devez être l'éditeur de l'article pour le modifier.
             </div>
@@ -71,7 +71,23 @@ $other_articles = get_full_articles();
             <div class="alert alert-danger">
                 <strong>Erreur</strong> Le commentaire n'a pas été posté.
             </div>
-    <?php
+        <?php
+        }
+
+        if ($rep_err === 'error_id') {
+            ?>
+                <div class="alert alert-danger">
+                    <strong>Erreur</strong> Erreur d'id commentaire
+                </div>
+            <?php
+            }
+
+        if ($rep_err === 'success_upd') {
+            ?>
+                 <div class="alert alert-success">
+                    <strong>succès</strong> Votre commentaire à été modifié, il sera vérifié par l'admin, et s'il corresponds aux <a href="crit_valid.php">critères de publication</a>, il sera publié.
+                </div>
+            <?php
         }
     }
     ?>
@@ -138,13 +154,13 @@ $other_articles = get_full_articles();
                 echo '
                         <div class="mt-4">
                             <p class=""><small>Publié le ' . date("d/m/Y à H:i", strtotime($comment['date_comm'])) . ' par <span class="fw-bold"> ' . $comment['user_name'] . ' </span></small></p>
-                            <p>' . $comment['comment'] . ' </p>
+                            <p>'.$comment['comment'].' </p>
                         </div>
                     ';
 
                     
-                    if (isset($_SESSION["id"]) && $_SESSION["id"] == $comment["id_users"]) {
-                        echo '   <a href="modif_comm_form.php?&id=' . $other_articles["id"] . '" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon commentaire</a>
+                    if (isset($_SESSION["id"]) && $_SESSION["id"] == $comment["3"]) {
+                        echo '   <a href="modif_comm.php?&id='.$comment["id"].'" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon commentaire</a>
                                             
                         ';
                     
@@ -154,8 +170,6 @@ $other_articles = get_full_articles();
         }
     
         ?>
-
-<!-- todo SRO : a finir : pr les retrouver : shift ctrl + f = rechercher / sinon shift alt et f pour auto indent-->
 
         </div>
 

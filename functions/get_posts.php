@@ -79,7 +79,7 @@ function get_posts_index()
 
 
 
-// fetch des articles de l'admin sur le theme voyage pour la page article.php./l'admin_voyage
+// fetch des articles de l'admin sur le theme voyage pour la page article.php./l'admin_voyage AVEC les likes
 function get_posts_voyage()
 {
 
@@ -98,7 +98,7 @@ function get_posts_voyage()
 }
 
 
-// fetch des articles de l'admin sur le theme moto pour la page bonus/l'admin_s'amuse
+// fetch des articles de l'admin sur le theme moto pour la page bonus/l'admin_s'amuse AVEC les likes
 function get_posts_bonus()
 {
 
@@ -117,7 +117,7 @@ function get_posts_bonus()
 
 
 
-// fetch de tous les articles pour la page other_article/articles perso des users
+// fetch de tous les articles pour la page other_article/articles perso des users AVEC les likes
 function get_posts_other()
 {
 
@@ -137,7 +137,7 @@ function get_posts_other()
 
 
 
-// affiche l'article sélectionné par l'url get en entier dans full_article.php et modif_article.php
+// affiche l'article sélectionné par l'url get en entier dans full_article.php et modif_article.php AVEC les likes
 function get_full_articles()
 {
 
@@ -199,3 +199,52 @@ function get_full_comments()
         die('Erreur');
     }
 }
+
+
+
+// affiche le commentaire sélectionné par l'url get en entier dans modif_comm.php
+function get_comment()
+{
+
+    global $pdo;
+
+    if (isset($_GET['id']) && !empty($_GET['id'])) {
+
+        $get_id = htmlspecialchars($_GET['id']);
+
+        if (isset($_GET['idc']) && !empty($_GET['idc'])) {
+
+            $get_idc = htmlspecialchars($_GET['idc']);
+
+            $comms = $pdo->prepare('SELECT * FROM comm
+                                        JOIN users 
+                                        ON comm.id_users=users.id
+                                        JOIN articles
+                                        ON articles.id=comm.id_articles
+                                        WHERE articles.id = ? AND comm.id = ?
+                                        AND comm.is_valid ="1"
+                                    ');
+            $comms->execute(array($get_id, $get_idc));
+
+
+
+
+            if ($comms->rowCount() == 1 ) {
+            $comment = $comms->fetch();
+
+            return $comment;
+            } else {
+            die('Erreur2');
+            }
+            
+
+        } else {
+            die('Erreur_idc');
+
+        }
+
+    } else {
+        die('Erreur');
+    }
+}
+

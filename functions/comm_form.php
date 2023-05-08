@@ -34,21 +34,21 @@ if (!empty($_SESSION['id'])) {
         )))
         // en réussite :
         {
-            header('Location: ../full_article.php?id=' . $_GET["id"] . '&rep_err=comm_post');
+            header('Location: ../full_article.php?id='.$_GET["id"].'&rep_err=comm_post');
             die();
 
             // si échec :
         } else {
-            header('Location: ../full_article.php?id=' . $_GET["id"] . '&rep_err=comm_not_post');
+            header('Location: ../full_article.php?id='.$_GET["id"].'&rep_err=comm_not_post');
         }
 
 
         // echo "Pas de commentaire";
     } else {
-        header('Location:../full_articles.php?id=' . $_GET["id"] . '&rep_err=content_empty');
+        header('Location:../full_articles.php?id='.$_GET["id"].'&rep_err=content_empty');
     }
 
     // echo "Non connecté";
 } else {
-    header('Location:../full_articles.php?id=' . $_GET["id"] . '&rep_err=empty_id');
+    header('Location:../full_articles.php?id='.$_GET["id"].'&rep_err=empty_id');
 }

@@ -5,8 +5,10 @@ session_start();
 // appel de la page des fonctions
 require_once 'functions/get_posts.php';
 
-// appel de la fonction pour afficher l'article en grand
-$other_article = get_full_article();
+// appel de la fonction pour afficher l'article en grand et ses commentaires (tous, étant validés par l'admin précédemment)
+$other_articles = get_full_articles();
+
+
 
 ?>
 
@@ -24,23 +26,7 @@ $other_article = get_full_article();
 
 <?php require_once 'header.php' ?>
 
-<?php
-// NE FONCTIONNE PAAAAAAAAAAAAAAASSSSSSSSSSSS car je n'ai pas mis la reg dans la page concernée ?
-if($other_article == false){
-    header("Location:other_articles.php?&message=error_full");
-
-}else{
-
-?>
-                                                                       
-<div class="fs-3 fw-bold text-center mt-5 mb-5">Article sélectionné :</div>
-
-
-            
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-10 mx-auto mb-5">
-
+                                                            
 
  <!-- Erreur si la personne qui tente de modifier l'article n'est pas l'éditeur de celui ci -->
 <?php 
@@ -56,51 +42,132 @@ if(isset($_GET['rep_err']))
             </div>
         <?php
     }
+
+    if($rep_err === 'content_empty')
+    {
+        ?>
+            <div class="alert alert-danger">
+                <strong>Erreur</strong> Il n'y à pas de commentaire saisis.
+            </div>
+        <?php
+    }
+
+    if($rep_err === 'empty_id')
+    {
+        ?>
+            <div class="alert alert-danger">
+                <strong>Erreur</strong> Vous n'êtes pas connecté.
+            </div>
+        <?php
+    }
+
+    if($rep_err === 'comm_post')
+    {
+        ?>
+            <div class="alert alert-success">
+                <strong>Succès</strong> Votre commentaire à été envoyé, il sera vérifié par l'admin, et s'il corresponds aux <a href="crit_valid.php">critères de publication</a>, il sera publié.
+            </div>
+        <?php
+    }
+
+    if($rep_err === 'comm_not_post')
+    {
+        ?>
+            <div class="alert alert-danger">
+                <strong>Erreur</strong> Le commentaire n'a pas été posté.
+            </div>
+        <?php
+    }
+
+    if ($rep_err === 'error_id') {
+        ?>
+            <div class="alert alert-danger">
+                <strong>Erreur</strong> Erreur d'id commentaire
+            </div>
+        <?php
+        }
+
+    if ($rep_err === 'success_upd') {
+        ?>
+             <div class="alert alert-success">
+                <strong>succès</strong> Votre commentaire à été modifié, il sera vérifié par l'admin, et s'il corresponds aux <a href="crit_valid.php">critères de publication</a>, il sera publié.
+            </div>
+        <?php
+    }
 }
 ?>
 
 
 
-
 <?php
 
-  echo     ' 
-                     
-
-                        <div class="card border border-info shadow-lg mt-3>
-                            <p class="card-text"><small class="text-info text-center mt-3">Publié le ' . date("d/m/Y à H:i", strtotime($other_article["date_articles"])).' par <span class="fw-bold"> '. $other_article["user_name"].' </span></small></p>
-                            <h5 class="card-title text-center"> ' . $other_article["title"] . ' </h5>
-                            <img src= stock_avatar/'.$other_article["image"].' class="card-img" alt=" '.$other_article["title"].'">
-                            <div class="card-body mx-auto">
-                                <p class="card-text"> '.$other_article["content"].'</p>
-
+  echo     '         
+                    <img src= stock_avatar/'.$other_articles['image'].' class="card-img" alt=" '.$other_articles['title'] .'">
+                        <div class="container">
+                            <h2 class="mt-3 mb-3"> '.$other_articles['title'] .'</h2>
+                            <p class="text-info"><small>Publié le ' .date("d/m/Y à H:i", strtotime($other_articles['date_articles'])) .' par <span class="fw-bold"> '. $other_articles['user_name'].'</span></small></p>
+                                <div class="">
+                                <p class="mb-5">'.nl2br($other_articles['content']).'</p>
+                                </div>
+                        </div> 
                                 ';
                                 ?>
 
                     <?php
-                    if(isset($_SESSION["id"]) && $_SESSION["id"] == $other_article["id"]) {
+                    if(isset($_SESSION["id"]) && $_SESSION["id"] == $other_articles["id"]) {
                     ?>
                     <?php
-                           echo '   <a href="modif_article.php?&id='.$other_article["0"] .'" class="btn btn-info d-flex justify-content-center mb-3" >Modifier l\'article</a>
-                    
-                     
-                          
-                    
-                            </div>
-                        </div>
+                           echo '   <a href="modif_article.php?&id='.$other_articles["0"].'" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon article</a>
+                                            
              ';
             }
 ?>
+
+<?php
+     echo  ' <div class="container">
+            <div class="row">
+                <form class="form-group" method="POST" action="functions/comm_form.php?&id= '.$other_articles['0'].'">
+                    <div class="d-grid gap-2 col-sm-12 col-md-8 col-lg-10 mx-auto mt-4">
+
+                            <label for="comm_art" class="fs-5 fw-bold">Ecrivez votre commentaire :</label>
+                            <textarea class="form-control" name="content" id="comm_art" rows="3" placeholder="Pour mieux voir votre texte vous pouvez agrandir vous pouvez cliquer en bas à droite et déployer vers le bas"></textarea>
+
+                                    <div class="d-grid gap-2 col-2 mx-auto mt-4">
+                                        <button class="btn btn-info" type="submit">Envoyer</button>
+                                    </div>
                     </div>
-                </div>
-            </div> 
+                </form>
+            </div>
+         </div>
+        '
+?>
+
+
+    <div class="container mt-3 mb-5">
+        <label for="" class="fs-5 fw-bold">Commentaires :</label>
         
 <?php
+$comments = get_full_comments();
+if(!empty($comments)){
+    foreach($comments as $comment){
+        echo '
+                        <div class="mt-4">
+                            <p class="text-info"><small>Publié le ' . date("d/m/Y à H:i", strtotime($comment['date_comm'])) .' par <span class="fw-bold"> '. $comment['user_name'].' </span></small></p>
+                            <p>'.nl2br($comment['comment']).'</p>
+                        </div>
+                                
+
+            ';
+    }
 }
 ?>
+
+    </div>
 
 
 <?php require_once 'footer.php' ?>
 
 </body>
 </html>
+
+    
