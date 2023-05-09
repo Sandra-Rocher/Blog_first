@@ -5,8 +5,8 @@ session_start();
 require_once '../modele/database.php';
 
 
-// Verification que l'id user soit connecté, l editeur du commentaire a suprimer
-if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["id.users"] == $_SESSION["id_users"] || $_SESSION["id_role"] = '1 || 2') {
+// Verification que l'id user soit connecté, et l editeur du commentaire à suprimer
+if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["user_name"] == $_SESSION["user_name"] || $_SESSION["id_role"] == '1' || $_SESSION["id_role"] == '2') {
                                                                        
     $sessionId = $_SESSION["id"];
 

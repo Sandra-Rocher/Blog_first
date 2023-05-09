@@ -5,8 +5,8 @@ session_start();
 require_once '../modele/database.php';
 
 
-// Verification que l'id user soit connecté OU admin
-if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["id.users"] == $_SESSION["id_users"] || $_SESSION["id_role"] = '1') {
+// Verification que l'id user soit connecté et admin
+if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["user_name"] == $_SESSION["user_name"] || $_SESSION["id_role"] = '1') {
                                                                        
 
         if(isset($_GET['id']) AND !empty($_GET['id'])) {
