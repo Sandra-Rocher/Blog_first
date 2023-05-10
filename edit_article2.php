@@ -11,8 +11,6 @@ session_start();
     <title>Creer un article</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- lien bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     
 </head>
 <body>
@@ -136,11 +134,67 @@ session_start();
         </div>
  </div>
 
+
+
+
+       
+ <div class="container mt-5 mb-5 col-sm12 col-md-8 col-lg-10 border border-info shadow-lg bg-info-rounded">
+        <div class="row text-center border border-info shadow-lg bg-info-rounded">
+            <h1 class="mt-5">Poster une vidéo</h1>
+                <form class="form-group" method="POST" action="functions/edit_video_form.php">
+                    <div class="d-grid gap-2 col-sm-12 col-md-8 col-lg-10 mx-auto mt-4">
+                        
+ <?php 
+
+                if(isset($_GET['reg_err']))
+                {
+                    $err = htmlspecialchars($_GET['reg_err']);
+
+                    switch($err)
+                    {
+                        case 'success_vid':
+                        ?>
+                            <div class="alert alert-success">
+                                <strong>Succès</strong> vidéo bien reçu, l'admin vérifiera et si elle corresponds aux <a href="crit_valid.php">critères de publication</a>, si c'est le cas elle sera postée sur la page Accueil et dans votre page nommée l'User_partage !
+                            </div>
+                        <?php
+                        break;
+
+                    }
+                }
+                ?>
+
+
+                            <label for="title_art">Ajouter un titre à votre article</label>
+                            <input type="text" class="form-control" name="tit" id="title_art"  placeholder="Titre de votre article..."  required="required">
+
+                            <label for="comm_art">Ajouter un commentaire</label>
+                            <textarea class="form-control" name="cont" id="comm_art" rows="8" placeholder="Pour mieux voir votre texte vous pouvez agrandir vous pouvez cliquer en bas a droite et déployer vers le bas"  required="required"></textarea>
+
+                            <label for="video_art">Ajouter une vidéo</label>
+                            <textarea class="form-control" name="video" id="video_art" rows="8" placeholder="Déposer ici uniquement les vidéos publiées sur Youtube. Cliquer sur partager, puis intégrer, puis copier le lien commençant par <iframe> et collez le ici"  required="required"></textarea>
+                    </div>
+                        <div class="d-grid gap-2 col-2 mx-auto mt-4">
+                            <button class="btn btn-info" type="submit">Envoyer</button>
+                        </div>
+
+                        <div class="d-grid gap-2 mx-auto mt-4">
+                            <div class="fs-bold"><a href="crit_valid.php">Avant de valider votre article, allez voir les critères de validation de celui-ci</a></div>
+                        </div>
+                </form>
+                <p class="text-center mt-4 mb-5"><a href="other_articles.php">Voir mes articles</a></p>
+        </div>
+ </div>
+
+
+
+
+
 <?php
 }else{
 ?>
         <div class="container mt-5 mb-5 text-center">
-            <div class ="fs-4 mb-3"> Vous devez être connecté pour publier un article </div>
+            <div class ="fs-4 mb-3"> Vous devez être connecté pour publier un article ou une vidéo </div>
             <a href="connexion.php">Connexion</a>
         </div>
 
@@ -150,10 +204,6 @@ session_start();
 
 
 <?php require_once 'footer.php' ?>
-
-<!-- lien bootstrap-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
   
 </body> 
 </html>

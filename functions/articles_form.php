@@ -6,7 +6,7 @@
 
 Like en ajax
 
-delete in cascade articles ->comm -> stock avatar
+delete in cascade -> stock avatar
 
 test sur toutes les pages / toute les fonctionnalités
 

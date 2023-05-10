@@ -48,7 +48,7 @@ if(isset($_GET['success']))
 
 <?php
     foreach($articles as $article){
-        var_dump($article[0]);
+       
   echo     ' 
                      <div class="col-sm-12 col-md-12 col-lg-5 mx-auto mb-5">
 
@@ -56,9 +56,9 @@ if(isset($_GET['success']))
                             <div class="d-flex justify-content-between">
                                 <p class="card-text mx-auto mt-3"><small class="text-info">Publié le ' . date("d/m/Y à H:i", strtotime($article["date_articles"])).' par <span class="fw-bold">'.$article["user_name"].' </span></small></p>
                                 
-                                <form class="form-group me-4" method="POST" action="functions/like_form.php?&id='.$article[0].'">
-                                    <button type="submit" class="mt-3 mx-auto btn btn-info"><i class="bi bi-hand-thumbs-up"> '.$article["likesPerArticle"].'</i></button>
-                                </form>
+                                <p class="mt-3 mx-auto btn btn-info" onclick="likeArticle('.$article[0].')" role="button">
+                                <i class="bi bi-hand-thumbs-up"></i> 
+                                <span id="likes-for-article-'.$article[0].'">'.$article["likesPerArticle"].'</span></p>
 
                                 </div> 
                                 <h5 class="card-title text-center"> '.$article["title"].'</h5>
@@ -78,6 +78,8 @@ if(isset($_GET['success']))
 
             
 <?php require_once 'footer.php' ?>
+<script src="functions/like_script.js"></script>
+
 
 </body>
 </html>
