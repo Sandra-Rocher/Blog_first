@@ -4,7 +4,6 @@
 
 ------ TODOLISt : 
 
-Like en ajax
 
 delete in cascade -> stock avatar
 
@@ -13,8 +12,6 @@ test sur toutes les pages / toute les fonctionnalités
 test responsif sur le tell (a revoir : page mention legales / crit_article / modifier l article buttons)
 
 maquette figma
-
-creer article moto + usaa
 
 indentation pages
 
@@ -35,7 +32,7 @@ MVC / routing / paging / graphicart php html 8mn 9.46 ajout de title sur pages
 
 favoris
 
-page informations + mention legales : si fait : rajouter like vidéos favoris 
+page informations + mention legales : si fait : rajouter vidéos favoris 
 
 fleche pour remonter en haut de la pagee
 

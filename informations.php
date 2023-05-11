@@ -30,17 +30,19 @@ session_start();
         <ul>
             <li>Création d'un blog et sa base de données dans lequel on pourra :</li>
             <li>S'inscrire, modifier, ou supprimer un compte utilisateur</li>
+            <li>Se connecter sur son compte utilisateur</li>
+            <li>Voir, modifier son profil utilisateur</li>
             <li>Créer, modifier, supprimer un article (uniquement pour les connectés)</li>
-            <li>Les articles peuvent contenir une photo, qui peut aussi être ajoutée, modifiée, ou supprimée</li>
-            <li>Les articles sont ensuite envoyés à l'admin qui les vérifie, pour ensuite soit supprimer soit autoriser l'article sur les pages publiques</li>
-            <li>Un article ne peut être modifié que par son éditeur, il sera de nouveau vérifié par l'admin</li>
-            <li>Afficher sur la page d'accueil tous les articles, même pour les non-connectés</li>
-            <li>Afficher sur la page admin_voyage uniquement les articles crées par l'admin sur le thème voyage</li>
-            <li>Afficher sur la page admin_s'amuse uniquement les articles crées par l'admin sur le thème moto</li>
-            <li>Afficher connexion pour les non-connectés, la page mentions-legales, et la page vous êtes recruteurs </li>
-            <li>Afficher déconnexion, la page d'user partage, créer un article, ainsi que le profil du connecté</li>
-            <li>Seuls les connectés peuvent commenter les articles, ils ne seront visible que dans la page de l'article concerné</li>
-            <li>Seuls les connectés peuvent liker les articles, ils ne seront visible que dans la page de l'article concerné</li>
+            <li>Les articles doivent contenir une photo</li>
+            <li>Créer, modifier, supprimer un commentaire (uniquement pour les connectés)</li>
+            <li>Les articles et les commentaires sont ensuite envoyés à l'admin qui les vérifie, pour ensuite soit les supprimer soit les autoriser sur les pages publiques</li>
+            <li>Si un article ou un commentaire est modifié par son éditeur, il sera de nouveau vérifié par l'admin</li>
+            <li>Pour les non-connectés la page d'accueil affichera tous les articles publiés dans l'ordre du plus récent</li>
+            <li>Pour les non-connectés la page admin_voyage uniquement les articles publiés dans l'ordre du plus récent crées par l'admin sur le thème voyage</li>
+            <li>Pour les non-connectés la page admin_s'amuse uniquement les articles publiés dans l'ordre du plus récent crées par l'admin sur le thème moto</li>
+            <li>Pour les non-connectés : affichage de la page connexion, mentions-legales, et vous êtes recruteurs </li>
+            <li>Pour les connectés : affichage de la page déconnexion, l'user partage, créer un article, ainsi que le profil</li>
+            <li>Seuls les connectés peuvent liker les articles, un click ajoute le like ('A voté!'), un click supplémentaire le retire ('Oups !'), il n'y aura donc qu'un seul like possible par personne sur un article.</li>
             <li>Sécuriser les pages, afin que personne n'accède à la page admin à part celui ci</li>
             <li>Sécuriser les pages, afin que personne n'accède par l'url aux pages qui ne le concernent pas</li>
             <li>Sécuriser la base de données afin qu'elle ne révèle aucun email et mot de passe des utilisateurs</li>

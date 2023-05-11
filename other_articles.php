@@ -172,7 +172,13 @@ if(isset($_GET['req']))
                         <div class="card border border-info shadow-lg">
                             <div class="d-flex justify-content-between">
                                 <p class="card-text mx-auto mt-3"><small class="text-info">Publié le ' . date("d/m/Y à H:i", strtotime($other_article["date_articles"])).' par <span class="fw-bold"> '. $other_article["user_name"].' </span></small></p>
-                                <a class="mt-3 mx-auto btn btn-info" href="like_form.php?&id='.$other_article['0'].'" role="button"><i class="bi bi-hand-thumbs-up"> '.$other_article["likesPerArticle"].'</i></a>
+                                
+                                <p class="mt-3 mx-auto btn btn-info" ';
+                                if (!empty($_SESSION["id"])) echo 'onclick="likeArticle('.$other_article[0].')" ';
+    echo'
+                                 role="button"> <i class="bi bi-hand-thumbs-up"></i> 
+                                <span id="likes-for-article-'.$other_article[0].'">'.$other_article["likesPerArticle"].'</span></p>
+
                             </div>
                                 <h5 class="card-title text-center"> '.$other_article["title"].' </h5>
                                 <a href="full_article.php?id='. $other_article[0].'"> <img src= stock_avatar/'.$other_article["image"] .' class="card-img-top" alt=" '.$other_article["title"].'"></a>
@@ -201,6 +207,7 @@ if(isset($_GET['req']))
 ?>
 
 <?php require_once 'footer.php' ?>
+<script src="public/like_script.js"></script>
 
 </body>
 </html>
