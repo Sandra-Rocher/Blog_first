@@ -193,7 +193,7 @@ function get_full_comments()
 
             return $comments;
         } else {
-            die('Il n\'y en à pas encore, soyez le ou la premier(e) !');
+            die('Il n\'y en a pas encore, soyez le ou la premier(e) ! (Connexion obligatoire)');
         }
     } else {
         die('Erreur');
