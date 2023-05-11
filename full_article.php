@@ -101,10 +101,10 @@ $other_articles = get_full_articles();
                             <h3 class="mt-3 mb-3"> '.$other_articles['title'].' </h3>
                                 <div class="d-flex justify-content-between">
                                     <p class=""><small>Publié le '.date("d/m/Y à H:i", strtotime($other_articles['date_articles'])).' par <span class="fw-bold"> '.$other_articles['user_name'].' </span></small></p>
-                                    <a class="mt-3 btn btn-info" href="like_form.php?&id='.$other_articles['0'].'" role="button"><i class="bi bi-hand-thumbs-up"> '.$other_articles["likesPerArticle"].'</i></a>
+                                    <a class="mb-3 btn btn-info" href="like_form.php?&id='.$other_articles['0'].'" role="button"><i class="bi bi-hand-thumbs-up"> '.$other_articles["likesPerArticle"].'</i></a>
                                 </div>    
                                     <div class="">
-                                        <p class=""> '.$other_articles['content'].' </p>
+                                        <p class=""> '.(nl2br($other_articles['content'])).' </p>
                                     </div>
                         </div> 
                                 ';

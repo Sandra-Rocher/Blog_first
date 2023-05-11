@@ -35,7 +35,7 @@ if (!empty($_SESSION['id'])) {
 
                 $extens = explode('.', $name_file);
 
-                $max_size = 7000000;
+                $max_size = 8000000;
 
 
                 if (in_array($type_file, $type)) {
