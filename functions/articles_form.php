@@ -26,6 +26,8 @@ pas d'avatar obligatoire ? photo par défaut
 
 upload de plusieurs photos, ou de vidéos 
 
+mettre photo du user a coté de son commentaire ou de son article en tout petit
+
 regex mdp
 
 MVC / routing / paging / graphicart php html 8mn 9.46 ajout de title sur pages

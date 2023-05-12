@@ -6,7 +6,7 @@ session_start();
 require_once 'functions/get_posts.php';
 
 // appel de la fonction pour afficher l'article en grand et ses commentaires (tous, étant validés par l'admin précédemment)
-$other_articles = get_full_articles();
+$articles = get_full_articles();
 
 ?>
 
@@ -96,25 +96,31 @@ $other_articles = get_full_articles();
     <?php
 
     echo     '         
-                    <img src= stock_avatar/'.$other_articles['image'].' class="card-img" alt=" '.$other_articles['title'].'">
+                    <img src= stock_avatar/'.$articles['image'].' class="card-img" alt=" '.$articles['title'].'">
                         <div class="container">
-                            <h3 class="mt-3 mb-3"> '.$other_articles['title'].' </h3>
+                            <h3 class="mt-3 mb-3"> '.$articles['title'].' </h3>
                                 <div class="d-flex justify-content-between">
-                                    <p class=""><small>Publié le '.date("d/m/Y à H:i", strtotime($other_articles['date_articles'])).' par <span class="fw-bold"> '.$other_articles['user_name'].' </span></small></p>
-                                    <a class="mb-3 btn btn-info" href="like_form.php?&id='.$other_articles['0'].'" role="button"><i class="bi bi-hand-thumbs-up"> '.$other_articles["likesPerArticle"].'</i></a>
-                                </div>    
+                                    <p class=""><small>Publié le '.date("d/m/Y à H:i", strtotime($articles['date_articles'])).' par <span class="fw-bold"> '.$articles['user_name'].' </span></small></p>
+
+                                    <p class="mt-3 btn btn-info" ';
+                                if (!empty($_SESSION["id"])) echo 'onclick="likeArticle('.$articles[0].')" ';
+    echo'
+                                 role="button"> <i class="bi bi-hand-thumbs-up"></i> 
+                                <span id="likes-for-article-'.$articles[0].'">'.$articles["likesPerArticle"].'</span></p>
+                                
+                                    </div>    
                                     <div class="">
-                                        <p class=""> '.(nl2br($other_articles['content'])).' </p>
+                                        <p class=""> '.(nl2br($articles['content'])).' </p>
                                     </div>
                         </div> 
                                 ';
     ?>
 
     <?php
-    if (isset($_SESSION["id"]) && $_SESSION["id"] == $other_articles["id"]) {
+    if (isset($_SESSION["id"]) && $_SESSION["id"] == $articles["id"]) {
     ?>
     <?php
-        echo '   <a href="modif_article.php?&id='.$other_articles["0"].'" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon article</a>
+        echo '   <a href="modif_article.php?&id='.$articles["0"].'" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon article</a>
                                             
              ';
     }
@@ -125,7 +131,7 @@ $other_articles = get_full_articles();
 
         echo  ' <div class="container">
                     <div class="row">
-                        <form class="form-group" method="POST" action="functions/comm_form.php?&id= '.$other_articles['0'].'">
+                        <form class="form-group" method="POST" action="functions/comm_form.php?&id= '.$articles['0'].'">
                             <div class="d-grid gap-2 col-sm-12 col-md-8 col-lg-10 mx-auto mt-4">
 
                                 <label for="comm_art" class="fs-5 fw-bold">Ecrivez votre commentaire :</label>
@@ -159,7 +165,7 @@ $other_articles = get_full_articles();
 
                     
                     if (isset($_SESSION["id"]) && $_SESSION["id"] == $comment["3"]) {
-                        echo '   <a href="modif_comm.php?&id='.$other_articles["0"].'&idc='.$comment["0"].'" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon commentaire</a>
+                        echo '   <a href="modif_comm.php?&id='.$articles["0"].'&idc='.$comment["0"].'" class="btn btn-info d-flex justify-content-center col-sm-3 col-md-4 col-lg-3 mx-auto  mb-3" >Modifier mon commentaire</a>
                                             
                         ';
                     
@@ -174,6 +180,7 @@ $other_articles = get_full_articles();
 
         
 <?php require_once 'footer.php' ?>
+<script src="public/like_script.js"></script>
 
 </body>
 

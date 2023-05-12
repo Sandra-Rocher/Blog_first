@@ -155,9 +155,9 @@ function get_full_articles()
         $articles->execute(array($get_id));
 
         if ($articles->rowCount() == 1) {
-            $other_articles = $articles->fetch();
+            $articles = $articles->fetch();
 
-            return $other_articles;
+            return $articles;
         } else {
             die('Cet article n\'existe pas, ou pas encore !');
         }
