@@ -192,7 +192,7 @@ require_once '../modele/database.php';
 
         $extens = explode('.', $name_file);
 
-        $max_size = 300000;
+        $max_size = 8000000;
 
 
         if(in_array($type_file, $type))
