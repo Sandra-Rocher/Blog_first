@@ -24,7 +24,7 @@ $articles = get_posts_voyage();
 <?php require_once 'header.php' ?>
 
         
-<div class= "fs-3 fw-bold text-center mt-5 mb-5"> Ici, l'admin vous partage tous ses articles de voyage aux USA</div>
+<div class= "fs-3 fw-bold text-center mt-5 mb-5"> Ici, l'admin vous partage tous ses articles de voyage aux USA.</div>
 
             <div class="container mt-5 mb-5">
                 <div class="row">

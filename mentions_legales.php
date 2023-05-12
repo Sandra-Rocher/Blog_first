@@ -17,7 +17,7 @@ session_start();
 <?php require 'header.php' ?>
       
 
- <div class="fs-3 fw-bold text-center mt-5 mb-5">Page Mentions légales</div>
+ <div class="fs-3 fw-bold text-center mt-5 mb-5">Mentions légales</div>
 
 
 <div container class="col-sm-12 col-md-10 col-lg-8 mx-auto">

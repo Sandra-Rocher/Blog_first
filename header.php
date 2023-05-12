@@ -45,7 +45,7 @@
   if(!empty($_SESSION['id'])){
 ?>
                           <li class="nav-item ms-3">
-                            <a class="nav-link <?php if ($_SERVER['SCRIPT_NAME'] === '/Blog_first/other_articles.php'): ?> active aria-current='page'<?php endif; ?>" href="other_articles">L'user_partage</a>
+                            <a class="nav-link <?php if ($_SERVER['SCRIPT_NAME'] === '/Blog_first/other_articles.php'): ?> active aria-current='page'<?php endif; ?>" href="other_articles.php">L'user_partage</a>
                           </li>
 
                           <li class="nav-item ms-3">
