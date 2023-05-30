@@ -4,14 +4,15 @@
 
 ------ TODOLISt : 
 
+session start sur le header uniquement et plus sur toute les pages
 
 delete in cascade -> stock avatar
+
+js input non vidé
 
 test sur toutes les pages / toute les fonctionnalités
 
 test responsif sur le tell (a revoir : page mention legales / crit_article / modifier l article buttons)
-
-maquette figma
 
 indentation pages
 
@@ -25,8 +26,6 @@ indentation pages
 pas d'avatar obligatoire ? photo par défaut
 
 upload de plusieurs photos, ou de vidéos 
-
-mettre photo du user a coté de son commentaire ou de son article en tout petit
 
 regex mdp
 
