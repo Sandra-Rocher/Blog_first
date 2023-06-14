@@ -15,7 +15,7 @@ $articles = get_posts_index();
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>Accueil</title>
+         <title>Blog en voyage avec...</title>
 </head>
 <body>
 

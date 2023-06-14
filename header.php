@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- petit logo perso sur la page navigateur -->
-    <link rel="shortcut icon" type="image/x-icon" href="public/photoprofil.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="../Blog_first/public/photoprofil.ico" />
     <!-- lien css -->
     <link href="public/stylesheet.css" rel="stylesheet">
     <!-- lien bootstrap -->
@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <title>Header</title>
+    <title>Blog en voyage avec...</title>
 </head>
 <body>
 

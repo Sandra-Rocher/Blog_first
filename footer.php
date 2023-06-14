@@ -10,7 +10,7 @@
     <!-- lien css -->
     <link href="stylesheet.css" rel="stylesheet">
     
-    <title>Footer</title>
+    <title>Blog en voyage avec...</title>
 </head>
 <body>
 

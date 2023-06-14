@@ -23,7 +23,7 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Modifier un article</title>
+        <title>Blog en voyage avec...</title>
 </head>
 <body>
 

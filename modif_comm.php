@@ -26,7 +26,7 @@ header('Location:full_article.php?id='.$article[0].'&rep_err=wrong_id_us');
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Modifier un commentaire</title>
+        <title>Blog en voyage avec...</title>
 </head>
 <body>
 
