@@ -100,7 +100,7 @@ $articles = get_full_articles();
                         <div class="container">
                             <h3 class="mt-3 mb-3"> '.$articles['title'].' </h3>
                                 <div class="d-flex justify-content-between">
-                                    <p class=""><small>Publié le '.date("d/m/Y à H:i", strtotime($articles['date_articles'])).' par <span class="fw-bold"> '.$articles['user_name'].' </span></small> <img src= stock_avatar/' . $articles["avatar"] . ' class="rounded-circle" style="height: 45px; width: 45px;"></p>
+                                    <p class=""><small>Publié le '.date("d/m/Y à H:i", strtotime($articles['date_articles'])).' par <span class="fw-bold me-2"> '.$articles['user_name'].' </span></small> <img src= stock_avatar/' . $articles["avatar"] . ' class="rounded-lg" style="height: 45px; width: 45px;"></p>
 
                                     <p class="mt-3 btn btn-info" ';
                                 if (!empty($_SESSION["id"])) echo 'onclick="likeArticle('.$articles[0].')" ';
@@ -158,7 +158,7 @@ $articles = get_full_articles();
             foreach ($comments as $comment) {
                 echo '
                         <div class="mt-4">
-                            <p class=""><small>Publié le '.date("d/m/Y à H:i", strtotime($comment['date_comm'])).' par <span class="fw-bold"> '.$comment['user_name'].' </span></small> <img src= stock_avatar/' . $comment["avatar"] . ' class="rounded-circle" style="height: 45px; width: 45px;"></p>
+                            <p class=""><small>Publié le '.date("d/m/Y à H:i", strtotime($comment['date_comm'])).' par <span class="fw-bold me-2"> '.$comment['user_name'].' </span></small> <img src= stock_avatar/' . $comment["avatar"] . ' class="rounded-lg" style="height: 45px; width: 45px;"></p>
                             <p>'.$comment['comment'].' </p>
                         </div>
                     ';
