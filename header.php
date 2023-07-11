@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -5,15 +11,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- petit logo perso sur la page navigateur -->
-    <link rel="shortcut icon" type="image/x-icon" href="../Blog_first/public/photoprofil.ico" />
-    <!-- lien css -->
+    <!-- litle logo on browser page -->
+    <link rel="icon" type="image/x-icon" href="public/photoprofil.ico" />
+    <!-- link css -->
     <link href="public/stylesheet.css" rel="stylesheet">
-    <!-- lien bootstrap -->
+    <!-- link bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-   <!-- lien bootstrap icons -->
+   <!-- link bootstrap icons -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-    <!-- 3 Liens jquery js pour le modal de confirmation de suppression -->
+    <!-- 3 Links jquery js for the modal confirmation of deletion -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -79,9 +85,11 @@
 </nav>
 
 
+<!-- link javascript -->
+<script src="public/like_script.js"></script>
 <script src="public/modal.js"></script>
 
-<!-- lien bootstrap -->
+<!-- link bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
  
 </body>

@@ -1,15 +1,11 @@
 <?php
 
-// On ouvre la session
-session_start();
-
-// On récupère l'id de la session sinon on redirige
-if(!isset($_SESSION["id"])){
-   
+//check that the id of the person is logged in
+//NB: !isset if require header first line (because session_start) / !empty if not
+if(!empty($_SESSION["id"])){
     header("Location: connexion.php");
 }
 
-// On va chercher la fonction, et on la déclenche en dessous pour avoir les infos dans $data
 require_once 'functions/get_posts.php';
 
 $data = get_data_profil();
@@ -23,7 +19,7 @@ $data = get_data_profil();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog en voyage avec...</title>
+    <title>Blog en voyage avec...Page-Modifier_profil</title>
 </head>
 <body>
 
@@ -34,7 +30,7 @@ $data = get_data_profil();
 </div> 
 
 
-<!-- Modal de confirmation de suppression du profil, script modal.js -->
+<!-- Modal confirmation delete profil, script modal.js -->
 <div id="dialog-confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-confirm-title" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -56,7 +52,6 @@ $data = get_data_profil();
 </div>
 
 
-     <!-- Formulaire dans profil : peut etre repartir du même -->
             <div class="container mt-5 mb-5">
                 <div class="row d-flex justify-content-center align-items-center">
                     <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">

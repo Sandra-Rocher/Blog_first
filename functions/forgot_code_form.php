@@ -1,6 +1,5 @@
 <?php
 
-// connexion avec la database
 require_once '../modele/database.php';
 
 
@@ -21,7 +20,7 @@ require_once '../modele/database.php';
                 $check_email->execute(array($email));
                 if($check_email->rowCount() == 0 ) 
                 {   
-                    //   echo "L'émail n'existe pas";
+                    //   echo email does not exist / "L'émail n'existe pas";
                     header('Location:../forgot_code.php?err=email_dont_exist');  die();
                 
                 }else{ 
@@ -30,18 +29,18 @@ require_once '../modele/database.php';
                         $id= $stock['id'];
                         $user_name= $stock['user_name'];
 
-                        // on génère un password
+                        // create a unique token with 64 characteres
                         $token = bin2hex(openssl_random_pseudo_bytes(32));
 
-                            // On entre le hash dans la bdd user = email, dans la colonne code_forget
+                            // update into the bdd
                             $forg_pwd = $pdo->prepare("UPDATE users SET code_forget = ? WHERE id = ?");
                             if($forg_pwd->execute(array($token, $id)))
                             {
 
-                                // prépare l'encodage interne du mail en utf8
+                                // prepares the internal encoding of the email in utf8
                                 mb_internal_encoding('UTF-8');
 
-                                    // On prépare le mail
+                                    // We prepare the email, $headers is an additional header in the form of an array
                                     $to      = $email;
                                     $subject = 'Mot de passe oublié Blog "En voyage avec..."';
                                     $message = 'Bonjour ' . $user_name . ' , voici votre code : ' . $token . ' ';
@@ -52,13 +51,14 @@ require_once '../modele/database.php';
                                                     'X-Mailer' => 'PHP/' . phpversion()
                                                     );
         
-                                    //pour que l'accent é fonctionne, on utilise mimeheader qui encode l'entête ici nommé : subject            
+                                    //For the 'é' accent to work, we use mimeheader, which encodes the header here named: subject            
                                      $subject = mb_encode_mimeheader($subject);
 
 
-                                    // envoie du mail
+                                    // send email
                                     if(mail($to, $subject, $message, $headers)) {
-                                        // On redirige vers la page et c'est ok jusque là : passage à l'étape suivante
+                        
+                                        //if success : redirection to the next step with $email
                                         header("Location: ../forgot_code_hash.php?&email='.$email.'&err=hash_created");
                                         die();
 
@@ -67,12 +67,12 @@ require_once '../modele/database.php';
                                         header("Location: ../forgot_code.php?&email='.$email.'&err=email_send_not_ok"); die(); 
                                     }    
 
-                            // si échec :
+                            // if error :
                             }else{header("Location: ../forgot_code.php?&email='.$email.'&err=udp_forg_not_ok"); die(); } 
                             
                 }  
 
-        //   echo "Email invalide";
+        //   echo wrong email / "Email invalide";
         }else{ header('Location:../forgot_code.php?&email='.$email.'&err=wrong_email');  die(); }   
 
     }

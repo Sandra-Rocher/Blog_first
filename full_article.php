@@ -1,11 +1,7 @@
 <?php
 
-session_start();
-
-// appel de la page des fonctions
 require_once 'functions/get_posts.php';
 
-// appel de la fonction pour afficher l'article en grand et ses commentaires (tous, étant validés par l'admin précédemment)
 $articles = get_full_articles();
 
 ?>
@@ -18,7 +14,7 @@ $articles = get_full_articles();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog en voyage avec...</title>
+    <title>Blog en voyage avec...Page-d'Un_article</title>
 </head>
 
 <body>
@@ -28,7 +24,7 @@ $articles = get_full_articles();
 
 
 
-    <!-- Erreur si la personne qui tente de modifier l'article n'est pas l'éditeur de celui ci + autres erreurs -->
+    <!-- Errors and sucess-->
     <?php
     if (isset($_GET['rep_err'])) {
         $rep_err = htmlspecialchars($_GET['rep_err']);
@@ -100,7 +96,7 @@ $articles = get_full_articles();
                         <div class="container">
                             <h3 class="mt-3 mb-3"> '.$articles['title'].' </h3>
                                 <div class="d-flex justify-content-between">
-                                    <p class=""><small>Publié le '.date("d/m/Y à H:i", strtotime($articles['date_articles'])).' par <span class="fw-bold me-2"> '.$articles['user_name'].' </span></small> <img src= stock_avatar/' . $articles["avatar"] . ' class="rounded-lg" style="height: 45px; width: 45px;"></p>
+                                    <p class=""><small>Publié le '.date("d/m/Y à H:i", strtotime($articles['date_articles'])).' par <span class="fw-bold me-2"> '.$articles['user_name'].' </span></small> <img src= stock_avatar/' . $articles["avatar"] . ' class="rounded" style="height: 45px; width: 45px;"></p>
 
                                     <p class="mt-3 btn btn-info" ';
                                 if (!empty($_SESSION["id"])) echo 'onclick="likeArticle('.$articles[0].')" ';
@@ -158,7 +154,7 @@ $articles = get_full_articles();
             foreach ($comments as $comment) {
                 echo '
                         <div class="mt-4">
-                            <p class=""><small>Publié le '.date("d/m/Y à H:i", strtotime($comment['date_comm'])).' par <span class="fw-bold me-2"> '.$comment['user_name'].' </span></small> <img src= stock_avatar/' . $comment["avatar"] . ' class="rounded-lg" style="height: 45px; width: 45px;"></p>
+                            <p class=""><small>Publié le '.date("d/m/Y à H:i", strtotime($comment['date_comm'])).' par <span class="fw-bold me-2"> '.$comment['user_name'].' </span></small> <img src= stock_avatar/' . $comment["avatar"] . ' class="rounded" style="height: 45px; width: 45px;"></p>
                             <p>'.$comment['comment'].' </p>
                         </div>
                     ';
@@ -180,7 +176,6 @@ $articles = get_full_articles();
 
         
 <?php require_once 'footer.php' ?>
-<script src="public/like_script.js"></script>
 
 </body>
 

@@ -1,23 +1,9 @@
-<?php
-
-session_start();
-
-?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Blog en voyage avec...</title>
-</head>
-<body>
+ <?php 
+ require_once 'header.php';
+ ?>
 
-
- <?php require_once 'header.php' ?>
-
- <!-- Si la personne est déja connecté on ne lui affiche pas la connexion. Il faudra qu'elle se déconnecte (ce qu'on lui propose plus bas) -->
  <?php
     if(empty($_SESSION['id'])){
 ?>
@@ -87,7 +73,7 @@ session_start();
                             <?php
                         break;
 
-// succes changement de mdp oublié
+// success change de forgot password
                         case 'finaly':
                             ?>
                                 <div class="alert alert-success">
@@ -119,7 +105,7 @@ session_start();
 <?php
 }else{
 ?>
-        <div class="container mt-5 mb-5 text-center">
+        <div class="container mt-5 mb-5 text-center" style="height: 460px;">
              <div class ="fs-4 mb-3"> Vous êtes déja connecté en tant que <?= $_SESSION["user_name"] ?></div>
             <a href="functions/deconnexion.php">Déconnexion</a>
         </div>

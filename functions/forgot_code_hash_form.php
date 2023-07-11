@@ -1,13 +1,12 @@
 <?php
 
+require_once '../modele/database.php';
+
+
 if(isset($_GET['email']) && !empty($_GET['email'])){
 
     $email = htmlspecialchars($_GET['email']);
 }
-
-
-// connexion avec la database
-require_once '../modele/database.php';
 
 
     if(isset($_POST['forg_hash']) && !empty($_POST['forg_hash']))
@@ -24,15 +23,15 @@ require_once '../modele/database.php';
         $check_code->execute(array($email, $code_hash_recup));
         if($check_code->rowCount() == 0 ) 
         {   
-            //   echo "erreur, les codes ne correspondent pas";
+            //   echo error token / "erreur, le token ne correspondent pas";
             header('Location:../forgot_code_hash.php?'.$email.'err=err_code');  die();
 
         }else{ 
-            //   echo "ok maintenant que tout correspond, on redirige vers la derniere étape";
+            //   echo sucess, next step / "ok maintenant que tout correspond, on redirige vers la derniere étape"; avec $email
             header('Location:../forgot_code_last.php?email='.$email.'&err=ok_let_pwd');  die(); }
             
 
-      // il manque le code      
+      // echo miss token / il manque le token      
     }else{header('Location:../forgot_code_hash.php?&email='.$email.'&err=empty_code');  die(); }
 
 ?>

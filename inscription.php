@@ -1,16 +1,9 @@
-<?php
-
-session_start();
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Blog en voyage avec...</title>
+        <title>Blog en voyage avec...Page-Inscription</title>
 </head>
 <body>
 
@@ -36,7 +29,15 @@ session_start();
                     switch($err)
                     {
 
- // Erreurs inscription ci dessous
+ // Errors inscription below
+
+                        case 'passwordSize':
+                        ?>
+                            <div class="alert alert-danger">
+                                <strong>Erreur</strong> Mot de passe trop court, veuillez entrer au moins 8 caractères.
+                            </div>
+                        <?php
+                        break;
 
                         case 'password':
                         ?>
@@ -89,7 +90,7 @@ session_start();
 
 
 
- // Erreurs upload avatar ci dessous
+ // Errors upload avatar below
                             case 'error':
                             ?>
                                 <div class="alert alert-danger">
@@ -138,7 +139,7 @@ session_start();
 
                         <input type="text" name="user_name" class="form-control text-center" placeholder="Login" required="required" autocomplete="off">
                         <input type="email" name="email" class="form-control text-center" placeholder="Email" required="required" autocomplete="off">
-                        <input type="password" name="password" class="form-control text-center" placeholder="Mot de passe" required="required" autocomplete="off">
+                        <input type="password" name="password" class="form-control text-center" placeholder="Mot de passe (au moins 8 caractères)" required="required" autocomplete="off">
                         <input type="password" name="password_retype" class="form-control text-center" placeholder="Re-tapez le mot de passe" required="required" autocomplete="off">
 
                         <label for="image_avat">Choississez votre avatar</label>

@@ -1,8 +1,6 @@
 
 <?php
 
-session_start();
-
 require_once 'functions/get_posts.php';
 
 $articles = get_posts_index();
@@ -15,7 +13,7 @@ $articles = get_posts_index();
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>Blog en voyage avec...</title>
+         <title>Blog en voyage avec...Page-Accueil</title>
 </head>
 <body>
 
@@ -28,7 +26,7 @@ $articles = get_posts_index();
                 <div class="row">
 
 
-<!-- Lorsqu'un user supprime son compte, il revient ici à l'accueil -->
+<!-- When an user delete his account, he return to the index -->
 <?php 
 if(isset($_GET['success']))
 {
@@ -81,8 +79,6 @@ if(isset($_GET['success']))
 
             
 <?php require_once 'footer.php' ?>
-<script src="public/like_script.js"></script>
-
 
 </body>
 </html>

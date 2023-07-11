@@ -1,5 +1,4 @@
 <?php
-    session_start();
 
     require_once '../modele/database.php';
 
@@ -27,7 +26,6 @@ if(isset($_POST['email']) && isset($_POST['password']))
                     $_SESSION['user_name'] = $data['user_name'];
                     $_SESSION['id'] = $data['id'];
                     $_SESSION['id_role'] = $data['id_role'];
-                        // verifier si l'utilisateur connecter est un admin ou user
 
                         if($data['id_role'] == '1')
                         {

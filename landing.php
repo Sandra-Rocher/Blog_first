@@ -1,11 +1,7 @@
 <?php 
 
-    session_start();
-
-    // connexion à la base de donnée
     require_once 'modele/database.php';
     
-   // si la session existe pas soit si l'on est pas connecté on redirige
     if(!isset($_SESSION['user_name'])){
         header('Location:index.php');
         die();
@@ -20,7 +16,7 @@
      
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <title>Blog en voyage avec...</title>
+     <title>Blog en voyage avec...Page-Déconnexion</title>
 </head>
 <body>
 

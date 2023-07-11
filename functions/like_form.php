@@ -1,12 +1,8 @@
 <?php
 
-session_start();
-
-// connexion avec la database
 require_once '../modele/database.php';
 
-
-// Vérifier qu'on prends bien l'id de l'article qu'on veut liker
+//id_article who want to be liked
 if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $get_id = htmlspecialchars($_GET['id']);
@@ -20,14 +16,14 @@ if (!empty($_SESSION['id'])) {
 
     $my_session = $_SESSION['id'];
 
-    //On compte les likes dans la bdd pour voir si cette session_id à déja liké cet id_article
+    //Count the likes in the database to see if this session_id has already liked this article_id
     $verif = $pdo->prepare('SELECT * FROM `likes` 
                                 WHERE id_articles = ? 
                                 AND id_users = ?
                                 ');
     $verif->execute(array($get_id, $my_session));
 
-    //Si row count = 0, on ajoute le like dans la bdd. Il mettra donc 1 like.
+    //If row count = 0, add like on bdd. This article got 1 like in totality and maximum
     if ($verif->rowCount() == 0) {
         $insert = $pdo->prepare('INSERT INTO likes 
                                             (id_users, id_articles)
@@ -37,11 +33,10 @@ if (!empty($_SESSION['id'])) {
             echo "A voté !";
             
         }
-        else{echo "Erreur_ins";
+        else{echo "Erreur_insertion";
         }
 
-            //Si row count = 1, on enleve le like dans la bdd. En retirant le like, il ne pourra alors en mettre qu'un seul max ou 0 (donc null).
-    
+    //If row count = 1, delete like on bdd. So this article got 0 likes and respect the rules.
     } else {
         $delete_id = $pdo->prepare('DELETE FROM likes
                                              WHERE id_users = ? 
@@ -50,14 +45,13 @@ if (!empty($_SESSION['id'])) {
         if($delete_id->execute(array($my_session, $get_id))){
             echo "Oups !";
         }
-        else{echo "Erreur_del";
+        else{echo "Erreur_delete";
         }
         
     }
     
 
-
-    // echo "Non connecté";
+    // echo not connected / "Non connecté";
 } else {
     header('Location:../full_articles.php?id=' . $_GET["id"] . '&rep_err=empty_id');
 }

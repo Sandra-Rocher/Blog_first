@@ -1,10 +1,9 @@
 <?php
 
-// on récupère le pdo
 require_once './modele/database.php';
 
 
-// fetch du profil sur la page profil
+// fetch all profile data's from the user connected / fetch du profil sur la page profil
 function get_data_profil()
 {
 
@@ -21,7 +20,7 @@ function get_data_profil()
 }
 
 
-// fetch de tous les articles non validés pour la page admin-dashboard
+// fetch all articles where is_valid = 0 for the admin dashboard / fetch de tous les articles non validés pour la page admin-dashboard
 function get_all_posts()
 {
 
@@ -39,7 +38,7 @@ function get_all_posts()
 }
 
 
-// fetch de tous les commentaires non validés pour la page admin-dashboard
+// fetch all comments where is_valid = 0 for the admin dashboard / fetch de tous les commentaires non validés pour la page admin-dashboard
 function get_all_comms()
 {
 
@@ -60,7 +59,7 @@ function get_all_comms()
 
 
 
-// fetch de tous les articles de tout le monde pour la page index/accueil AVEC les likes
+// fetch all articles of everybody on index page with likes / fetch de tous les articles de tout le monde pour la page index/accueil AVEC les likes
 function get_posts_index()
 {
 
@@ -79,7 +78,7 @@ function get_posts_index()
 
 
 
-// fetch des articles de l'admin sur le theme voyage pour la page article.php./l'admin_voyage AVEC les likes
+// fetch all articles on l'admin_voyage page with likes / fetch des articles de l'admin sur le theme voyage pour la page article.php./l'admin_voyage AVEC les likes
 function get_posts_voyage()
 {
 
@@ -98,7 +97,7 @@ function get_posts_voyage()
 }
 
 
-// fetch des articles de l'admin sur le theme moto pour la page bonus/l'admin_s'amuse AVEC les likes
+// fetch all articles on l'admin_s'amuse page with likes / fetch des articles de l'admin sur le theme moto pour la page bonus/l'admin_s'amuse AVEC les likes
 function get_posts_bonus()
 {
 
@@ -117,7 +116,7 @@ function get_posts_bonus()
 
 
 
-// fetch de tous les articles pour la page other_article/articles perso des users AVEC les likes
+// fetch all articles from the user connected on l'user_partage page with likes / fetch de tous les articles pour la page other_article/articles perso des users AVEC les likes
 function get_posts_other()
 {
 
@@ -137,7 +136,7 @@ function get_posts_other()
 
 
 
-// affiche l'article sélectionné par l'url get en entier dans full_article.php et modif_article.php AVEC les likes
+// show full article by id with likes on full article page and modif_article page / affiche l'article sélectionné par l'url get en entier dans full_article.php et modif_article.php AVEC les likes
 function get_full_articles()
 {
 
@@ -168,7 +167,7 @@ function get_full_articles()
 
 
 
-// affiche l'article sélectionné par l'url get en entier dans full_article.php et dans modif_comm.php
+// show comment by id_article on full_article page and modif_article page / affiche l'article sélectionné par l'url get en entier dans full_article.php et dans modif_comm.php
 function get_full_comments()
 {
 
@@ -202,7 +201,7 @@ function get_full_comments()
 
 
 
-// affiche le commentaire sélectionné par l'url get en entier dans modif_comm.php
+// show comment by id_article on modif_article page / affiche le commentaire sélectionné par l'url get en entier dans modif_comm.php
 function get_comment()
 {
 
@@ -225,9 +224,7 @@ function get_comment()
                                         AND comm.is_valid ="1"
                                     ');
             $comms->execute(array($get_id, $get_idc));
-
-
-
+            
 
             if ($comms->rowCount() == 1 ) {
             $comment = $comms->fetch();

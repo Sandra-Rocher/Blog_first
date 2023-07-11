@@ -1,15 +1,13 @@
-<?php
 
-// On ouvre la session
-session_start();
+<?php 
 
-// On récupère l'id de la session sinon on redirige
+require_once 'header.php';
+
 if (!isset($_SESSION["id"])) {
 
     header("Location: connexion.php");
 }
 
-// On va chercher la fonction, et on la déclenche en dessous pour avoir les infos dans $data
 require_once 'functions/get_posts.php';
 
 $data = get_data_profil();
@@ -17,19 +15,7 @@ $data = get_data_profil();
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog en voyage avec...</title>
-</head>
-
-<body>
-
-    <?php require_once 'header.php' ?>
 
     <div class="text-center mt-5">
         <h2>Bienvenue sur votre profil <?= $_SESSION["user_name"] ?> ! </h2>
@@ -40,7 +26,7 @@ $data = get_data_profil();
             <div class="col-sm-12 col-md-8 col-lg-4 mx-auto">
 
 
-                <!-- Retour des success ci dessous  -->
+                <!-- Errors and sucess  -->
                 <?php
                 if (isset($_GET['req'])) {
                     $succOrErr = htmlspecialchars($_GET['req']);
@@ -138,7 +124,7 @@ $data = get_data_profil();
 
 
 
-                            // Ils sont ou ceux la ? je les trouve pas...
+                        //TODO
                         case 'avat_user_upd':
                         ?>
                             <div class="alert alert-success">
@@ -157,7 +143,7 @@ $data = get_data_profil();
 
 
 
-                            // Erreurs upload avatar ci dessous
+                        // Errors upload avatar below
                         case 'success_avat':
                         ?>
                             <div class="alert alert-success">
@@ -226,7 +212,7 @@ $data = get_data_profil();
                                         <h4 class="mb-2"> ' . $data["user_name"] . ' </h4>
                                         <p class="text-muted mb-4"> ' . $data["email"] . ' </p>
                                 
-                                        <a href="modif_profil.php?&id=' . $data["id"] . '&user_name=' . $data["user_name"] . '&email=' . $data["email"] . '&avatar=' . $data["avatar"] . '"> <button type="button" class="btn btn-info btn-rounded btn-lg">Modifier</button></a>
+                                        <a href="modif_profil.php?&id='.$data["id"].'&user_name='.$data["user_name"].'&email='.$data["email"].'&avatar='.$data["avatar"].'"> <button type="button" class="btn btn-info btn-rounded btn-lg">Modifier</button></a>
                             
                                     </div>
                                 </div>
@@ -239,6 +225,3 @@ $data = get_data_profil();
 
                 <?php require_once 'footer.php' ?>
 
-</body>
-
-</html>

@@ -13,7 +13,7 @@ if(isset($_GET['email'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog en voyage avec...</title>
+    <title>Blog en voyage avec...Page-Mot_de_passe_oublié3</title>
 </head>
 <body>
 
@@ -28,7 +28,7 @@ if(isset($_GET['email'])){
                     switch($err)
                     {
 
- // Erreurs du forgot_code ci dessous
+ // Errors forgot_code below
 
                         case 'ok_let_pwd':
                             ?>

@@ -1,11 +1,9 @@
 <?php
 
-session_start();
-
 require_once '../modele/database.php';
 
 
-// Verification que l'id user soit connecté et admin
+//check that the id of the person logged in is ADMIN
 if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["user_name"] == $_SESSION["user_name"] || $_SESSION["id_role"] = '1') {
                                                                        
 

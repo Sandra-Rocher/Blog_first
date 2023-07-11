@@ -1,20 +1,15 @@
-/* Color dans navbar */
+/* Color navbar */
 .nav-item a{
     color:rgb(17, 203, 240);
 }
 
-/* Color dans navbar en hover */
+/* Color navbar hover */
 .nav-item a:hover{
     color:rgb(19, 129, 144);
 }
 
-/* Color lorsque lien active */
+/* Color when active link*/
 .nav-link.active{
-    color:white!important;
-}
-
-/* même chose dans le footer:hs */
-.nav-item.active{
     color:white!important;
 }
 
@@ -26,12 +21,7 @@
 }
 }
 
-/* Possibilité de bloquer la height des photos, mais fonctionne uniquement si la photo est en paysage et pas vertical */
-/* .card .card-img-top{
-    max-height:350px!important;
-} */
-
-/* Controle la height du commentaire en le passant ensuite a overflow-auto(scroll) */
+/* Control height of comment and transform into overflow-auto(scroll) */
 .card p{
     max-height:300px!important;
 }

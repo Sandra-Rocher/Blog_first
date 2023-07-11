@@ -1,11 +1,8 @@
 <?php
 
-session_start();
-
 require_once '../modele/database.php';
 
-
-// Verification que l'id user soit connecté et l editeur de l'article à suprimer
+//check that the id of the person logged in is that of the user or admin who wants to delete the article
 if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["user_name"] == $_SESSION["user_name"] || $_SESSION["id_role"] == '1' || $_SESSION["id_role"] == '2') {
                                             
     $sessionId = $_SESSION["id"];
@@ -27,7 +24,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["user_n
                                                     WHERE id = ?');
                         
 
-                        // si c'est un admin qui delete
+                        // if admin delete :
                         if($_SESSION['id_role'] == '1'){
 
                             if($delete_id->execute([$deleteArt])){
@@ -37,7 +34,7 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["user_n
                             }
                         }
 
-                        // Si c'est l'éditeur de l'article qui delete
+                        // if user delete :
                         else if($_SESSION['id_role'] == '2'){
 
                             if($delete_id->execute([$deleteArt])){
@@ -47,7 +44,6 @@ if (isset($_SESSION["id"]) && isset($_SESSION["user_name"]) && $_SESSION["user_n
 
                             }    
                         }
-
                                  
                 } else { 
                     echo "Vous n'êtes pas l'éditeur de l'article";

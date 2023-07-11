@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 require_once 'functions/get_posts.php';
 
 $articles = get_posts_voyage();
@@ -15,7 +13,7 @@ $articles = get_posts_voyage();
    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Blog en voyage avec...</title>
+    <title>Blog en voyage avec...Page-l'Admin_voyage</title>
 
 </head>
 <body>
@@ -63,7 +61,6 @@ $articles = get_posts_voyage();
 
 
 <?php require_once 'footer.php' ?> 
-<script src="public/like_script.js"></script>
   
 </body> 
 </html>

@@ -3,7 +3,7 @@
 require_once '../modele/database.php';
 
 
-// Verification que l'id user soit connecté ET admin
+//check that the id of the person logged in is ADMIN
 if (isset($_SESSION["id"]) || $_SESSION["id_role"] = '1') {
 
     if (isset($_GET['id']) and !empty($_GET['id'])) {

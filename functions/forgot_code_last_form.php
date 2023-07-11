@@ -1,14 +1,13 @@
 <?php
 
+require_once '../modele/database.php';
+
+
 if(isset($_GET['email']) && !empty($_GET['email'])){
 
     $email = htmlspecialchars($_GET['email']);
     
 }
-
-    // connexion avec la database
-    require_once '../modele/database.php';
-
 
         if(isset($_POST['password']) && isset($_POST['password_retype']))
         {
@@ -21,28 +20,30 @@ if(isset($_GET['email']) && !empty($_GET['email'])){
 
                 if($new_password === $new_password_retype)
                 {
-
+                    //hash password
                     $new_password = password_hash($new_password, PASSWORD_DEFAULT);
+                    //for update unique token to empty case
+                    $empty = '';
 
-
-                    $edit = $pdo->prepare("UPDATE users SET users.password = ? WHERE email = ?");
-                    if($edit->execute([$new_password, $email]))
+                    //update new password on bdd
+                    $edit = $pdo->prepare("UPDATE users SET users.password = ?, code_forget = ? WHERE email = ?");
+                    if($edit->execute([$new_password, $empty, $email]))
                     {
-                    // en réussite :
+                    // if success :
                         header("Location: ../connexion.php?&login_err=finaly");
                         die();
 
-                    // si échec :
+                    // if error :
                     }else{header("Location: ../forgot_code_last.php?&err=not_udp"); die(); }
 
 
-                //   echo "Mot de passe différent"
+                //   echo different password / "Mot de passe différent"
                 }else{ header('Location:../forgot_code_last.php?&email='.$email.'&err=password_err');  die(); }
 
-                // echo "mot de passe2 vide"
+                // echo empty password2 / "mot de passe2 vide"
             }else{header('Location:../forgot_code_last.php?'.$email.'&err=empty_pwd2');  die(); }
 
-            // echo "mot de passe1 vide"
+            // echo empty password1 / "mot de passe1 vide"
         }else{header('Location:../forgot_code_last.php?'.$email.'&err=empty_pwd1');  die(); }
 
 ?>

@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 require_once 'functions/get_posts.php';
 
 $other_articles = get_posts_other();
@@ -15,7 +13,7 @@ $other_articles = get_posts_other();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Blog en voyage avec...</title>
+     <title>Blog en voyage avec...Page-l'User_partage</title>
 </head>
 <body>
     
@@ -207,7 +205,6 @@ if(isset($_GET['req']))
 ?>
 
 <?php require_once 'footer.php' ?>
-<script src="public/like_script.js"></script>
 
 </body>
 </html>

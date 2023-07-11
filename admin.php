@@ -1,14 +1,15 @@
 <?php
 
-session_start();
+//pdo connexion
+require_once 'modele/database.php';
 
-// Verification que l'id user soit connecté ET admin
+
+//verification id = admin otherwise logout
 if(!isset($_SESSION["id"]) || $_SESSION["id_role"] != '1'){
-        // sinon : déconnexion du curieux
     header("Location: functions/deconnexion.php");
 }
 
-// on va afficher les post et les commentaires grace à leurs fonctions get_all_... situées dans la page get_posts
+//retrieving data from bdd
 require_once 'functions/get_posts.php';
 
 $articles = get_all_posts();
@@ -16,11 +17,8 @@ $articles = get_all_posts();
 $comments = get_all_comms();
 
 
-// a partir de là c'est nickwall 
-require_once 'modele/database.php';
-
-
-// on mettra apres dans functions/get_posts
+//it selects and counts by id the number in $table where is_valid is 0 to show the admin the articles 
+//unvalidated items only. To understand what $table and $tables contain: see line 163
 function inTable($table){
 
     global $pdo;
@@ -32,14 +30,12 @@ function inTable($table){
     return $query->fetch();
 }
 
-
+//contents of $tables : keys as value(from bdd)
 $tables = [
 
         "Articles postés" => "articles",
         "Commentaires postés" => "comm",
     ];
-
-    
 
 ?>
 
@@ -49,7 +45,7 @@ $tables = [
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog en voyage avec...</title>
+    <title>Blog en voyage avec...Page-Administrateur</title>
 
 </head>
 <body>
@@ -61,7 +57,7 @@ $tables = [
      <h2>Bienvenue <?= $_SESSION["user_name"] ?>, l'admin ! </h2>
 </div> 
 
-<!-- Modal de confirmation de suppression d'article, script modal.js -->
+<!-- Modal confirmation delete article, script modal.js -->
 <div id="dialog-confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-confirm-title" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -162,6 +158,8 @@ $tables = [
         <div class="d-flex justify-content-around">
                 
 <?php
+//we define for each variable in $tables a key named $table_name and its value $table
+//as it's an array, we use (reprends) index [0]
 foreach($tables as $table_name => $table){
 ?>
             <div class="card col-sm-12 col-md-6 col-lg-3">

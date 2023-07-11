@@ -1,17 +1,13 @@
 <?php
 
-session_start();
-
-// page d'appel des functions
 require_once 'functions/get_posts.php';
 
-// même fonction que full article, car on veut aussi afficher l'article en grand avant de le modifier
 $article = get_full_articles();
 
-// Verification que l'id de la personne soit bien connectée et celle qui à éditée l'article
+//check that the id of the person logged in is that of the person who wants to modify the article
 if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
     
-        // redirection sur l'article en full qui été sélectionné par l'id
+ // redirect to the full article selected by id
   header('Location:full_article.php?id='.$article[0].'&rep_err=wrong_id_us');
 }
 
@@ -23,7 +19,7 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Blog en voyage avec...</title>
+        <title>Blog en voyage avec...Page-Modifier_article</title>
 </head>
 <body>
 
@@ -35,7 +31,7 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
     if(!empty($_SESSION['id'])){
 ?>
 
-<!-- Modal de confirmation de suppression d'article, script modal.js -->
+<!-- Modal confirmation delete article, script modal.js -->
 <div id="dialog-confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-confirm-title" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
