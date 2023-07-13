@@ -15,8 +15,6 @@ $data = get_data_profil();
 ?>
 
 
-
-
     <div class="text-center mt-5">
         <h2>Bienvenue sur votre profil <?= $_SESSION["user_name"] ?> ! </h2>
     </div>
@@ -223,5 +221,5 @@ $data = get_data_profil();
 
                 ?>
 
-                <?php require_once 'footer.php' ?>
+<?php require_once 'footer.php' ?>
 

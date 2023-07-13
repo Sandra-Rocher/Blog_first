@@ -7,16 +7,6 @@ $other_articles = get_posts_other();
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Blog en voyage avec...Page-l'User_partage</title>
-</head>
-<body>
-    
 <?php require_once 'header.php' ?>
 
 <?php
@@ -153,8 +143,8 @@ if(isset($_GET['req']))
 ?>
 
 
-<div class="fs-3 fw-bold text-center mt-5 mb-3">Ici, vous retrouverez tous vos articles personnellement publiés.</div>
-<div class="fs-5 fw-bold text-center mb-5">Après validation de l'admin, ils seront aussi publiés dans la page accueil.</div>
+    <div class="fs-3 fw-bold text-center mt-5 mb-3">Ici, vous retrouverez tous vos articles personnellement publiés.</div>
+    <div class="fs-5 fw-bold text-center mb-5">Après validation de l'admin, ils seront aussi publiés dans la page accueil.</div>
 
         
             <div class="container mt-5">
@@ -195,7 +185,7 @@ if(isset($_GET['req']))
 <?php
 }else{
 ?>
-        <div class="container mt-5 mb-5 text-center">
+        <div class="container mt-5 mb-5 text-center" style="height: 460px;">
              <div class ="fs-4 mb-3"> Vous devez être connecté pour voir vos articles </div>
             <a href="connexion.php">Connexion</a>
         </div>
@@ -205,6 +195,3 @@ if(isset($_GET['req']))
 ?>
 
 <?php require_once 'footer.php' ?>
-
-</body>
-</html>

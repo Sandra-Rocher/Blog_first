@@ -6,5 +6,4 @@ function likeArticle(articleId) {
     }
     xhttp.open("GET", "functions/like_form.php?id="+articleId);
     xhttp.send();
-    
 }

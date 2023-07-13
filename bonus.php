@@ -4,21 +4,9 @@ require_once 'functions/get_posts.php';
 
 $articles = get_posts_bonus();
 
-
 ?>
 
 
-
-<!doctype html>
-<html lang="en">
-<head>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Blog en voyage avec...Page-l'Admin-s'amuse</title>
-
-</head>
-<body>
 
 
 <?php require_once 'header.php' ?>
@@ -64,6 +52,3 @@ $articles = get_posts_bonus();
 
 
 <?php require_once 'footer.php' ?>
-
-</body> 
-</html>

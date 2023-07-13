@@ -10,10 +10,11 @@ if (session_status() === PHP_SESSION_NONE) {
 try
 {
     $pdo = new PDO("mysql:host=localhost;dbname=blog", "root", "");
-}catch(Exception $e)
-{
+    }catch(Exception $e)
+    {
     die("Erreur".$e->getMessage());
 }
+
 
 
 

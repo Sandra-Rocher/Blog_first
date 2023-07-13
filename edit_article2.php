@@ -1,12 +1,3 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Blog en voyage avec...Page_Créer_une_vidéo</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-</head>
-<body>
 
 
 <?php require_once 'header.php' ?>
@@ -198,5 +189,3 @@
 
 <?php require_once 'footer.php' ?>
   
-</body> 
-</html>

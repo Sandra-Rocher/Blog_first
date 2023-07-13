@@ -142,5 +142,3 @@ if (!isset($_SESSION["id"])) {
 
 <?php require_once 'footer.php' ?>
   
-</body> 
-</html>

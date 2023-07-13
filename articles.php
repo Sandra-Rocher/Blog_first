@@ -7,17 +7,6 @@ $articles = get_posts_voyage();
 ?>
 
 
-<!doctype html>
-<html lang="en">
-<head>
-   
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Blog en voyage avec...Page-l'Admin_voyage</title>
-
-</head>
-<body>
-
 
 <?php require_once 'header.php' ?>
 
@@ -61,6 +50,4 @@ $articles = get_posts_voyage();
 
 
 <?php require_once 'footer.php' ?> 
-  
-</body> 
-</html>
+ 
