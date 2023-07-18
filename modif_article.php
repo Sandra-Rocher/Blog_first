@@ -16,6 +16,23 @@ if(!isset($_SESSION["id"]) || $_SESSION["id"] != $article['id_users']){
 
 <?php require 'header.php' ?>
 
+<!-- Errors and sucess -->
+<?php
+    if (isset($_GET['reg_err'])) {
+        $reg_err = htmlspecialchars($_GET['reg_err']);
+
+        if ($reg_err === 'error_no_art_id') {
+        ?>
+            <div class="alert alert-danger">
+                <strong>Erreur</strong> d'id.
+            </div>
+        <?php
+        }
+ 
+    }
+?>
+
+
 
 <?php
     if(!empty($_SESSION['id'])){

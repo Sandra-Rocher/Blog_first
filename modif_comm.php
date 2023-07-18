@@ -39,9 +39,28 @@ header('Location:full_article.php?id='.$article[0].'&rep_err=wrong_id_us');
             </div>
         <?php
         }
+
+        
+        if ($rep_err === 'error_no_comm_id') {
+            ?>
+                <div class="alert alert-danger">
+                    <strong>Erreur</strong> d'id commentaire
+                </div>
+            <?php
+            }
+
+            
+        if ($rep_err === 'error_no_art_id') {
+            ?>
+                <div class="alert alert-danger">
+                    <strong>Erreur</strong> d'id article
+                </div>
+            <?php
+            }
  
     }
 ?>
+
 
 
 <?php

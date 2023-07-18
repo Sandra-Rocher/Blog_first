@@ -7,8 +7,8 @@ if (isset($_GET['idc']) && !empty($_GET['idc'])) {
 
     $get_idc = htmlspecialchars($_GET['idc']);
 } else {
-    //TODO
-    header('Location:../modif_comm.php?reg_err=error_no_comm_id');
+    //erreur d'id commentaire
+    header('Location:../modif_comm.php?rep_err=error_no_comm_id');
 }
 
 
@@ -16,8 +16,8 @@ if (isset($_GET['ida']) && !empty($_GET['ida'])) {
 
     $get_ida = htmlspecialchars($_GET['ida']);
 } else {
-    //TODO
-    header('Location:../modif_comm.php?reg_err=error_no_art_id');
+    //erreur d'id article
+    header('Location:../modif_comm.php?rep_err=error_no_art_id');
 }
 
 

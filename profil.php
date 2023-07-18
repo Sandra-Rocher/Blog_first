@@ -121,26 +121,6 @@ $data = get_data_profil();
                             break;
 
 
-
-                        //TODO
-                        case 'avat_user_upd':
-                        ?>
-                            <div class="alert alert-success">
-                                <strong>Succès</strong> Modification de votre avatar réussi !
-                            </div>
-                        <?php
-                            break;
-
-                        case 'avat_user_err':
-                        ?>
-                            <div class="alert alert-danger">
-                                <strong>Erreur</strong> avatar non modifié !
-                            </div>
-                        <?php
-                            break;
-
-
-
                         // Errors upload avatar below
                         case 'success_avat':
                         ?>

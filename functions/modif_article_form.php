@@ -7,7 +7,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
     $get_id = htmlspecialchars($_GET['id']);
 } else {
-    //TODO
+    //erreur d'id
     header('Location:../modif_article.php?reg_err=error_no_art_id');
 }
 
