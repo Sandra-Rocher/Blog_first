@@ -30,6 +30,7 @@
     <div class="fs-6 mt-4 mb-5">
         <ul>
             <li>Image à caractères pornographique, choquante, sanglante.</li>
+            <li>Mauvaise extension d'image (liste des extensions autorisées : png, jpg, jpeg, gif)</li>
             <li>Commentaire ou article à caractère raciste, homophobe, anarchiste, politique, misogyne, pédophile, dangereux, complotiste, 
                 ou tendancieux.</li>
         </ul>    

@@ -11,6 +11,10 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO -->
+    <meta name="author" content="Rocher Sandra">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Bootstrap, Ajax, PHP, MySQL, blog, articles, profil, commentaires, like">
+    <meta name="description" content="Blog de publication personnelle, publications public périodique et régulière">
     <!-- litle logo on browser page -->
     <link rel="icon" type="image/x-icon" href="public/photoprofil.ico" />
     <!-- link css -->

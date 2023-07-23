@@ -85,6 +85,7 @@ if (!empty($_FILES['avatar']['name'])) {
 
     $extens = explode('.', $name_file);
 
+    //max size octets
     $max_size = 100000;
 
 

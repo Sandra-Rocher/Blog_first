@@ -16,17 +16,17 @@
         <ul>
             <li>Création d'un blog et sa base de données dans lequel on pourra :</li>
             <li>S'inscrire, modifier, ou supprimer un compte utilisateur</li>
-            <li>Se connecter sur son compte utilisateur</li>
+            <li>Se connecter, se déconnecter sur son compte utilisateur</li>
             <li>Voir, modifier son profil utilisateur</li>
             <li>Créer, modifier, supprimer un article (uniquement pour les connectés)</li>
-            <li>Les articles doivent contenir une photo</li>
+            <li>Les articles doivent obligatoirement contenir une photo</li>
             <li>Créer, modifier, supprimer un commentaire (uniquement pour les connectés)</li>
             <li>Les articles et les commentaires sont ensuite envoyés à l'admin qui les vérifie, pour ensuite soit les supprimer soit les autoriser sur les pages publiques</li>
             <li>Si un article ou un commentaire est modifié par son éditeur, il sera de nouveau vérifié par l'admin</li>
             <li>Pour les non-connectés la page d'accueil affichera tous les articles publiés dans l'ordre du plus récent</li>
             <li>Pour les non-connectés la page admin_voyage uniquement les articles publiés dans l'ordre du plus récent crées par l'admin sur le thème voyage</li>
             <li>Pour les non-connectés la page admin_s'amuse uniquement les articles publiés dans l'ordre du plus récent crées par l'admin sur le thème moto</li>
-            <li>Pour les non-connectés : affichage de la page connexion, mentions-legales, et vous êtes recruteurs </li>
+            <li>Pour les non-connectés : affichage de la page connexion, mot de passe oublié, mentions-legales, et vous êtes recruteurs </li>
             <li>Pour les connectés : affichage de la page déconnexion, l'user partage, créer un article, ainsi que le profil</li>
             <li>Seuls les connectés peuvent liker les articles, un click ajoute le like ('A voté!'), un click supplémentaire le retire ('Oups !'), il n'y aura donc qu'un seul like possible par personne sur un article.</li>
             <li>Sécuriser les pages, afin que personne n'accède à la page admin à part celui ci</li>
@@ -34,9 +34,10 @@
             <li>Sécuriser la base de données afin qu'elle ne révèle aucun email et mot de passe des utilisateurs</li>
             <li>Sécuriser le blog des failles XSS et injection SQL</li>
             <li>Mise en page responsive avec bootstrap pour le mobile</li>
-            <li>Une maquette figma à été réalisée pour la réalisation du projet</li>
+            <li>Une maquette figma a été réalisée pour le projet</li>
+            <li>Un diagramme de cas d'utilisation a aussi été réalisé.</li>
             <li>Bien sûr il y a encore beaucoup de fonctionnalités à venir comme : l'upload de plusieurs photos ou de vidéos, l'autosearch d'un article par mots clés 
-              dans le titre, avoir des favoris, mettre des dislikes, faire des regex plus strict sur le mot de passe, etc.</li>
+              dans le titre, avoir des favoris, mettre des dislikes, etc.</li>
         </ul>    
     </div>
 </div>
