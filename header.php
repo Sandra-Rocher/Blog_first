@@ -16,7 +16,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta name="keywords" content="HTML, CSS, JavaScript, Bootstrap, Ajax, PHP, MySQL, blog, articles, profil, commentaires, like">
     <meta name="description" content="Blog de publication personnelle, publications public périodique et régulière">
     <!-- litle logo on browser page -->
-    <link rel="icon" type="image/x-icon" href="public/photoprofil.ico" />
+    <link rel="icon" type="image/x-icon" href="public/Logo_Sandra.ico" />
     <!-- link css -->
     <link href="public/stylesheet.css" rel="stylesheet">
     <!-- link bootstrap -->
