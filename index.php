@@ -11,7 +11,12 @@ $articles = get_posts_index();
 
 <?php require 'header.php' ?>
       
- <div class="fs-3 fw-bold text-center mt-5 mb-5">Bienvenue sur la page de tous les articles partagés par ordre d'actualité.</div>
+ <div class="container text-center mt-5 mb-5">
+    <div class="row">
+        <h1>Bienvenue !</h1>
+        <h2>Retrouvez ici la page de tous les articles partagés par ordre d'actualité.</h1>
+    </div>
+ </div>
 
              <div class="container mt-5 mb-5">
                 <div class="row">

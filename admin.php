@@ -45,7 +45,7 @@ $tables = [
 
 
 <div class="text-center mt-5 mb-5">
-     <h2>Bienvenue <?= $_SESSION["user_name"] ?>, l'admin ! </h2>
+     <h1>Bienvenue <?= $_SESSION["user_name"] ?>, l'admin ! </h1>
 </div> 
 
 <!-- Modal confirmation delete article, script modal.js -->
@@ -170,7 +170,7 @@ foreach($tables as $table_name => $table){
            
 
 
-<h3 class="text-center"> Articles non lus </h3>
+<h2 class="text-center"> Articles non lus </h2>
 
 
 <div class="container">
@@ -236,7 +236,7 @@ foreach($tables as $table_name => $table){
 
 
 
- <h3 class="text-center"> Commentaires non lus </h3>
+ <h2 class="text-center"> Commentaires non lus </h2>
 
 
 <div class="container">

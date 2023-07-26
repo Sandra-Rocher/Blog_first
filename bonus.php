@@ -8,11 +8,15 @@ $articles = get_posts_bonus();
 
 
 
-
 <?php require_once 'header.php' ?>
 
-        
-<div class= "fs-3 fw-bold text-center mt-5 mb-5"> Ici, l'admin vous partage tous ses articles sur le thème de la Moto.</div>
+
+<div class="container text-center mt-5 mb-5">
+    <div class="row">
+        <h1>Page spéciale Motard(e)</h1>
+        <h2>Ici l'administrateur partage sa passion de la moto par ordre d'actualité.</h1>
+    </div>
+ </div>
 
             <div class="container mt-5 mb-5">
                 <div class="row">

@@ -6,7 +6,7 @@
      <div class="container col-sm-12 col-md-8 col-lg-3 border border-info shadow-lg mb-5 mt-5">
         <div class="row shadow-lg bg-info-rounded">
              <div class="text-center mt-4">
-                 <h2 class="text-center">Inscription</h2>
+                 <h1 class="text-center">Inscription</h1>
                     <form class="form-group" method="POST" action="functions/inscription_form.php" enctype="multipart/form-data">
                         <div class="d-grid gap-2 mx-auto mt-4">
 

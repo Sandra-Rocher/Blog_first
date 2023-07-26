@@ -143,8 +143,12 @@ if(isset($_GET['req']))
 ?>
 
 
-    <div class="fs-3 fw-bold text-center mt-5 mb-3">Ici, vous retrouverez tous vos articles personnellement publiés.</div>
-    <div class="fs-5 fw-bold text-center mb-5">Après validation de l'admin, ils seront aussi publiés dans la page accueil.</div>
+    <div class="container text-center mt-5 mb-5">
+        <div class="row">
+            <h1>Ici c'est votre page personnel contenant tous vos articles</h1>
+            <h2>Après validation de l'administrateur, vos articles apparaîtrons aussi sur la page accueil.</h1>
+        </div>
+    </div>
 
         
             <div class="container mt-5">

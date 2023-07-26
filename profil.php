@@ -16,7 +16,7 @@ $data = get_data_profil();
 
 
     <div class="text-center mt-5">
-        <h2>Bienvenue sur votre profil <?= $_SESSION["user_name"] ?> ! </h2>
+        <h1>Bienvenue sur votre profil <?= $_SESSION["user_name"] ?> ! </h1>
     </div>
 
     <div class="container mt-5 mb-5">

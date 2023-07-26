@@ -16,7 +16,7 @@ $data = get_data_profil();
 <?php require_once 'header.php' ?>
 
 <div class="text-center mt-5">
-    <h2>Modifiez votre profil <?= $_SESSION["user_name"] ?> ! </h2>
+    <h1>Modifiez votre profil <?= $_SESSION["user_name"] ?> ! </h1>
 </div> 
 
 
@@ -108,7 +108,7 @@ $data = get_data_profil();
             </div>
 
              <div class="text-center">
-                    <h4 class="fs-5 mt-5">Voulez-vous supprimer votre compte <?php echo $_SESSION['user_name']; ?> ?</h4>
+                    <h2 class="fs-5 mt-5">Voulez-vous supprimer votre compte <?php echo $_SESSION['user_name']; ?> ?</h2>
                                                                             
                     <br />
                     <a class="confirmModal btn btn-danger btn-md mb-5" href="functions/delete_user.php" >Oui, supprimer mon compte</a>
